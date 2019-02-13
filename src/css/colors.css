@@ -1,0 +1,73 @@
+.COLORS-wrapper {
+  float: left;
+  width: 100%;
+}
+
+.COLORS-floater {
+  position: relative;
+  float: left;
+  margin: 10px;
+}
+
+.COLORS-tester {
+  width: 100px;
+  padding: 5px;
+  margin: 2px;
+  color: white;
+  background-color: #151719;
+  font-weight: bold;
+  font-size: 10px;
+  border: 1px solid black;
+}
+
+.COLORS-color-combatType-melee { color: grey; }
+.COLORS-backgroundcolor-combatType-melee { background-color: grey; }
+.COLORS-bordercolor-combatType-melee { border-color: grey; }
+
+.COLORS-color-combatType-ranged { color: #7c3d51; }
+.COLORS-backgroundcolor-combatType-ranged { background-color: #7c3d51; }
+.COLORS-bordercolor-combatType-ranged { border-color: #7c3d51; }
+
+.COLORS-color-combatType-magic { color: #3d7c74; }
+.COLORS-backgroundcolor-combatType-magic { background-color: #3d7c74; }
+.COLORS-bordercolor-combatType-magic { border-color: #3d7c74; }
+
+.COLORS-color-class-warrior { color: #a58b35; }
+.COLORS-backgroundcolor-class-warrior { background-color: #a58b35; }
+.COLORS-bordercolor-class-warrior { border-color: #a58b35; }
+
+.COLORS-color-class-ranger { color: #dbd700; }
+.COLORS-backgroundcolor-class-ranger { background-color: #dbd700; }
+.COLORS-bordercolor-class-ranger { border-color: #dbd700; }
+
+.COLORS-color-class-fire { color: #db8e00; }
+.COLORS-backgroundcolor-class-fire { background-color: #db8e00; }
+.COLORS-bordercolor-class-fire { border-color: #db8e00; }
+
+.COLORS-color-class-frost { color: #00ccdb; }
+.COLORS-backgroundcolor-class-frost { background-color: #00ccdb; }
+.COLORS-bordercolor-class-frost { border-color: #00ccdb; }
+
+.COLORS-color-class-shadow { color: #9200db; }
+.COLORS-backgroundcolor-class-shadow { background-color: #9200db; }
+.COLORS-bordercolor-class-shadow { border-color: #9200db; }
+
+.COLORS-color-class-restoration { color: #00db62; }
+.COLORS-backgroundcolor-class-restoration { background-color: #00db62; }
+.COLORS-bordercolor-class-restoration { border-color: #00db62; }
+
+.COLORS-color-actionType-attack { color: #474747; }
+.COLORS-backgroundcolor-actionType-attack { background-color: #474747; }
+.COLORS-bordercolor-actionType-attack { border-color: #474747; }
+
+.COLORS-color-actionType-heal { color: #9fff84; }
+.COLORS-backgroundcolor-actionType-heal { background-color: #9fff84; }
+.COLORS-bordercolor-actionType-heal { border-color: #9fff84; }
+
+.COLORS-color-actionType-absorb { color: #83ffe2; }
+.COLORS-backgroundcolor-actionType-absorb { background-color: #83ffe2; }
+.COLORS-bordercolor-actionType-absorb { border-color: #83ffe2; }
+
+.COLORS-color-actionType-aura { color: #b883ff; }
+.COLORS-backgroundcolor-actionType-aura { background-color: #b883ff; }
+.COLORS-bordercolor-actionType-aura { border-color: #b883ff; }

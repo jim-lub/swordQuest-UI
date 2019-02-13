@@ -1,0 +1,144 @@
+.UI-actionbar-container {
+
+}
+
+.UI-actionbar-slot-container {
+
+}
+
+  .UI-actionbar-slot-container:hover {}
+  .UI-actionbar-slot-container:disabled {}
+
+  .UI-actionbar-slot-control-text {
+
+  }
+
+  .UI-actionbar-slot-cooldown-text {
+    position: absolute;
+    bottom: 1px;
+    left: 5px;
+    text-align: right;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
+
+  .UI-actionbar-slot-cooldown-overlay {
+
+  }
+
+  @keyframes UI-actionbar-slot-cooldown-overlay-animation {
+    from {}
+    to {}
+  }
+
+
+/*
+*  REMOVE REMOVE REMOVE
+* REMOVE REMOVE REMOVE
+*/
+  .UI-abilitiesbar {
+    bottom: -30px;
+    left: 200px;
+    position: absolute;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+
+  #ui-ability-container {
+    float: left;
+    position: relative;
+    margin: 2px;
+  }
+
+  .ability {
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    float: left;
+    margin: 1px;
+    height: 50px;
+    width: 50px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #090909;
+    background-image: linear-gradient(to top, #212528, #151719);
+    color: #bac1b8;
+  }
+
+  .ability:hover {
+    border: 1px solid #ff715b;
+  }
+
+  .ability:active {
+  }
+
+  .ability:disabled {
+    opacity: 0.6;
+  }
+
+    .ability-name-container {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 40px;
+      text-overflow: clip;
+      text-align: left;
+    }
+
+    .ability-cooldown-container {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .ability-controls-container {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      text-align: right;
+      font-size: 9px;
+      color: white;
+      text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+    }
+
+
+  .cooldown {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    bottom: 0px;
+    animation: animation-cooldown;
+    animation-timing-function: linear;
+    background-color: black;
+  }
+
+    @keyframes animation-cooldown {
+      from {
+        background-color: black;
+        bottom: 0px;
+        opacity: 0.9;
+        transform: scale(0.99);
+      }
+
+      to {
+        bottom: 0x;
+        opacity: 0.5;
+        border-radius: 30px;
+        transform: scale(0);
+      }
+    }

@@ -1,0 +1,57 @@
+.UI-tooltip-container {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+
+  min-width: 50px;
+  max-width: 160px;
+  padding: 10px;
+
+  background-color: #151719;
+  opacity: 0.8;
+
+  border-radius: 1px;
+  border: solid 1px black;
+
+  color: white;
+}
+
+  .UI-tooltip-title-container {
+    position: relative;
+    width: 100%;
+
+    border-bottom: solid 1px #212528;
+
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .UI-tooltip-type-container {
+    position: relative;
+    width: 100%;
+  }
+
+    .UI-tooltip-type-span {
+      padding: 1px 5px 1px 5px;
+      margin: 1px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+  .UI-tooltip-desc-container {
+    position: relative;
+    width: 100%;
+    padding: 5px 1px 1px 3px;
+    font-size: 10px;
+  }
+
+  .UI-tooltip-cooldown-container {
+    position: relative;
+    float: right;
+
+    color: grey;
+    font-size: 11px;
+    font-style: italic;
+  }
