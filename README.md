@@ -8,67 +8,67 @@ Combat will consist of a mixture of melee, ranged and magic abilities (combat-ty
 
 ## Abilities
 
-###### MELEE
-**Swordstrike**
-⤷ Melee ⤍ Warrior ⤍ Attack
-Cooldown: 0s
-_Strikes all enemies in front of you with a sweeping attack for % Physical damage._
+#### MELEE
+> **Swordstrike**\
+> ⤷ Melee ⤍ Warrior ⤍ Attack\
+> Cooldown: 0s\
+> _Strikes all enemies in front of you with a sweeping attack for % Physical damage._\
 
-**Mortal Strike**
-⤷ Melee ⤍ Warrior ⤍ Attack
-Cooldown: 5s
-_A vicious strike that deals % Physical damage._
+> **Mortal Strike**\
+> ⤷ Melee ⤍ Warrior ⤍ Attack\
+> Cooldown: 5s\
+> _A vicious strike that deals % Physical damage._\
 
-###### FIRE
-**Fireball**
-⤷ Magic ⤍ Fire ⤍ Attack
-Cooldown: 3s
-_Hurls a fiery ball that causes % Fire damage._
+#### FIRE
+> **Fireball**\
+> ⤷ Magic ⤍ Fire ⤍ Attack\
+> Cooldown: 3s\
+> _Hurls a fiery ball that causes % Fire damage._\
 
-**Scorch**
-⤷ Magic ⤍ Fire ⤍ Attack
-Cooldown: 10s
-_Scorches an enemy for % Fire damage_
+> **Scorch**\
+> ⤷ Magic ⤍ Fire ⤍ Attack\
+> Cooldown: 10s\
+> _Scorches an enemy for % Fire damage_\
 
-###### Frost
-**Frostbolt**
-⤷ Magic ⤍ Frost ⤍ Attack
-Cooldown: 10s
-_Quickly flings a shard of ice at the target, dealing % Frost damage._
+#### Frost
+> **Frostbolt**\
+> ⤷ Magic ⤍ Frost ⤍ Attack\
+> Cooldown: 10s\
+> _Quickly flings a shard of ice at the target, dealing % Frost damage._\
 
-**Ice barrier**
-⤷ Magic ⤍ Frost ⤍ Shield
-Cooldown: 30s
-_Shields you with ice, absorbing % damage. The shield will expire after 30 seconds._
+**Ice barrier**\
+> ⤷ Magic ⤍ Frost ⤍ Shield\
+> Cooldown: 30s\
+> _Shields you with ice, absorbing % damage. The shield will expire after 30 seconds._\
 
-###### SHADOW
-**Shadowbolt**
-⤷ Magic ⤍ Shadow ⤍ Attack
-Cooldown: 10s
-_Launches a bolt of shadow energy at the enemy target. Causing % shadow damage._
+#### SHADOW
+> **Shadowbolt**\
+> ⤷ Magic ⤍ Shadow ⤍ Attack\
+> Cooldown: 10s\
+> _Launches a bolt of shadow energy at the enemy target. Causing % shadow damage._\
 
 **Shadowstrike**
-⤷ Magic ⤍ Shadow ⤍ Attack
-Cooldown: 20s
-_Blast the target with shadow, dealing % of Shadow damage._
+> ⤷ Magic ⤍ Shadow ⤍ Attack\
+> Cooldown: 20s\
+> _Blast the target with shadow, dealing % of Shadow damage._\
 
-**Shroud of the Shadows**
-⤷ Magic ⤍ Shadow ⤍ Aura
-Cooldown: 30s
-_Hides the player in the shadows. Greatly reducing the range in which you are spotted by enemies._
+> **Shroud of the Shadows**\
+> ⤷ Magic ⤍ Shadow ⤍ Aura\
+> Cooldown: 30s\
+> _Hides the player in the shadows. Greatly reducing the range in which you are spotted by enemies._\
 
-###### RESTORATION
-**Heal**
-⤷ Magic ⤍ Restoration ⤍ Heal
-Cooldown: 10s
-_Heals a friendly target for %._
+#### RESTORATION
+> **Heal**\
+> ⤷ Magic ⤍ Restoration ⤍ Heal\
+> Cooldown: 10s\
+> _Heals a friendly target for %._\
 
-**Shield**
-⤷ Magic ⤍ Restoration ⤍ Shield
-Cooldown: 10s
-_Shield a friendly target, absorbing % damage. Lasts 10 sec. While the shield holds, spellcasting will not be interrupted by damage. Once shielded, the target cannot be shielded again for 15 sec._
+> **Shield**
+> ⤷ Magic ⤍ Restoration ⤍ Shield\
+> Cooldown: 10s\
+> _Shield a friendly target, absorbing % damage. Lasts 10 sec. While the shield holds, spellcasting will not be interrupted by damage. Once shielded, the target cannot be shielded again for 15 sec._\
 
-**Orbs of Health**
-⤷ Magic ⤍ Restoration ⤍ Heal
-Cooldown: 10s
-_Emits % healing orbs around the player. The player or a friendly target can pick up the orbs and receive a % heal._
+**Orbs of Health**\
+> ⤷ Magic ⤍ Restoration ⤍ Heal\
+> Cooldown: 10s\
+> _Emits % healing orbs around the player. The player or a friendly target can pick up the orbs and receive a % heal._\
