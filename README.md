@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#swordQuest
 
-## Available Scripts
+##Overview
+These files describe the story, gameplay and technical details that provide an extra layer to enhance the development experience of `swordQuest`. SwordQuest is an action, adventure, 2d side-scrolling game set in a medieval fantasy setting. The protagonist ( ..you! ) is send out on a quest to rid the world of it’s demon invaders. While on this important quest you’ll be exploring a rich, detailed world filled with both friendly and enemy npcs. Equipped with a wide selection of weapons and abilities; enemies will perish around you.
 
-In the project directory, you can run:
+##Combat-types, classes and action-types
+Combat will consist of a mixture of melee, ranged and magic abilities (combat-types). Each combat-type will contain one or multiple classes. The class groups a diverse set of abilities that fit in the style described by the class’s description. All the abilities belong to one- or several action-types; these actions depict the base effect of the ability. Currently there are four (4) action-types available: attack, heal, absorb and aura. Abilities can be mixed-and-matched from all classes; the only restriction being the required level to unlock them. There is a limited amount of slots available on the actionbar, so choose wisely!
 
-### `npm start`
+##Abilities
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+######MELEE
+**Swordstrike**
+⤷ Melee ⤍ Warrior ⤍ Attack
+Cooldown: 0s
+_Strikes all enemies in front of you with a sweeping attack for % Physical damage._
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+**Mortal Strike**
+⤷ Melee ⤍ Warrior ⤍ Attack
+Cooldown: 5s
+_A vicious strike that deals % Physical damage._
 
-### `npm test`
+######FIRE
+**Fireball**
+⤷ Magic ⤍ Fire ⤍ Attack
+Cooldown: 3s
+_Hurls a fiery ball that causes % Fire damage._
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Scorch**
+⤷ Magic ⤍ Fire ⤍ Attack
+Cooldown: 10s
+_Scorches an enemy for % Fire damage_
 
-### `npm run build`
+######Frost
+**Frostbolt**
+⤷ Magic ⤍ Frost ⤍ Attack
+Cooldown: 10s
+_Quickly flings a shard of ice at the target, dealing % Frost damage._
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Ice barrier**
+⤷ Magic ⤍ Frost ⤍ Shield
+Cooldown: 30s
+_Shields you with ice, absorbing % damage. The shield will expire after 30 seconds._
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+######SHADOW
+**Shadowbolt**
+⤷ Magic ⤍ Shadow ⤍ Attack
+Cooldown: 10s
+_Launches a bolt of shadow energy at the enemy target. Causing % shadow damage._
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Shadowstrike**
+⤷ Magic ⤍ Shadow ⤍ Attack
+Cooldown: 20s
+_Blast the target with shadow, dealing % of Shadow damage._
 
-### `npm run eject`
+**Shroud of the Shadows**
+⤷ Magic ⤍ Shadow ⤍ Aura
+Cooldown: 30s
+_Hides the player in the shadows. Greatly reducing the range in which you are spotted by enemies._
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+######RESTORATION
+**Heal**
+⤷ Magic ⤍ Restoration ⤍ Heal
+Cooldown: 10s
+_Heals a friendly target for %._
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Shield**
+⤷ Magic ⤍ Restoration ⤍ Shield
+Cooldown: 10s
+_Shield a friendly target, absorbing % damage. Lasts 10 sec. While the shield holds, spellcasting will not be interrupted by damage. Once shielded, the target cannot be shielded again for 15 sec._
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**Orbs of Health**
+⤷ Magic ⤍ Restoration ⤍ Heal
+Cooldown: 10s
+_Emits % healing orbs around the player. The player or a friendly target can pick up the orbs and receive a % heal._
