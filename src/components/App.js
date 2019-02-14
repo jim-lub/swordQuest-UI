@@ -1,19 +1,20 @@
-import React from "react";
+import React from 'react';
 
 import {
   AbilitiesBar,
-  Tooltip,
-  Colortester
+  Tooltip
 } from 'components';
 
-export const App = ({ store }) => {
-  const tooltip = store.getState().tooltip;
+import {
+  Actionbar
+} from 'components/ui'
 
+export const App = ({ store }) => {
   return (
     <div className="UI-gamewindow-container">
-    {<Colortester />}
+      {<Actionbar />}
       {<AbilitiesBar />}
-      {<Tooltip {...tooltip}/>}
+      {<Tooltip {...store.getState().tooltip}/>}
     </div>
   )
 };

@@ -84,7 +84,6 @@ export const Ability = (props) => {
     >
       <div id={props.index} className=""></div>
       <div className="ability-controls-container">{controls.get(props.index)}</div>
-      <div className="UI-actionbar-slot-cooldown-text">{cooldown}</div>
       <img src={props.icon} alt={props.name} />
     </button>
   );

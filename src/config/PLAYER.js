@@ -19,63 +19,82 @@ export const ABILITIES_ON_BAR = () => {
   const abilities = new Map();
 
   abilities.set(0, {
+    status: 'active',
     combatType: 'melee',
     class: 'warrior',
     ability: 'swordstrike'
   });
 
   abilities.set(1, {
+    status: 'active',
     combatType: 'melee',
     class: 'warrior',
     ability: 'mortalStrike'
   });
 
   abilities.set(2, {
+    status: 'active',
     combatType: 'magic',
     class: 'fire',
     ability: 'fireball'
   });
 
   abilities.set(3, {
+    status: 'active',
     combatType: 'magic',
     class: 'frost',
     ability: 'frostbolt'
   });
 
   abilities.set(4, {
+    status: 'active',
     combatType: 'magic',
     class: 'restoration',
     ability: 'shield'
   });
 
   abilities.set(5, {
+    status: 'active',
     combatType: 'magic',
     class: 'restoration',
     ability: 'heal'
   });
 
   abilities.set(6, {
+    status: 'active',
     combatType: 'magic',
     class: 'shadow',
     ability: 'shroudOfTheShadows'
   });
 
   abilities.set(7, {
-    combatType: 'none'
+    status: 'empty'
   });
 
   abilities.set(8, {
-    combatType: 'none'
+    status: 'locked'
   });
 
 
   abilities.set(9, {
-    combatType: 'none'
+    status: 'locked'
   });
 
   return abilities;
 }
 
+export const getActionbarArray = () => {
+  const abilities = ABILITIES_ON_BAR();
+  const arr = [];
+
+  for (let i = 0; i < abilities.size; i++) {
+    arr.push(
+      abilities.get(i)
+    )
+  }
+
+  return arr;
+}
 
 export const getAbilityBarArray = () => {
   const abilities = ABILITIES_ON_BAR();

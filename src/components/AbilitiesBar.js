@@ -33,7 +33,7 @@ export const AbilitiesBar = () => {
       <div id="ui-ability-container">
       {
         PLAYER.getAbilityBarArray().map((cur, index) => {
-          if (cur.combatType === 'none') {
+          if (cur.status === 'empty' || cur.status === 'locked') {
             return (
               <AbilityLocked
                 key={index}
