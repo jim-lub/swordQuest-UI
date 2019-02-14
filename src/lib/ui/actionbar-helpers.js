@@ -10,24 +10,6 @@ export const isOnCooldown = (cooldown, globalCooldown) => {
   return false;
 }
 
-export const newEventListener = () => ({
-  keydown(fn) {
-    return document.addEventListener('keydown', fn);
-  },
-  mouseover(id, fn) {
-    return document.getElementById(id).addEventListener('mouseover', fn);
-  }
-})
-
-export const removeEventListener = () => ({
-  keydown(fn) {
-    return document.removeEventListener('keydown', fn)
-  },
-  mouseover(id, fn) {
-    return document.getElementById(id).removeEventListener('mouseover', fn);
-  }
-})
-
 export const keyCodeToKey = (keyCode) => {
   let keys = new Map([
     [87, 'w'],
@@ -53,15 +35,3 @@ export const keyCodeToKey = (keyCode) => {
 
   return null;
 }
-
-export const animations = () => ({
-  cooldown(id, cooldown) {
-    document.getElementById(id).className = "";
-    window.requestAnimationFrame(function(time) {
-      window.requestAnimationFrame(function(time) {
-        document.getElementById(id).className = "UI-actionbar-ability-cooldown-overlay";
-        document.getElementById(id).style.animationDuration = `${cooldown}s`;
-      });
-    });
-  }
-});

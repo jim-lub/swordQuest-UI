@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  AbilitiesBar,
   Tooltip
 } from 'components';
 
@@ -13,7 +12,6 @@ export const App = ({ store }) => {
   return (
     <div className="UI-gamewindow-container">
       {<Actionbar />}
-      {<AbilitiesBar />}
       {<Tooltip {...store.getState().tooltip}/>}
     </div>
   )

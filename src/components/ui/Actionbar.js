@@ -2,12 +2,15 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 import * as Utils from 'lib/ui/actionbar-helpers';
+import { Dom } from 'lib';
 
 import { Abilities } from 'config/abilities';
 
 import { ICONS } from 'config/icons/ICONS';
 
 import * as PLAYER from 'config/PLAYER';
+
+import { setTooltip } from '../../';
 
 export const Actionbar = (props) => {
   const [globalCooldown, setGlobalCooldown] = useState(0);
@@ -37,6 +40,7 @@ export const Actionbar = (props) => {
               return (
                 <Empty
                   key={index}
+                  index={index}
                 />
               )
             }
@@ -56,6 +60,7 @@ export const Actionbar = (props) => {
             return (
               <Locked
                 key={index}
+                index={index}
               />
             )
           })
@@ -67,7 +72,7 @@ export const Actionbar = (props) => {
 const Ability = (props) => {
   const [cooldown, setCooldown]= useState(0);
 
-  const eventListenerID = `UI-ACTIONBAR-ABILITY-ID-${props.index}`;
+  const abilityButtonID = `UI-ACTIONBAR-ABILITY-ID-${props.index}`;
   const cooldownAnimationID = `UI-ACTIONBAR-ABILITY-CD-ID-${props.index}`;
   const ability = Abilities[props.meta.combatType][props.meta.class][props.meta.ability];
   const controls = PLAYER.CONTROLS_SCHEME();
@@ -86,32 +91,40 @@ const Ability = (props) => {
   [cooldown])
 
   useEffect(() => {
-    Utils
-    .newEventListener()
-    .keydown(handleKeyPress);
+    Dom
+    .listen()
+    .keydown()
+    .then(handleKeyPress);
     return () =>
-    Utils
-    .removeEventListener()
-    .keydown(handleKeyPress);
+    Dom
+    .remove()
+    .keydown()
+    .ref(handleKeyPress);
   },
-  [cooldown, props.globalCooldown]);
+  [cooldown]);
 
   useEffect(() => {
-    Utils
-    .newEventListener()
-    .mouseover(eventListenerID, handleMouseOver);
+    Dom
+    .listen()
+    .mouseover(abilityButtonID)
+    .then(handleMouseOver);
     return () =>
-    Utils
-    .removeEventListener()
-    .mouseover(eventListenerID, handleMouseOver);
+    Dom
+    .remove()
+    .mouseover(abilityButtonID)
+    .ref(handleMouseOver);
   },
-  [cooldown, props.globalCooldown]);
+  [cooldown]);
 
   // Handlers
   const handleClick = () => {
     props.onClick();
     setCooldown(ability.cooldown);
-    Utils.animations().cooldown(cooldownAnimationID, ability.cooldown);
+    Dom
+    .animation()
+    .on(cooldownAnimationID)
+    .duration(ability.cooldown)
+    .className('UI-actionbar-ability-cooldown-overlay')
   }
 
   const handleKeyPress = (event) => {
@@ -123,12 +136,20 @@ const Ability = (props) => {
   }
 
   const handleMouseOver = () => {
-    // set tooltip
+    setTooltip({
+      title: ability.display_name,
+      description: ability.description,
+      data: {
+        combatType: props.meta.combatType,
+        class: props.meta.class,
+        actionType: props.meta.actionType
+      }
+    });
   }
 
   return (
     <button
-      id={eventListenerID}
+      id={abilityButtonID}
       className="UI-actionbar-ability-container"
       disabled={Utils.isOnCooldown(cooldown, props.globalCooldown)}
       onClick={handleClick}
@@ -140,17 +161,20 @@ const Ability = (props) => {
   )
 };
 
-const Empty = () => {
+const Empty = (props) => {
+  const controls = PLAYER.CONTROLS_SCHEME();
   return (
     <div className="UI-actionbar-ability-container">
-      Empty
+      <div className="UI-actionbar-ability-control-text">{controls.get(props.index)}</div>
     </div>
   )
 };
 
-const Locked = () => {
+const Locked = (props) => {
+  const controls = PLAYER.CONTROLS_SCHEME();
   return (
     <div className="UI-actionbar-ability-container">
+    <div className="UI-actionbar-ability-control-text">{controls.get(props.index)}</div>
       <img src={ICONS.lock} alt="locked" />
     </div>
   )
