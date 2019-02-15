@@ -1,15 +1,3 @@
-export const isOnCooldown = (cooldown, globalCooldown) => {
-  if (cooldown > 0) {
-    return true;
-  }
-
-  if (globalCooldown > 0) {
-    return true;
-  }
-
-  return false;
-}
-
 export const keyCodeToKey = (keyCode) => {
   let keys = new Map([
     [87, 'w'],

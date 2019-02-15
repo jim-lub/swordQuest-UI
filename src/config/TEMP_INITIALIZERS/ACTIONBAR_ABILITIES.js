@@ -1,21 +1,4 @@
-export const CONTROLS_SCHEME = () => {
-  const controls = new Map();
-
-  controls.set(0, '1');
-  controls.set(1, '2');
-  controls.set(2, '3');
-  controls.set(3, '4');
-  controls.set(4, '5');
-  controls.set(5, '6');
-  controls.set(6, '7');
-  controls.set(7, '8');
-  controls.set(8, 'shift');
-  controls.set(9, 'space');
-
-  return controls;
-}
-
-export const ABILITIES_ON_BAR = () => {
+export const ACTIONBAR_ABILITIES = () => {
   const abilities = new Map();
 
   abilities.set(0, {
@@ -81,21 +64,4 @@ export const ABILITIES_ON_BAR = () => {
   });
 
   return abilities;
-}
-
-export const getActionbarArray = () => {
-  return [...ABILITIES_ON_BAR().values()];
-}
-
-export const getAbilityBarArray = () => {
-  const abilities = ABILITIES_ON_BAR();
-  const arr = [];
-
-  for (let i = 0; i < abilities.size; i++) {
-    arr.push(
-      abilities.get(i)
-    )
-  }
-
-  return arr;
 }

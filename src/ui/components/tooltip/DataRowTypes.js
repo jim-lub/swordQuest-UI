@@ -1,7 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React from 'react';
 
-const DataRow = (props) => {
+export const DataRowTypes = (props) => {
   return (
     <div className="UI-tooltip-type-container">
       <span className={`UI-tooltip-type-span COLORS-backgroundcolor-combatType-${props.combatType}`}>{props.combatType}</span>
@@ -10,13 +9,3 @@ const DataRow = (props) => {
     </div>
   )
 }
-
-export const Tooltip = (props) => {
-  return (
-      <div className="UI-tooltip-container">
-        <div className="UI-tooltip-title-container">{props.title}</div>
-        <DataRow {...props.data} />
-        <div className="UI-tooltip-desc-container">{props.description}</div>
-      </div>
-  )
-};
