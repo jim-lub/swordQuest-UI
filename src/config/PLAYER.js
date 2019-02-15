@@ -50,50 +50,41 @@ export const ABILITIES_ON_BAR = () => {
     status: 'active',
     combatType: 'magic',
     class: 'restoration',
-    ability: 'shield'
-  });
-
-  abilities.set(5, {
-    status: 'active',
-    combatType: 'magic',
-    class: 'restoration',
     ability: 'heal'
   });
 
+  abilities.set(5, {
+    status: 'empty'
+  });
+
   abilities.set(6, {
+    status: 'empty'
+  });
+
+
+  abilities.set(7, {
+    status: 'locked'
+  });
+
+  abilities.set(8, {
+    status: 'active',
+    combatType: 'magic',
+    class: 'restoration',
+    ability: 'shield'
+  });
+
+  abilities.set(9, {
     status: 'active',
     combatType: 'magic',
     class: 'shadow',
     ability: 'shroudOfTheShadows'
   });
 
-  abilities.set(7, {
-    status: 'empty'
-  });
-
-  abilities.set(8, {
-    status: 'locked'
-  });
-
-
-  abilities.set(9, {
-    status: 'locked'
-  });
-
   return abilities;
 }
 
 export const getActionbarArray = () => {
-  const abilities = ABILITIES_ON_BAR();
-  const arr = [];
-
-  for (let i = 0; i < abilities.size; i++) {
-    arr.push(
-      abilities.get(i)
-    )
-  }
-
-  return arr;
+  return [...ABILITIES_ON_BAR().values()];
 }
 
 export const getAbilityBarArray = () => {

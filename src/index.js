@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import rootReducer from "./reducers";
+import rootReducer from "reducers";
+import { updateTooltip, clearTooltip } from 'actions/tooltip';
 
 import { App } from "components";
 
@@ -16,8 +17,13 @@ export const logStore = () => {
   console.log(store.getState());
 };
 
-export const setTooltip = (payload) => {
-  store.dispatch({type: 'TOOLTIP_UPDATE', ...payload});
+export const setTooltip = (title, description, data) => {
+  let action = updateTooltip({
+    title,
+    description,
+    data
+  });
+  store.dispatch(action);
 }
 
 const renderApp = () => {

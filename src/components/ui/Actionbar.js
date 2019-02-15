@@ -101,7 +101,7 @@ const Ability = (props) => {
     .keydown()
     .ref(handleKeyPress);
   },
-  [cooldown]);
+  [cooldown, props.globalCooldown]);
 
   useEffect(() => {
     Dom
@@ -114,7 +114,7 @@ const Ability = (props) => {
     .mouseover(abilityButtonID)
     .ref(handleMouseOver);
   },
-  [cooldown]);
+  [props.meta.ability]);
 
   // Handlers
   const handleClick = () => {
@@ -136,15 +136,15 @@ const Ability = (props) => {
   }
 
   const handleMouseOver = () => {
-    setTooltip({
-      title: ability.display_name,
-      description: ability.description,
-      data: {
+    setTooltip(
+      ability.display_name,
+      ability.description,
+      {
         combatType: props.meta.combatType,
         class: props.meta.class,
-        actionType: props.meta.actionType
+        actionType: ability.actionType
       }
-    });
+    );
   }
 
   return (
@@ -166,6 +166,7 @@ const Empty = (props) => {
   return (
     <div className="UI-actionbar-ability-container">
       <div className="UI-actionbar-ability-control-text">{controls.get(props.index)}</div>
+      <img src={ICONS.emptyAbilitySlot_2} alt="locked" />
     </div>
   )
 };
@@ -174,8 +175,8 @@ const Locked = (props) => {
   const controls = PLAYER.CONTROLS_SCHEME();
   return (
     <div className="UI-actionbar-ability-container">
-    <div className="UI-actionbar-ability-control-text">{controls.get(props.index)}</div>
-      <img src={ICONS.lock} alt="locked" />
+      <div className="UI-actionbar-ability-control-text">{controls.get(props.index)}</div>
+      <img src={ICONS.lockedAbilitySlot_1} alt="locked" />
     </div>
   )
 };
