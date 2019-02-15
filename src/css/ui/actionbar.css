@@ -75,6 +75,11 @@
     animation-timing-function: linear;
   }
 
+  .UI-actionbar-ability-cooldown {
+    animation: UI-actionbar-ability-cooldown-overlay-animation;
+    animation-timing-function: linear;
+  }
+
   @keyframes UI-actionbar-ability-cooldown-overlay-animation {
     from {
       background-color: black;

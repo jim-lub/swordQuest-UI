@@ -12,11 +12,16 @@ export const AbilitySlot = (props) => {
   const currentAbility = Abilities[props.meta.combatType][props.meta.class][props.meta.ability];
   const ctrls_currentKey = props.controlsMap.get(props.index);
   const abilitySlotID = `abilitySlot-ID-${props.index}`;
+  const abilitySlotCooldownID = `abilitySlotCooldown-ID-${props.index}`;
 
   // cooldown management
   const cooldownTimer = () => setCooldown(cooldown - 1);
   useEffect(() => {
-    if (cooldown <= 0) return;
+    if (cooldown <= 0) {
+      let el = document.getElementById(abilitySlotCooldownID);
+      el.classList.remove("UI-actionbar-ability-cooldown-overlay");
+      return;
+    }
 
     const cooldownTimerID = setInterval(cooldownTimer, 1000);
     return () => clearInterval(cooldownTimerID);
@@ -37,6 +42,9 @@ export const AbilitySlot = (props) => {
   const triggerAbility = () => {
     props.onAbilityTrigger();
     setCooldown(currentAbility.cooldown);
+    let el = document.getElementById(abilitySlotCooldownID);
+    el.classList.add("UI-actionbar-ability-cooldown-overlay");
+    el.style.animationDuration = `${currentAbility.cooldown}s`;
   }
 
   const handleClick = () => {
@@ -73,6 +81,7 @@ export const AbilitySlot = (props) => {
     >
       <div className="UI-actionbar-ability-control-text">{ctrls_currentKey}</div>
       <div className="UI-actionbar-ability-cooldown-text">{cooldown}</div>
+      <div id={abilitySlotCooldownID}></div>
       <img src={currentAbility.icon} alt={currentAbility.ref_name} />
     </button>
   )

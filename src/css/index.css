@@ -10,3 +10,49 @@ html, body {
   background-image: url(../assets/bg/game.png);
   background-repeat: no-repeat;
 }
+
+.userInterface-grid-wrapper {
+  display: grid;
+  grid-template-columns: auto 1240px auto;
+  grid-template-rows: 40px auto;
+}
+
+.userInterface-grid-navbar {
+  background-color: #141414;
+  grid-column: 1 / 4;
+}
+
+.userInterface-grid-column-left {
+  background-color: #1e1e1e;
+  grid-column: 1 / 2;
+}
+
+.userInterface-grid-column-center {
+  background-color: #303030;
+  grid-column: 2 / 3;
+
+  display: grid;
+  grid-template-columns: 150px 940px 150px;
+  grid-template-rows: auto;
+}
+
+.userInterface-grid-column-right {
+  background-color: #1e1e1e;
+  grid-column: 3 / 4;
+}
+
+.userInterface-grid-inner-databar-left {
+  background-color: #383838;
+}
+
+.userInterface-grid-inner-gamewindow {
+  position: relative;
+  background-color: #3e6060;
+  width: 940px;
+  height: 540px;
+  background-image: url(../assets/bg/game.png);
+}
+
+.userInterface-grid-inner-databar-right {
+  background-color: #383838;
+}
