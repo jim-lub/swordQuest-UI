@@ -26,8 +26,10 @@ const Actionbar = (props) => {
   }
 
   return (
-    <div className="UI-actionbar-container">
-      {renderAbilitySlots(playerControls, actionbarSetup, handleTriggeredAbility, globalCooldown, props.actions.setTooltipInformation)}
+    <div className="actionbar__wrapper">
+      <div className="actionbar__container">
+        {renderAbilitySlots(playerControls, actionbarSetup, handleTriggeredAbility, globalCooldown, props.actions.setTooltipInformation)}
+      </div>
     </div>
   )
 }

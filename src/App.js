@@ -2,7 +2,9 @@ import React from 'react';
 
 import {
   Tooltip,
-  Actionbar
+  Actionbar,
+  Menubar,
+  PlayerPane
 } from 'ui/components';
 
 export const App = () => {
@@ -13,10 +15,15 @@ export const App = () => {
       <div className="userInterface-grid-column-center">
         <div className="userInterface-grid-inner-databar-left"></div>
         <div className="userInterface-grid-inner-gamewindow">
-          {<Actionbar />}
           {<Tooltip />}
+          {<Menubar />}
+          {<PlayerPane />}
         </div>
         <div className="userInterface-grid-inner-databar-right"></div>
+        <div className="userInterface-grid-inner-databar-bottom">
+          {<Actionbar />}
+
+        </div>
       </div>
       <div className="userInterface-grid-column-right"></div>
     </div>

@@ -8,10 +8,12 @@ import { DataRowTypes } from './';
 const Tooltip = (props) => {
   const { title, description, data } = props.tooltipInformation;
   return (
-      <div className="UI-tooltip-container">
-        <div className="UI-tooltip-title-container">{title}</div>
-        <DataRowTypes {...data} />
-        <div className="UI-tooltip-desc-container">{description}</div>
+      <div className="tooltip__wrapper">
+        <div className="tooltip__container">
+          <div className="tooltip__segment--title">{title}</div>
+          <DataRowTypes {...data} />
+          <div className="tooltip__segment--description">{description}</div>
+        </div>
       </div>
   )
 }

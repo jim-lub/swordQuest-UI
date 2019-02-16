@@ -1,0 +1,66 @@
+/**********************************************
+*
+*   combatType
+*
+**********************************************/
+.CLRS__combatType-melee--color { color: grey; }
+.CLRS__combatType-melee--bgcolor { background-color: grey; }
+.CLRS__combatType-melee--border { border-color: grey; }
+
+.CLRS__combatType-ranged--color { color: #7c3d51; }
+.CLRS__combatType-ranged--bgcolor { background-color: #7c3d51; }
+.CLRS__combatType-ranged--border { border-color: #7c3d51; }
+
+.CLRS__combatType-magic--color { color: #3d7c74; }
+.CLRS__combatType-magic--bgcolor { background-color: #3d7c74; }
+.CLRS__combatType-magic--border { border-color: #3d7c74; }
+
+/**********************************************
+*
+*    classes
+*
+**********************************************/
+.CLRS__class-warrior--color { color: #a58b35; }
+.CLRS__class-warrior--bgcolor { background-color: #a58b35; }
+.CLRS__class-warrior--border { border-color: #a58b35; }
+
+.CLRS__class-ranger--color { color: #dbd700; }
+.CLRS__class-ranger--bgcolor { background-color: #dbd700; }
+.CLRS__class-ranger--border { border-color: #dbd700; }
+
+.CLRS__class-fire--color { color: #db8e00; }
+.CLRS__class-fire--bgcolor { background-color: #db8e00; }
+.CLRS__class-fire--border { border-color: #db8e00; }
+
+.CLRS__class-frost--color { color: #00ccdb; }
+.CLRS__class-frost--bgcolor { background-color: #00ccdb; }
+.CLRS__class-frost--border { border-color: #00ccdb; }
+
+.CLRS__class-shadow--color { color: #9200db; }
+.CLRS__class-shadow--bgcolor { background-color: #9200db; }
+.CLRS__class-shadow--border { border-color: #9200db; }
+
+.CLRS__class-restoration--color { color: #00db62; }
+.CLRS__class-restoration--bgcolor { background-color: #00db62; }
+.CLRS__class-restoration--border { border-color: #00db62; }
+
+/**********************************************
+*
+*    actionTypes
+*
+**********************************************/
+.CLRS__actionType-attack--color { color: #474747; }
+.CLRS__actionType-attack--bgcolor { background-color: #474747; }
+.CLRS__actionType-attack--border { border-color: #474747; }
+
+.CLRS__actionType-heal--color { color: #9fff84; }
+.CLRS__actionType-heal--bgcolor { background-color: #9fff84; }
+.CLRS__actionType-heal--border { border-color: #9fff84; }
+
+.CLRS__actionType-absorb--color { color: #83ffe2; }
+.CLRS__actionType-absorb--bgcolor { background-color: #83ffe2; }
+.CLRS__actionType-absorb--border { border-color: #83ffe2; }
+
+.CLRS__actionType-aura--color { color: #b883ff; }
+.CLRS__actionType-aura--bgcolor { background-color: #b883ff; }
+.CLRS__actionType-aura--border { border-color: #b883ff; }

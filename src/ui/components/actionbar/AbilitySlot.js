@@ -19,7 +19,7 @@ export const AbilitySlot = (props) => {
   useEffect(() => {
     if (cooldown <= 0) {
       let el = document.getElementById(abilitySlotCooldownID);
-      el.classList.remove("UI-actionbar-ability-cooldown-overlay");
+      el.classList.remove("actionbar__abilityslot-overlay--cooldown");
       return;
     }
 
@@ -43,7 +43,7 @@ export const AbilitySlot = (props) => {
     props.onAbilityTrigger();
     setCooldown(currentAbility.cooldown);
     let el = document.getElementById(abilitySlotCooldownID);
-    el.classList.add("UI-actionbar-ability-cooldown-overlay");
+    el.classList.add("actionbar__abilityslot-overlay--cooldown");
     el.style.animationDuration = `${currentAbility.cooldown}s`;
   }
 
@@ -75,13 +75,13 @@ export const AbilitySlot = (props) => {
   return (
     <button
       id={abilitySlotID}
-      className="UI-actionbar-ability-container"
+      className="actionbar__abilityslot-container"
       disabled={isOnCooldown(cooldown, props.globalCooldown)}
       onClick={handleClick}
     >
-      <div className="UI-actionbar-ability-control-text">{ctrls_currentKey}</div>
-      <div className="UI-actionbar-ability-cooldown-text">{cooldown}</div>
+      <div className="actionbar__abilityslot-textnode--ctrl">{ctrls_currentKey}</div>
       <div id={abilitySlotCooldownID}></div>
+      <div className="actionbar__abilityslot-textnode--cooldown">{(cooldown !== 0) ? cooldown : ""}</div>
       <img src={currentAbility.icon} alt={currentAbility.ref_name} />
     </button>
   )

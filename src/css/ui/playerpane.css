@@ -1,0 +1,137 @@
+.playerpane__wrapper {
+  position: absolute;
+  top: 140px;
+  left: 150px;
+}
+
+.playerpane__container {
+  position: relative;
+
+  padding: 1px;
+
+  /* background-image: linear-gradient(to bottom, #2d2d2d, #3f3f3f); */
+  background-color: black;
+
+  border-radius: 1px;
+}
+
+
+/*******************************
+*  HealthBar
+*******************************/
+.playerpane__healthbar-wrapper {
+  position: relative;
+
+  width: 150px;
+  height: 30px;
+
+  margin-bottom: 1px;
+
+  background-color: #2b0d0d;
+}
+
+  .playerpane__healthbar-current {
+    position: relative;
+
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+
+    background-image: radial-gradient(#0e0e0e, #111111);
+
+    border: solid 1px #161616;
+  }
+
+  .playerpane__healthbar-textnode {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+
+    color: white;
+    opacity: 0.5;
+    text-align: right;
+    font-size: 7px;
+  }
+
+
+/*******************************
+*  EnergyBar
+*******************************/
+.playerpane__energybar-wrapper {
+  position: relative;
+
+  width: 150px;
+  height: 10px;
+
+  margin-bottom: 1px;
+
+  background-color: #0d2b0e;
+}
+
+  .playerpane__energybar-current {
+    position: relative;
+
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+
+    background-image: linear-gradient(to top, #206022, #29752b);
+
+    border: solid 1px #29752b;
+
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  .playerpane__energybar-textnode {
+    position: absolute;
+    left: 1px;
+    top: -1px;
+
+    color: black;
+    opacity: 0.5;
+    text-align: right;
+    font-size: 7px;
+    font-weight: bold;
+  }
+
+
+  /*******************************
+  *  ManaBar
+  *******************************/
+.playerpane__manabar-wrapper {
+  position: relative;
+
+  width: 150px;
+  height: 10px;
+
+  background-color: #0d2128;
+}
+
+  .playerpane__manabar-current {
+    position: relative;
+
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+
+    background-image: linear-gradient(to top, #225163, #296075);
+
+    border: solid 1px #296075;
+
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  .playerpane__manabar-textnode {
+    position: absolute;
+    left: 1px;
+    top: -1px;
+
+    color: black;
+    opacity: 0.5;
+    text-align: right;
+    font-size: 7px;
+    font-weight: bold;
+  }

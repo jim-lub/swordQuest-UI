@@ -1,0 +1,72 @@
+.UI-menubar-container {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.UI-menubar-item-container {
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  float: left;
+  width: 66px;
+  height: 66px;
+
+  font-weight: bold;
+  text-align: center;
+  margin: 1px;
+  border-radius: 33px;
+  /* background-image: linear-gradient(to bottom, #060606, #0e0e0e); */
+
+}
+
+.UI-menubar-item-hover {
+  position: absolute;
+  visibility: hidden;
+  background-image: linear-gradient(to top, #060606, #0e0e0e);
+  border: solid 1px black;
+  color: white;
+  opacity: 0.7;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 1px;
+  padding: 5px;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.UI-menubar-item-hover-arrow {
+  position: absolute;
+  visibility: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -13px;
+
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  opacity: 0.8;
+
+  border-bottom: 10px solid #0e0e0e;
+}
+
+.UI-menubar-item-container:hover .UI-menubar-item-hover {
+  visibility: visible;
+}
+
+.UI-menubar-item-container:hover .UI-menubar-item-hover-arrow {
+  visibility: visible;
+}
+
+.UI-menubar-item-container:hover {
+  margin-top: 5px;
+  transform: scale(1.2);
+}
