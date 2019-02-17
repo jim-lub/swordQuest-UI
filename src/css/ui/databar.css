@@ -1,0 +1,39 @@
+.databar__wrapper {
+  position: relative;
+  float: left;
+}
+
+.databar__container {
+  position: relative;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  width: 219px;
+  height: 50px;
+
+  background-image: linear-gradient(to bottom, #080808, #101010);
+  border: 1px solid black;
+}
+
+/* .databar__currency--container {
+  position: relative;
+  float: left;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  width: 88px;
+  height: 28px;
+
+  margin: 10px 10px;
+
+  background-color: #0e0e0e;
+  border: 1px solid #282828;
+
+  border-radius: 2px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+} */

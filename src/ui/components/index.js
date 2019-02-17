@@ -1,11 +1,15 @@
 import Actionbar from './actionbar/Actionbar';
 import Menubar from './menubar/Menubar';
-import PlayerPane from './player/PlayerPane';
+import ExperienceBar from './experiencebar/ExperienceBar';
+import DataBar from './databar/DataBar';
+import PlayerPanel from './player/PlayerPanel';
 import Tooltip from './tooltip/Tooltip';
 
 export {
   Actionbar,
   Menubar,
-  PlayerPane,
+  ExperienceBar,
+  PlayerPanel,
+  DataBar,
   Tooltip
 }

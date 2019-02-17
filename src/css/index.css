@@ -11,65 +11,68 @@ html, body {
   background-repeat: no-repeat;
 }
 
-.userInterface-grid-wrapper {
+.temp {
+  position: absolute;
+
+  bottom: 40px;
+  left: 250px;
+
+  width: 64px;
+  height: 80px;
+
+  background-image: url(../assets/char/wizard.png);
+}
+
+.clearfix {
+  overflow: hidden;
+}
+
+.grid__wrapper {
+
+}
+
+.grid__container {
   display: grid;
-  grid-template-columns: auto 1240px auto;
-  grid-template-rows: 40px auto;
+  grid-template-columns: auto 940px auto;
+  grid-template-rows: 40px auto auto;
 }
 
-.userInterface-grid-navbar {
-  background-color: #141414;
-  grid-column: 1 / 4;
-  border: 1px solid #090909;
-  /* border-radius: 32px; */
-  background-image: linear-gradient(to bottom, #060606, #0e0e0e);
-}
+  .grid__navbar-wrapper {
+    position: relative;
+    grid-column: 1 / 4;
+    grid-row: 1/ 2;
 
-.userInterface-grid-column-left {
-  /* background-color: #1e1e1e; */
-  grid-column: 1 / 2;
-}
+    background-image: linear-gradient(to bottom, #080808, #101010);
+  }
 
-.userInterface-grid-column-center {
-  /* background-color: #303030; */
-  grid-column: 2 / 3;
+  .grid__viewport-wrapper {
+    position: relative;
+    grid-column:  2 / 3;
+    grid-row: 2 / 3;
 
-  display: grid;
-  grid-template-columns: 150px 940px 150px;
-  grid-template-rows: auto auto;
-}
+    width: 940px;
+    height: 540px;
 
-.userInterface-grid-column-right {
-  /* background-color: #1e1e1e; */
-  grid-column: 3 / 4;
-}
+    background-image: url(../assets/bg/game.png);
+  }
 
-.userInterface-grid-inner-databar-left {
-  position: relative;
-  /* background-color: #383838; */
-  grid-column:  1 / 2;
-}
+  .grid__bottombar-wrapper {
+    position: relative;
+    grid-column:  2 / 3;
+    grid-row: 3 / 4;
+  }
 
-.userInterface-grid-inner-gamewindow {
-  position: relative;
-  background-color: #3e6060;
-  width: 940px;
-  height: 540px;
-  background-image: url(../assets/bg/game.png);
-  grid-column: 2 / 3;
-}
+    .grid__bottombar-row-one {
+      position: relative;
 
-.userInterface-grid-inner-databar-right {
-  position: relative;
-  /* background-color: #383838; */
-  grid-column: 3 / 4;
-}
+      margin: 1px auto;
+      padding: 1px 0px;
 
-.userInterface-grid-inner-databar-bottom {
-  position: relative;
-  grid-column: 2 / 3;
-  margin: 0 auto;
-  /* border: 1px solid #090909; */
-  /* border-radius: 32px; */
-  background-image: linear-gradient(to bottom, #060606, #0e0e0e);
-}
+      border-top: 1px solid #090909;
+      border-bottom: 1px solid black;
+    }
+
+    .grid__bottombar-row-two {
+      position: relative;
+      border: 1px solid black;
+    }

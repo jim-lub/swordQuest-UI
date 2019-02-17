@@ -67,6 +67,8 @@ const renderAbilitySlots = (playerControls, actionbarSetup, handleTriggeredAbili
           key={index}
           index={index}
 
+          setTooltipInformation={setTooltipInformation}
+
           {...playerControls}
         />
       )
@@ -76,6 +78,8 @@ const renderAbilitySlots = (playerControls, actionbarSetup, handleTriggeredAbili
       <AbilitySlotLocked
         key={index}
         index={index}
+
+        setTooltipInformation={setTooltipInformation}
 
         {...playerControls}
       />

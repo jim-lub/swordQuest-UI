@@ -4,6 +4,8 @@ These files describe the story, gameplay and technical details of `swordQuest` i
 # combatTypes, classes and actionTypes
 Combat will consist of a mixture of melee, ranged and magic abilities (combat-types). Each combat-type can contain one or more classes. The class groups a diverse set of abilities that fit in the style described by the class’s description. All the abilities belong to one- or several action-types; these actions depict the base effect of the ability. Currently there are four (4) action-types available: attack, heal, absorb and aura. Abilities can be mixed-and-matched from all classes; the only restriction being the required level to unlock them. There is a limited amount of slots available on the actionbar, so choose wisely!
 
+![alt text](https://i.imgur.com/CcG5ROx.png)
+![alt text](https://i.imgur.com/0S2XqVV.png)
 ![alt text](https://i.imgur.com/A6BRKJf.png)
 ![alt text](https://i.imgur.com/UTDgo83.png)
 ![alt text](https://i.imgur.com/knvLiHu.png)

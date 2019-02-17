@@ -1,5 +1,7 @@
 .actionbar__wrapper {
   position: relative;
+  float: left;
+  margin: 0 1px;
 }
 
 .actionbar__container {
@@ -16,7 +18,6 @@
 
     width: 50px;
     height: 50px;
-    margin: 1px;
 
     border: 1px solid #090909;
   }

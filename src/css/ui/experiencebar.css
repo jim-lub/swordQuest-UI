@@ -1,0 +1,33 @@
+.experiencebar__wrapper {
+  position: relative;
+}
+
+.experiencebar__container {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.experiencebar__bar--full {
+  height: 4px;
+  margin: 1px;
+
+  flex: 1 1;
+
+  background-image: linear-gradient(to bottom, #206022, #2d892f);
+
+  border: solid 1px #2d892f;
+}
+
+.experiencebar__bar--empty {
+  height: 4px;
+  margin: 1px;
+
+  flex: 1 1;
+
+  background-image: linear-gradient(to bottom, #0c280d, #143d15);
+
+  border: solid 1px #143d15;
+}

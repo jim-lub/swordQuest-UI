@@ -1,18 +1,19 @@
 import React from 'react';
 
-import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { DataRowTypes } from './';
+import { AbilityInformation, OneLineInformation } from './';
 
 const Tooltip = (props) => {
-  const { title, description, data } = props.tooltipInformation;
+  if (!props.tooltipInformation.informationType || !props.tooltipInformation.data) return (<div className={`tooltip__wrapper tooltip__hide`}></div>);
+
+  const { data } = props.tooltipInformation;
+
   return (
-      <div className="tooltip__wrapper">
+      <div className={`tooltip__wrapper`}>
         <div className="tooltip__container">
-          <div className="tooltip__segment--title">{title}</div>
-          <DataRowTypes {...data} />
-          <div className="tooltip__segment--description">{description}</div>
+           {(props.tooltipInformation.informationType === 'ability-information') ? <AbilityInformation {...data} /> : ""}
+           {(props.tooltipInformation.informationType === 'oneline-information') ? <OneLineInformation {...data} /> : ""}
         </div>
       </div>
   )

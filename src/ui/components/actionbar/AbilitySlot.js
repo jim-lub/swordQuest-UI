@@ -38,6 +38,11 @@ export const AbilitySlot = (props) => {
     return () => Utils.Dom.removeListener().mouseover(abilitySlotID, handleMouseOver)
   }, [currentAbility]);
 
+  useEffect(() => {
+    Utils.Dom.newListener().mouseout(abilitySlotID, handleMouseOut);
+    return () => Utils.Dom.removeListener().mouseout(abilitySlotID, handleMouseOut)
+  }, [currentAbility]);
+
   // keyboard and mouse event handlers
   const triggerAbility = () => {
     props.onAbilityTrigger();
@@ -62,13 +67,21 @@ export const AbilitySlot = (props) => {
 
   const handleMouseOver = () => {
     props.setTooltipInformation({
-      title: currentAbility.display_name,
-      description: currentAbility.description,
+      informationType: "ability-information",
       data: {
+        title: currentAbility.display_name,
+        description: currentAbility.description,
         combatType: props.meta.combatType,
         class: props.meta.class,
         actionType: currentAbility.actionType
       }
+    });
+  }
+
+  const handleMouseOut = () => {
+    props.setTooltipInformation({
+      informationType: undefined,
+      data: {}
     });
   }
 

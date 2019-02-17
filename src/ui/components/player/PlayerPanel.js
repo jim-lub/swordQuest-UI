@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { HealthBar, EnergyBar, ManaBar } from './';
 
-const PlayerPane = () => {
+const PlayerPanel = () => {
   const data = {
     health: 1300,
     maxHealth: 1500,
@@ -44,4 +44,4 @@ const currentToPercentage = (current, max) => {
   return (current / max) * 100;
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerPane);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerPanel);

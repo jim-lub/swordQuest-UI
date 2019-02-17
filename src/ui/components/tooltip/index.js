@@ -1,1 +1,2 @@
-export { DataRowTypes } from './DataRowTypes';
+export { AbilityInformation } from './AbilityInformation';
+export { OneLineInformation } from './OneLineInformation';

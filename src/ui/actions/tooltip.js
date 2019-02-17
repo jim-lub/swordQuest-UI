@@ -1,9 +1,8 @@
-export const setTooltipInformation = ({title, description, data}) => {
+export const setTooltipInformation = ({ informationType, data }) => {
   return {
     type: 'SET_TOOLTIP_INFORMATION',
     payload: {
-      title,
-      description,
+      informationType,
       data: {
         ...data
       }

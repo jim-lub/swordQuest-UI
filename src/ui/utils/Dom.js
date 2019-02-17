@@ -5,6 +5,10 @@ export const newListener = () => ({
 
   mouseover(id, fn) {
     return document.getElementById(id).addEventListener('mouseover', fn);
+  },
+
+  mouseout(id, fn) {
+    return document.getElementById(id).addEventListener('mouseout', fn);
   }
 });
 
@@ -15,5 +19,9 @@ export const removeListener = () => ({
 
   mouseover(id, fn) {
     return document.getElementById(id).removeEventListener('mouseover', fn);
+  },
+
+  mouseout(id, fn) {
+    return document.getElementById(id).removeEventListener('mouseout', fn);
   }
 });
