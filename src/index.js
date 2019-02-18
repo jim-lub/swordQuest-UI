@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import rootReducer from "ui/reducers";
+import rootReducer from "interface/reducers";
 
 import { App } from './App';
 
@@ -11,7 +11,7 @@ import 'css/bundler.js';
 
 
 // temp initializer imports
-import { setPlayerControls, setActionbarAbilities } from 'ui/actions';
+import { setPlayerControls, setActionbarAbilities } from 'interface/actions';
 import { ACTIONBAR_ABILITIES } from 'config/TEMP_INITIALIZERS/ACTIONBAR_ABILITIES';
 
 
@@ -31,7 +31,7 @@ renderApp();
 
 
 // temp initializer functions
-const init = () => {
+const initialize = () => {
   // setup controls:
   const controlsMap = new Map([[0, "1"], [1, "2"], [2, "3"], [3, "4"], [4, "5"], [5, "6"], [6, "7"], [7, "8"], [8, "shift"], [9, "space"]]);
   store.dispatch(setPlayerControls(controlsMap));
@@ -41,4 +41,4 @@ const init = () => {
   store.dispatch(setActionbarAbilities(abilitiesMap));
 }
 
-init();
+initialize();

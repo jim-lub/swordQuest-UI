@@ -4,7 +4,7 @@ import { useState, useEffect} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setTooltipInformation } from 'ui/actions';
+import { setTooltipInformation } from 'interface/actions';
 
 import { AbilitySlot, AbilitySlotEmpty, AbilitySlotLocked } from './';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 import { Abilities } from 'config/abilities';
-import { Utils } from 'ui/utils';
+import { Utils } from 'interface/utils';
 
 export const AbilitySlot = (props) => {
   const [cooldown, setCooldown] = useState(0);

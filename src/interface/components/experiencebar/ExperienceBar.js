@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { BarFull, BarEmpty, BarPartial } from './';
+import { BarFull, BarEmpty } from './';
 
 const ExperienceBar = (props) => {
   const bars = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0];

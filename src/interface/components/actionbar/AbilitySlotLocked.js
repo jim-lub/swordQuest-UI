@@ -2,10 +2,11 @@ import React from 'react';
 
 import { useEffect } from 'react';
 
-import { Utils } from 'ui/utils';
+import { Utils } from 'interface/utils';
 
-export const AbilitySlotEmpty = (props) => {
+export const AbilitySlotLocked = (props) => {
   const ctrls_currentKey = props.controlsMap.get(props.index);
+
   const abilitySlotID = `abilitySlot-ID-${props.index}`;
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export const AbilitySlotEmpty = (props) => {
     props.setTooltipInformation({
       informationType: "oneline-information",
       data: {
-        title: "???"
+        title: "Unlocked at level ?"
       }
     });
   }
@@ -37,7 +38,7 @@ export const AbilitySlotEmpty = (props) => {
   return (
     <div id={abilitySlotID} className="actionbar__abilityslot-container actionbar__abilityslot-container--locked">
       <div className="actionbar__abilityslot-textnode--ctrl">{ctrls_currentKey}</div>
-      <img src={require('assets/ui/icons/empty-ability-slot-2.png')} alt="empty" />
+      <img src={require('assets/ui/icons/locked-ability-slot.png')} alt="ability" />
     </div>
   )
 }

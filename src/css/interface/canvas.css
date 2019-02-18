@@ -1,0 +1,8 @@
+.canvas__wrapper {
+  position: relative;
+}
+
+.canvas__element {
+  width: 940px;
+  height: 540px;
+}

@@ -4,6 +4,7 @@ import ExperienceBar from './experiencebar/ExperienceBar';
 import DataBar from './databar/DataBar';
 import PlayerPanel from './player/PlayerPanel';
 import Tooltip from './tooltip/Tooltip';
+import Canvas from './canvas/Canvas';
 
 export {
   Actionbar,
@@ -11,5 +12,6 @@ export {
   ExperienceBar,
   PlayerPanel,
   DataBar,
-  Tooltip
+  Tooltip,
+  Canvas
 }

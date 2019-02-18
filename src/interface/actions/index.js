@@ -9,3 +9,8 @@ export {
 export {
   setTooltipInformation
 } from './tooltip';
+
+export {
+  startCanvasGameLoop,
+  pauseCanvasGameLoop
+} from './canvas';
