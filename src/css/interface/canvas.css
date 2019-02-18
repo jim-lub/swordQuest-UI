@@ -6,3 +6,12 @@
   width: 940px;
   height: 540px;
 }
+
+.canvas__overlay--paused {
+  position: absolute;
+  top: 0px;
+  width: 940px;
+  height: 540px;
+  background-color: black;
+  opacity: 0.4;
+}

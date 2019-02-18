@@ -11,6 +11,11 @@ html, body {
   background-repeat: no-repeat;
 }
 
+span {
+  font-weight: inherit;
+  color: inherit;
+}
+
 .temp {
   position: absolute;
 

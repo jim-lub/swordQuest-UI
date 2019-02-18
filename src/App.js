@@ -7,7 +7,8 @@ import {
   Menubar,
   ExperienceBar,
   PlayerPanel,
-  Canvas
+  Canvas,
+  StatsPanel
 } from 'interface/components';
 
 import ViewportController from 'interface/ViewportController';
@@ -23,10 +24,10 @@ export const App = () => {
         <div className="grid__viewport-wrapper">
           {<ViewportController />}
           {<Canvas />}
+          <div className="temp"></div> (// wizard sprite)
           {<Menubar />}
-          {<Tooltip />}
           {<PlayerPanel />}
-          <div className="temp"></div>
+          {<Tooltip />}
         </div>
 
         <div className="grid__bottombar-wrapper clearfix">

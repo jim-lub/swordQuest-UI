@@ -3,6 +3,7 @@ import 'css/colors.css';
 import 'css/universal-colors.css';
 
 import 'css/interface/actionbar.css';
+import 'css/interface/statspanel.css';
 import 'css/interface/databar.css';
 import 'css/interface/experiencebar.css';
 import 'css/interface/playerpanel.css';

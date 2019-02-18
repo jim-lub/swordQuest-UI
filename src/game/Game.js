@@ -1,129 +1,101 @@
-let ctx = "";
+import { Controller } from './Controller';
 
-const animationFrameData = {
+const DataObj = {
+  ctx: null,
+
   frameID: null,
+
   running: true,
   started: true,
+
   dt: 0,
   lastFrameTimeMs: 0,
   timestep: 1000 / 60,
+
   fps: 60,
   framesThisSecond: 0,
   lastFpsUpdate: 0
-};
-
-const blocks = [
-  {
-    x: 250,
-    y: 250,
-    velX: 1,
-    velY: 0,
-    width: 50,
-    height: 20,
-    color: 'red'
-  },
-  {
-    x: 250,
-    y: 250,
-    velX: 1,
-    velY: -1,
-    width: 30,
-    height: 50,
-    color: 'blue'
-  },
-  {
-    x: 250,
-    y: 250,
-    velX: 2,
-    velY: 1,
-    width: 50,
-    height: 50,
-    color: 'green'
-  }];
-
- export function init(ctxinput) {
-   ctx = ctxinput;
-  animationFrameData.frameID = requestAnimationFrame(loop);
 }
 
-function loop() {
+function init(ctx) {
+  DataObj.ctx = ctx;
 
-  if (_timestamp() > animationFrameData.lastFpsUpdate + 1000) {
-    animationFrameData.fps = 0.25 * animationFrameData.framesThisSecond + (1 - 0.25) * animationFrameData.fps;
-
-    animationFrameData.lastFpsUpdate = _timestamp();
-    animationFrameData.framesThisSecond = 0;
-  }
-  animationFrameData.framesThisSecond++;
-
-  animationFrameData.dt += _timestamp() - animationFrameData.lastFrameTimeMs;
-  animationFrameData.lastFrameTimeMs = _timestamp();
-
-  let numUpdateSteps = 0;
-  while (animationFrameData.dt >= animationFrameData.timestep) {
-    _update(animationFrameData.timestep);
-    animationFrameData.dt -= animationFrameData.timestep;
-
-    if (++numUpdateSteps >= 240) {
-      _panic();
-      break;
-    }
-  }
-
-  _render();
-
-  animationFrameData.frameID = requestAnimationFrame(loop);
+  DataObj.frameID = requestAnimationFrame(loop);
 }
 
-function _panic() {
-  animationFrameData.dt = 0;
-}
+function start() {
+  if (!DataObj.started) {
+    DataObj.started = true;
 
-export function start() {
-  if (!animationFrameData.started) {
-    animationFrameData.started = true;
+    DataObj.frameID = requestAnimationFrame((timestamp) => {
+      render(1);
+      DataObj.running = true;
+      DataObj.lastFrameTimeMs = getTimestamp();
+      DataObj.lastFpsUpdate = getTimestamp();
+      DataObj.framesThisSecond = 0;
 
-    animationFrameData.frameID = requestAnimationFrame(function(timestamp) {
-      _render(1);
-      animationFrameData.running = true;
-
-      animationFrameData.lastFrameTimeMs = _timestamp();
-      animationFrameData.lastFpsUpdate = _timestamp();
-
-      animationFrameData.framesThisSecond = 0;
-
-      animationFrameData.frameID = requestAnimationFrame(loop);
+      DataObj.frameID = requestAnimationFrame(loop);
     });
   }
 }
 
-export function stop() {
-  animationFrameData.running = false;
-  animationFrameData.started = false;
+function stop() {
+  DataObj.running = false;
+  DataObj.started = false;
 
-  cancelAnimationFrame(animationFrameData.frameID);
+  cancelAnimationFrame(DataObj.frameID);
 }
 
-function _timestamp() {
+function loop() {
+  if (getTimestamp() > DataObj.lastFpsUpdate + 1000) {
+    DataObj.fps = 0.25 * DataObj.framesThisSecond + (1 - 0.25) * DataObj.fps;
+
+    DataObj.lastFpsUpdate = getTimestamp();
+    DataObj.framesThisSecond = 0;
+  }
+  DataObj.framesThisSecond++;
+
+  DataObj.dt += getTimestamp() - DataObj.lastFrameTimeMs;
+  DataObj.lastFrameTimeMs = getTimestamp();
+
+  let numUpdateSteps = 0;
+  while (DataObj.dt >= DataObj.timestep) {
+    update(DataObj.timestep);
+
+    DataObj.dt -= DataObj.timestep;
+
+    if (++numUpdateSteps >= 240) {
+      panic();
+      break;
+    }
+  }
+
+  render();
+
+  DataObj.frameID = requestAnimationFrame(loop);
+}
+
+function update() {
+  Controller.update();
+}
+
+function render() {
+  let ctx = DataObj.ctx;
+  ctx.clearRect(0, 0, 940, 540);
+
+  Controller.render(ctx);
+}
+
+function panic() {
+  DataObj.dt = 0;
+}
+
+function getTimestamp() {
   return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
 }
 
-function _update() {
-  blocks.forEach(block => {
-    if (block.x > 940) block.x = 0;
-    if (block.y > 540) block.y = 0;
-    if (block.x < 0) block.x = 940;
-    if (block.y < 0) block.y = 540;
-    block.x += block.velX;
-    block.y += block.velY
-  });
-}
-
-function _render() {
-  ctx.clearRect(0, 0, 940, 540);
-
-  blocks.forEach(block => {
-    ctx.fillStyle = block.color;
-    ctx.fillRect(block.x, block.y, block.width, block.height);
-  });
+export const Game = {
+  init,
+  start,
+  stop
 }

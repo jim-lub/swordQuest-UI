@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-
-import { init, start, stop } from 'game/Game';
+import { Game } from 'game/Game';
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -18,14 +16,14 @@ class Canvas extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isPlaying) {
-      start();
+      Game.start();
     } else {
-      stop();
+      Game.stop();
     }
   }
 
   componentDidMount() {
-    init(this.ctx);
+    Game.init(this.ctx);
   }
 
   render() {
@@ -37,6 +35,7 @@ class Canvas extends React.Component {
           status={this.props.isPlaying.toString()}
           ref={this.setContext}/>
         />
+        <div className={(this.props.isPlaying) ? "" : "canvas__overlay--paused"}></div>
       </div>
     );
   }

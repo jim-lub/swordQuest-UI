@@ -5,6 +5,7 @@ import DataBar from './databar/DataBar';
 import PlayerPanel from './player/PlayerPanel';
 import Tooltip from './tooltip/Tooltip';
 import Canvas from './canvas/Canvas';
+import StatsPanel from './statspanel/StatsPanel';
 
 export {
   Actionbar,
@@ -13,5 +14,6 @@ export {
   PlayerPanel,
   DataBar,
   Tooltip,
-  Canvas
+  Canvas,
+  StatsPanel
 }
