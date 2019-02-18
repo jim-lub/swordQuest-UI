@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { startCanvasGameLoop, pauseCanvasGameLoop } from 'interface/actions/'
+import { requestViewportChange } from 'interface/actions';
 
 const DataBar = (props) => {
   return (
       <div className="databar__wrapper">
         <div className="databar__container">
-          {(props.isPlaying) ? <button onClick={props.actions.pauseCanvasGameLoop}>Pause</button> : <button onClick={props.actions.startCanvasGameLoop}>Play</button>}
+          {(props.isPlaying) ? <button onClick={() => props.actions.requestViewportChange('pause')}>Pause</button> : <button onClick={() => props.actions.requestViewportChange('play')}>Play</button>}
         </div>
       </div>
   )
@@ -17,7 +18,7 @@ const DataBar = (props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({startCanvasGameLoop, pauseCanvasGameLoop}, dispatch)
+    actions: bindActionCreators({startCanvasGameLoop, pauseCanvasGameLoop, requestViewportChange}, dispatch)
   }
 }
 

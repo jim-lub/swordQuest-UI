@@ -31,7 +31,7 @@ export const AbilitySlot = (props) => {
   useEffect(() => {
     Utils.Dom.newListener().keydown(handleKeyPress);
     return () => Utils.Dom.removeListener().keydown(handleKeyPress)
-  }, [cooldown, props.globalCooldown]);
+  }, [cooldown, props.globalCooldown, props.isEnabled]);
 
   useEffect(() => {
     Utils.Dom.newListener().mouseover(abilitySlotID, handleMouseOver);
@@ -57,8 +57,7 @@ export const AbilitySlot = (props) => {
   }
 
   const handleKeyPress = (event) => {
-    // console.log(`${abilitySlotID}  ---  ${cooldown}`);
-    if (isOnCooldown(cooldown, props.globalCooldown)) return;
+    if (isDisabled()) return;
 
     if (ctrls_currentKey === Utils.Ctrls.keyCodeToKey(event.keyCode)) {
       triggerAbility();
@@ -85,11 +84,17 @@ export const AbilitySlot = (props) => {
     });
   }
 
+  const isDisabled = () => {
+    if (!props.isEnabled) return true;
+
+    return isOnCooldown(cooldown, props.globalCooldown);
+  }
+
   return (
     <button
       id={abilitySlotID}
       className="actionbar__abilityslot-container"
-      disabled={isOnCooldown(cooldown, props.globalCooldown)}
+      disabled={isDisabled()}
       onClick={handleClick}
     >
       <div className="actionbar__abilityslot-textnode--ctrl">{ctrls_currentKey}</div>

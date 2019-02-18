@@ -10,6 +10,8 @@ import {
   Canvas
 } from 'interface/components';
 
+import ViewportController from 'interface/ViewportController';
+
 export const App = () => {
   return (
     <div className="grid__wrapper">
@@ -19,6 +21,7 @@ export const App = () => {
         </div>
 
         <div className="grid__viewport-wrapper">
+          {<ViewportController />}
           {<Canvas />}
           {<Menubar />}
           {<Tooltip />}

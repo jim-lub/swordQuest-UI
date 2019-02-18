@@ -10,7 +10,7 @@ import { AbilitySlot, AbilitySlotEmpty, AbilitySlotLocked } from './';
 
 const Actionbar = (props) => {
   const [globalCooldown, setGlobalCooldown] = useState(0);
-  const { playerControls, actionbarSetup } = props;
+  const { playerControls, actionbar } = props;
 
   // cooldown management
   const cooldownTimer = () => setGlobalCooldown(globalCooldown - 1);
@@ -28,21 +28,14 @@ const Actionbar = (props) => {
   return (
     <div className="actionbar__wrapper">
       <div className="actionbar__container">
-        {renderAbilitySlots(playerControls, actionbarSetup, handleTriggeredAbility, globalCooldown, props.actions.setTooltipInformation)}
+        {renderAbilitySlots(playerControls, actionbar.abilities, handleTriggeredAbility, props.actionbar.enabled, globalCooldown, props.actions.setTooltipInformation)}
       </div>
     </div>
   )
 }
 
-const renderAbilitySlots = (playerControls, actionbarSetup, handleTriggeredAbility, globalCooldown, setTooltipInformation) => {
-  let actionbar;
-
-  if (!actionbarSetup) {
-      actionbar = [];
-  } else {
-    actionbar = [...actionbarSetup.abilitiesMap.values()]
-  }
-
+const renderAbilitySlots = (playerControls, actionbar, handleTriggeredAbility, isEnabled, globalCooldown, setTooltipInformation) => {
+  actionbar = (!actionbar) ? [] : actionbar;
   return actionbar.map((abilityMetaData, index) => {
 
     if (abilityMetaData.status === 'active') {
@@ -52,6 +45,8 @@ const renderAbilitySlots = (playerControls, actionbarSetup, handleTriggeredAbili
           index={index}
           meta={abilityMetaData}
           globalCooldown={globalCooldown}
+
+          isEnabled={isEnabled}
 
           onAbilityTrigger={handleTriggeredAbility}
           setTooltipInformation={setTooltipInformation}
@@ -90,7 +85,8 @@ const renderAbilitySlots = (playerControls, actionbarSetup, handleTriggeredAbili
 const mapStateToProps = state => {
   return {
     playerControls: state.playerControls.actionbar,
-    actionbarSetup: state.actionbarSetup.abilities
+    actionbar: state.actionbar,
+    canvas: state.canvas
   }
 }
 

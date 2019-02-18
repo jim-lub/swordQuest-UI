@@ -3,12 +3,19 @@ export {
 } from './playerControls';
 
 export {
-  setActionbarAbilities
-} from './actionbarSetup';
+  setActionbarAbilities,
+  disableActionbar,
+  enableActionbar
+} from './actionbar';
 
 export {
   setTooltipInformation
 } from './tooltip';
+
+export {
+  setCurrentViewport,
+  requestViewportChange
+} from './viewport';
 
 export {
   startCanvasGameLoop,
