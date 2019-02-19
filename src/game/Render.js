@@ -1,13 +1,8 @@
-export const Render = (ctx, state) => {
-  let { blocks, entities } = state;
+export const Render = (ctx, ENTITIES) => {
 
-  entities.forEach(entity => {
-    ctx.fillStyle = "purple";
-    ctx.fillRect(entity.pos.x, entity.pos.y, entity.size.width, entity.size.height);
-  });
-
-  blocks.forEach(block => {
-    ctx.fillStyle = block.color;
-    ctx.fillRect(block.x, block.y, block.width, block.height);
+  ENTITIES.forEach(entity => {
+    let cur = entity.components;
+    ctx.fillStyle = cur.render.color;
+    ctx.fillRect(cur.position.posx, cur.position.posy, cur.render.size.width, cur.render.size.height);
   });
 }

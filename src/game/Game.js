@@ -22,7 +22,7 @@ const DataObj = {
 
 function init(ctx) {
   DataObj.ctx = ctx;
-
+  Controller.init();
   DataObj.frameID = requestAnimationFrame(loop);
 }
 

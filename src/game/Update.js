@@ -1,5 +1,5 @@
-export const Update = (Ctrls, state, dt) => {
-  let { entities, blocks } = state;
+export const Update = (Ctrls, dt) => {
+  let entities = [];
   let CONSTANT = dt * 0.01;
   // position += velocity * delta + acceleration * delta * delta * 0.5
 
@@ -30,31 +30,6 @@ export const Update = (Ctrls, state, dt) => {
       entity.acc.y = 0;
     }
   });
-
-
-  blocks.forEach(block => {
-    if (block.x > 940) block.x = 0;
-    if (block.y > 540) block.y = 0;
-    if (block.x < 0) block.x = 940;
-    if (block.y < 0) block.y = 540;
-
-    block.accX = block.inputX;
-    block.accY = block.inputY;
-
-    block.velX += block.accX * CONSTANT * CONSTANT * 0.5;
-    block.velY += block.accY * CONSTANT * CONSTANT * 0.5;
-
-    block.velX *= 0.96;
-    block.velY *= 0.96;
-
-    block.x += block.velX * CONSTANT;
-    block.y += block.velY * CONSTANT;
-
-    block.accX = 0;
-    block.accY = 0;
-  });
-
-  // logPressedControls(Ctrls);
 }
 
 function logPressedControls(Ctrls) {

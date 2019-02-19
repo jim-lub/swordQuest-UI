@@ -4,81 +4,54 @@ import { Update } from './Update';
 import { Render } from './Render';
 import { Controls } from './Controls';
 
+import { Entity, Components, Systems } from './EntityComponentSystem';
+
+import { block, isPlayerControlledBlock } from './assemblage/block';
+
+import './Entity';
+import './components/bundler';
+
+
 const Ctrls = new Controls();
 
+const EntitiesPool = [];
+
+const init = () => {
+  EntitiesPool.push(block(250, 250, 50, 50, 'red'));
+  EntitiesPool.push(block(250, 350, 50, 50, 'red'));
+  EntitiesPool.push(block(250, 450, 50, 50, 'red'));
+  EntitiesPool.push(block(350, 250, 50, 50, 'red'));
+  EntitiesPool.push(block(450, 250, 50, 50, 'red'));
+  EntitiesPool.push(block(450, 350, 50, 50, 'red'));
+  EntitiesPool.push(block(450, 450, 50, 50, 'red'));
+  EntitiesPool.push(isPlayerControlledBlock(350, 450, 50, 50, 'purple'));
+}
+
 const update = (dt) => {
-  Update(Ctrls, state, dt);
+  console.clear();
+  log('single', 7, 'position');
+  log('all');
+
+  Systems.Movement(Ctrls, EntitiesPool, dt);
+  // Update(Ctrls, dt);
 }
 
 const render = (ctx) => {
-  Render(ctx, state);
+  Render(ctx, EntitiesPool);
 }
 
 export const Controller = {
+  init,
   update,
   render
 }
 
-const state = {
-  entities: [
-    {
-      pos: {
-        x: 150,
-        y: 450
-      },
-      vel: {
-        x: 0,
-        y: 0
-      },
-      acc: {
-        x: 0,
-        y: 0
-      },
-      size: {
-        width: 20,
-        height: 60
-      },
-      isPlayerControlled: true
-    }
-  ],
-  blocks: [
-  {
-    x: 250,
-    y: 250,
-    velX: 0,
-    velY: 0,
-    accX: 0,
-    accY: 0,
-    inputX: 10,
-    inputY: 0,
-    width: 50,
-    height: 20,
-    color: 'red'
-  },
-  {
-    x: 250,
-    y: 250,
-    velX: 0,
-    velY: 0,
-    accX: 0,
-    accY: 0,
-    inputX: 10,
-    inputY: -10,
-    width: 30,
-    height: 50,
-    color: 'blue'
-  },
-  {
-    x: 250,
-    y: 250,
-    velX: 0,
-    velY: 0,
-    accX: 0,
-    accY: 0,
-    inputX: 10,
-    inputY: 10,
-    width: 50,
-    height: 50,
-    color: 'green'
-  }]
+function log(type, index, component) {
+  if (type === 'all') {
+    console.table(EntitiesPool);
+  }
+
+  if (type === 'single') {
+    console.table(EntitiesPool[index].components[component])
+  }
 }
