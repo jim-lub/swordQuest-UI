@@ -8,7 +8,7 @@ import {
   ExperienceBar,
   PlayerPanel,
   Canvas,
-  StatsPanel
+  // StatsPanel
 } from 'interface/components';
 
 import ViewportController from 'interface/ViewportController';

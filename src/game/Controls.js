@@ -3,7 +3,7 @@
 * handles the keys that are required for movement.
 * All other keys are handled in the interface
 ************************************************/
-export class Controls {
+class Controls {
   constructor() {
     this.KEY = {
       _name: ['w', 'a', 's', 'd', 'space'],
@@ -72,3 +72,5 @@ export class Controls {
     if (this.KEY[a].timestamp.keyDown > this.KEY[b].timestamp.keyDown) return true;
   }
 }
+
+export const Ctrls = new Controls();

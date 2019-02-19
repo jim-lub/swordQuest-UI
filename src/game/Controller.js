@@ -1,18 +1,19 @@
-import { Store } from '../index';
+// import { Store } from '../index';
 
-import { Update } from './Update';
+// import { Update } from './Update';
 import { Render } from './Render';
-import { Controls } from './Controls';
+import { Ctrls } from './Controls';
 
-import { Entity, Components, Systems } from './EntityComponentSystem';
+import {
+  // Entity,
+  // Components,
+  Systems
+} from './EntityComponentSystem';
 
 import { block, isPlayerControlledBlock } from './assemblage/block';
 
 import './Entity';
 import './components/bundler';
-
-
-const Ctrls = new Controls();
 
 const EntitiesPool = [];
 
@@ -24,15 +25,17 @@ const init = () => {
   EntitiesPool.push(block(450, 250, 50, 50, 'red'));
   EntitiesPool.push(block(450, 350, 50, 50, 'red'));
   EntitiesPool.push(block(450, 450, 50, 50, 'red'));
-  EntitiesPool.push(isPlayerControlledBlock(350, 450, 50, 50, 'purple'));
+  EntitiesPool.push(isPlayerControlledBlock(350, 450, 40, 40, 'purple'));
 }
 
 const update = (dt) => {
-  console.clear();
-  log('single', 7, 'position');
-  log('all');
+  // console.clear();
+  // log('single', 7, 'positionVectors');
+  // log('all');
 
-  Systems.Movement(Ctrls, EntitiesPool, dt);
+  Systems.Movement.calculateMovement(Ctrls, EntitiesPool, dt);
+  Systems.CollisionDetection(EntitiesPool, dt);
+  Systems.Movement.applyMovement(EntitiesPool, dt);
   // Update(Ctrls, dt);
 }
 

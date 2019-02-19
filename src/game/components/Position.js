@@ -1,15 +1,11 @@
 import { Components } from 'game/EntityComponentSystem';
+import { Vector } from 'game/lib/Vector';
 
-Components.Position = function ComponentPosition (vector) {
-  this.posx = vector.x;
-  this.posy = vector.y;
-
-  this.velx = 0;
-  this.vely = 0;
-
-  this.accx = 0;
-  this.accy = 0;
+Components.Position = function(x, y) {
+  this.position = new Vector(x, y);
+  this.velocity = new Vector(0, 0);
+  this.acceleration = new Vector(0, 0);
 
   return this;
 }
-Components.Position.prototype.name = 'position';
+Components.Position.prototype.name = 'positionVectors';

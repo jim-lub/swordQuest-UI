@@ -1,6 +1,6 @@
 import { Components } from 'game/EntityComponentSystem';
 
-Components.Render = function ComponentRender (width, height, color) {
+Components.Appearance = function ComponentRender (width, height, color) {
   this.size = {
     width,
     height
@@ -9,4 +9,4 @@ Components.Render = function ComponentRender (width, height, color) {
 
   return this;
 }
-Components.Render.prototype.name = 'render';
+Components.Appearance.prototype.name = 'appearance';

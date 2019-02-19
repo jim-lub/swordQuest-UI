@@ -1,3 +1,4 @@
 import './Position';
-import './Render';
+import './Appearance';
 import './PlayerControlled';
+import './Collision';
