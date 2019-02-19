@@ -18,24 +18,26 @@ import './components/bundler';
 const EntitiesPool = [];
 
 const init = () => {
-  EntitiesPool.push(block(250, 250, 50, 50, 'red'));
-  EntitiesPool.push(block(250, 350, 50, 50, 'red'));
-  EntitiesPool.push(block(250, 450, 50, 50, 'red'));
-  EntitiesPool.push(block(350, 250, 50, 50, 'red'));
-  EntitiesPool.push(block(450, 250, 50, 50, 'red'));
-  EntitiesPool.push(block(450, 350, 50, 50, 'red'));
-  EntitiesPool.push(block(450, 450, 50, 50, 'red'));
-  EntitiesPool.push(isPlayerControlledBlock(350, 450, 40, 40, 'purple'));
+  EntitiesPool.push(block(250, 250, 50, 50, 'red', 'dynamic'));
+  EntitiesPool.push(block(250, 350, 50, 50, 'red', 'dynamic'));
+  EntitiesPool.push(block(250, 450, 50, 50, 'red', 'dynamic'));
+  EntitiesPool.push(block(350, 250, 50, 50, 'red', 'dynamic'));
+
+  EntitiesPool.push(block(0, 0, 20, 520, 'grey', 'static')); // left wall
+  EntitiesPool.push(block(920, 0, 20, 520, 'grey', 'static')); // right wall
+  EntitiesPool.push(block(0, 500, 940, 20, 'grey', 'static')); // floor
+
+  EntitiesPool.push(isPlayerControlledBlock(350, 450, 40, 40, 'purple', 'dynamic'));
 }
 
 const update = (dt) => {
-  // console.clear();
-  // log('single', 7, 'positionVectors');
+  console.clear();
+  // log('single', 3, 'positionVectors');
   // log('all');
 
-  Systems.Movement.calculateMovement(Ctrls, EntitiesPool, dt);
+  Systems.Movement.calculate(Ctrls, EntitiesPool, dt);
   Systems.CollisionDetection(EntitiesPool, dt);
-  Systems.Movement.applyMovement(EntitiesPool, dt);
+  Systems.Movement.apply(EntitiesPool, dt);
   // Update(Ctrls, dt);
 }
 

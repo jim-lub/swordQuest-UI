@@ -1,6 +1,6 @@
 import { Vector } from 'game/lib/Vector';
 
-const calculateMovement = (Ctrls, EntitiesPool, dt) => {
+const calculate = (Ctrls, EntitiesPool, dt) => {
   const isPlayerControlled = EntitiesPool.filter(entity => entity.components.hasOwnProperty("isPlayerControlled"));
 
   const CONSTANT = dt * 0.01;
@@ -31,7 +31,7 @@ const calculateMovement = (Ctrls, EntitiesPool, dt) => {
   })
 }
 
-const applyMovement = (EntitiesPool, dt) => {
+const apply = (EntitiesPool, dt) => {
   const isPlayerControlled = EntitiesPool.filter(entity => entity.components.hasOwnProperty("isPlayerControlled"));
 
   const CONSTANT = dt * 0.01;
@@ -49,6 +49,6 @@ const applyMovement = (EntitiesPool, dt) => {
 }
 
 export const Movement = {
-  calculateMovement,
-  applyMovement
+  calculate,
+  apply
 }

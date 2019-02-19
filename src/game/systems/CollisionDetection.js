@@ -1,13 +1,20 @@
 import { Vector } from 'game/lib/Vector';
 
 export const CollisionDetection = (EntitiesPool, dt) => {
-  const hasCollisionDetection = EntitiesPool.filter(entity => entity.components.hasOwnProperty("collisionDetection"));
-  const obstacles = hasCollisionDetection;
+  const hasCollisionDetection = EntitiesPool
+    .filter(entity => entity.components.hasOwnProperty("collisionDetection"));
+
+  const dynamicType = hasCollisionDetection
+    .filter(entity => entity.components.collisionDetection.type === 'dynamic');
+
+  const staticType = hasCollisionDetection
+    .filter(entity => entity.components.collisionDetection.type === 'static');
+
+  const obstacles = [...dynamicType, ...staticType];
 
   const CONSTANT = dt * 0.01;
 
-  console.clear();
-  hasCollisionDetection.forEach(entity => {
+  dynamicType.forEach(entity => {
     entity.components.collisionDetection.hasCollisionOnAxis.x = false;
     entity.components.collisionDetection.hasCollisionOnAxis.y = false;
 
@@ -41,7 +48,7 @@ export const CollisionDetection = (EntitiesPool, dt) => {
       }
 
     });
-    console.log(entity.components.collisionDetection.hasCollisionOnAxis);
+    console.log(entity.id, entity.components.collisionDetection.hasCollisionOnAxis);
   });
 }
 
