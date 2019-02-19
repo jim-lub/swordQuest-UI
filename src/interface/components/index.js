@@ -6,6 +6,7 @@ import PlayerPanel from './player/PlayerPanel';
 import Tooltip from './tooltip/Tooltip';
 import Canvas from './canvas/Canvas';
 import StatsPanel from './statspanel/StatsPanel';
+import AbilityQueue from './abilityqueue/AbilityQueue';
 
 export {
   Actionbar,
@@ -15,5 +16,6 @@ export {
   DataBar,
   Tooltip,
   Canvas,
-  StatsPanel
+  StatsPanel,
+  AbilityQueue
 }

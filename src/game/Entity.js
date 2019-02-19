@@ -7,6 +7,8 @@ Entity.Instance = function Entity() {
 
   Entity.Instance.prototype._count++;
 
+  this.removeAfterNextUpdate = false;
+  
   this.components = {};
 
   return this;

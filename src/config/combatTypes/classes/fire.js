@@ -10,7 +10,7 @@ export const fireball = {
   heal: null,
   absorb: null,
 
-  cooldown: 3
+  cooldown: 1
 }
 
 export const scorch = {

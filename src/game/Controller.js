@@ -1,13 +1,11 @@
 // import { Store } from '../index';
 
-// import { Update } from './Update';
 import { Render } from './Render';
 import { Ctrls } from './Controls';
 
 import {
-  // Entity,
-  // Components,
-  Systems
+  Systems,
+  ECSGlobals
 } from './EntityComponentSystem';
 
 import { block, isPlayerControlledBlock } from './assemblage/block';
@@ -15,33 +13,33 @@ import { block, isPlayerControlledBlock } from './assemblage/block';
 import './Entity';
 import './components/bundler';
 
-const EntitiesPool = [];
-
 const init = () => {
-  EntitiesPool.push(block(250, 250, 50, 50, 'red', 'dynamic'));
-  EntitiesPool.push(block(250, 350, 50, 50, 'red', 'dynamic'));
-  EntitiesPool.push(block(250, 450, 50, 50, 'red', 'dynamic'));
-  EntitiesPool.push(block(350, 250, 50, 50, 'red', 'dynamic'));
+  const { EntitiesPool } = ECSGlobals;
 
-  EntitiesPool.push(block(0, 0, 20, 520, 'grey', 'static')); // left wall
-  EntitiesPool.push(block(920, 0, 20, 520, 'grey', 'static')); // right wall
-  EntitiesPool.push(block(0, 500, 940, 20, 'grey', 'static')); // floor
+  EntitiesPool.push(block(0, 150, 20, 370, 'grey', 'static')); // left wall
+  EntitiesPool.push(block(920, 150, 20, 370, 'grey', 'static')); // right wall
+  EntitiesPool.push(block(0, 500, 940, 50, 'grey', 'static')); // floor
 
-  EntitiesPool.push(isPlayerControlledBlock(350, 450, 40, 40, 'purple', 'dynamic'));
+  EntitiesPool.push(isPlayerControlledBlock(350, 50, 40, 40, 'purple', 'dynamic')); // player
 }
 
 const update = (dt) => {
-  console.clear();
-  // log('single', 3, 'positionVectors');
+  const { EntitiesPool } = ECSGlobals;
+  // console.clear();
   // log('all');
+  // log('queue');
+
+  Systems.DeleteFromEntitiesPool(EntitiesPool);
+  Systems.AbilityQueueManager();
 
   Systems.Movement.calculate(Ctrls, EntitiesPool, dt);
   Systems.CollisionDetection(EntitiesPool, dt);
   Systems.Movement.apply(EntitiesPool, dt);
-  // Update(Ctrls, dt);
 }
 
 const render = (ctx) => {
+  const { EntitiesPool } = ECSGlobals;
+
   Render(ctx, EntitiesPool);
 }
 
@@ -52,8 +50,14 @@ export const Controller = {
 }
 
 function log(type, index, component) {
+  const { EntitiesPool, AbilityQueue } = ECSGlobals;
+
   if (type === 'all') {
     console.table(EntitiesPool);
+  }
+
+  if (type === 'queue') {
+    console.table(AbilityQueue);
   }
 
   if (type === 'single') {

@@ -8,10 +8,11 @@ import {
   ExperienceBar,
   PlayerPanel,
   Canvas,
-  // StatsPanel
+  AbilityQueue
 } from 'interface/components';
 
 import ViewportController from 'interface/ViewportController';
+import GameStateController from 'interface/GameStateController';
 
 export const App = () => {
   return (
@@ -22,11 +23,11 @@ export const App = () => {
         </div>
 
         <div className="grid__viewport-wrapper">
-          {<ViewportController />}
           {<Canvas />}
           <div className="temp"></div> (// wizard sprite)
           {<Menubar />}
           {<PlayerPanel />}
+          {<AbilityQueue />}
           {<Tooltip />}
         </div>
 
@@ -43,6 +44,8 @@ export const App = () => {
         </div>
 
       </div>
+      {<ViewportController />}
+      {<GameStateController />}
     </div>
   )
 };

@@ -10,3 +10,4 @@ import 'css/interface/playerpanel.css';
 import 'css/interface/menubar.css';
 import 'css/interface/tooltip.css';
 import 'css/interface/canvas.css';
+import 'css/interface/abilityqueue.css';

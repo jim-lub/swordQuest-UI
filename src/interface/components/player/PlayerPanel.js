@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { HealthBar, EnergyBar, ManaBar } from './';
 
-const PlayerPanel = () => {
+const PlayerPanel = (props) => {
   const data = {
     health: 1300,
     maxHealth: 1500,
@@ -31,7 +31,7 @@ const PlayerPanel = () => {
 
 const mapStateToProps = state => {
   return {
-
+    abilityQueue: state.gameState.AbilityQueue,
   }
 }
 

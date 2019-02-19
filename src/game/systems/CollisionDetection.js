@@ -1,54 +1,58 @@
-import { Vector } from 'game/lib/Vector';
-
 export const CollisionDetection = (EntitiesPool, dt) => {
-  const hasCollisionDetection = EntitiesPool
+  const entitiesWithCollisionDetection = EntitiesPool
     .filter(entity => entity.components.hasOwnProperty("collisionDetection"));
 
-  const dynamicType = hasCollisionDetection
+  const dynamicEntities = entitiesWithCollisionDetection
     .filter(entity => entity.components.collisionDetection.type === 'dynamic');
 
-  const staticType = hasCollisionDetection
+  const staticEntities = entitiesWithCollisionDetection
     .filter(entity => entity.components.collisionDetection.type === 'static');
 
-  const obstacles = [...dynamicType, ...staticType];
+  const obstacles = [...dynamicEntities, ...staticEntities];
 
-  const CONSTANT = dt * 0.01;
+  dynamicEntities.forEach(entity => {
+    const { hasCollisionOnAxis } = entity.components.collisionDetection;
+    const { velocity } = entity.components.positionVectors;
 
-  dynamicType.forEach(entity => {
-    entity.components.collisionDetection.hasCollisionOnAxis.x = false;
-    entity.components.collisionDetection.hasCollisionOnAxis.y = false;
+    hasCollisionOnAxis.x = false;
+    hasCollisionOnAxis.y = false;
 
-    const collisionPoints = getCollisionPoints(entity.components, CONSTANT);
+    const collisionPointsX =
+      getCollisionPoints(entity.components, dt, {x: velocity.x, y: 0});
+    const collisionPointsY =
+      getCollisionPoints(entity.components, dt, {x: 0, y: velocity.y});
 
-    obstacles.forEach(obstacle => {
-      if (entity.id === obstacle.id) return;
+    obstacles
+      .forEach(obstacle => {
+        if (entity.id === obstacle.id) return;
 
-      if (boxCollision(
-        collisionPoints,
-        {
-          x: obstacle.components.positionVectors.position.x,
-          y: obstacle.components.positionVectors.position.y,
-          width: obstacle.components.collisionDetection.hitbox.width,
-          height: obstacle.components.collisionDetection.hitbox.height
+        const { position } = obstacle.components.positionVectors;
+        const { hitbox } = obstacle.components.collisionDetection;
+
+        if (boxCollision(
+          collisionPointsX,
+          {
+            x: position.x,
+            y: position.y,
+            width: hitbox.width,
+            height: hitbox.height
+          }
+        )) {
+          hasCollisionOnAxis.x = true;
         }
-      )) {
-        entity.components.collisionDetection.hasCollisionOnAxis.x = true;
-      }
 
-      if (boxCollision(
-        collisionPoints,
-        {
-          x: obstacle.components.positionVectors.position.x,
-          y: obstacle.components.positionVectors.position.y,
-          width: obstacle.components.collisionDetection.hitbox.width,
-          height: obstacle.components.collisionDetection.hitbox.height
+        if (boxCollision(
+          collisionPointsY,
+          {
+            x: position.x,
+            y: position.y,
+            width: hitbox.width,
+            height: hitbox.height
+          }
+        )) {
+          hasCollisionOnAxis.y = true;
         }
-      )) {
-        entity.components.collisionDetection.hasCollisionOnAxis.y = true;
-      }
-
     });
-    console.log(entity.id, entity.components.collisionDetection.hasCollisionOnAxis);
   });
 }
 
@@ -72,10 +76,10 @@ function pointCollision(point, obstacle) {
   return collisionX && collisionY;
 }
 
-function getCollisionPoints(components, CONSTANT) {
+function getCollisionPoints(components, dt, vel) {
+  const CONSTANT = dt * 0.01;
   const hitbox = components.collisionDetection.hitbox;
   const pos = components.positionVectors.position;
-  const vel = components.positionVectors.velocity;
 
   return [
     {

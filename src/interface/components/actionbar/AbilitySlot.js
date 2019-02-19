@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { Abilities } from 'config/abilities';
 import { Utils } from 'interface/utils';
 
+import { InterfaceConnector } from 'game/InterfaceConnector';
+
 export const AbilitySlot = (props) => {
   const [cooldown, setCooldown] = useState(0);
 
@@ -45,6 +47,7 @@ export const AbilitySlot = (props) => {
 
   // keyboard and mouse event handlers
   const triggerAbility = () => {
+    InterfaceConnector.sendAbilityToQueue(currentAbility.ref_name);
     props.onAbilityTrigger();
     setCooldown(currentAbility.cooldown);
     let el = document.getElementById(abilitySlotCooldownID);

@@ -21,3 +21,7 @@ export {
   startCanvasGameLoop,
   pauseCanvasGameLoop
 } from './canvas';
+
+export {
+  updateStoreGameState
+} from './gameStateController';

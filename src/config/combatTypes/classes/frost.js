@@ -10,7 +10,7 @@ export const frostbolt = {
   heal: null,
   absorb: null,
 
-  cooldown: 10
+  cooldown: 1
 }
 
 export const iceBarrier = {

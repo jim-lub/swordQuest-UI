@@ -1,0 +1,57 @@
+.abilityqueue__wrapper {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.abilityqueue__container {
+  position: relative;
+  height: 100%;
+  width: 300px;
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.abilityqueue__icon-container {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+
+.abilityqueue__queue-container {
+  position: absolute;
+  left: 47px;
+  bottom: 13px;
+
+  height: 28px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
+
+  border: solid 1px black;
+  border-radius: 1px;
+  background-color: #080808;
+}
+
+.abilityqueue__ability-container {
+  position: relative;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.abilityqueue__image-resize {
+  width: 24px;
+  height: 24px;
+}
+
+.abilityqueue__image-resize2 {
+  width: 48px;
+  height: 48px;
+  opacity: 0.8;
+}
