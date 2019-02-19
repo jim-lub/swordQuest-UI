@@ -29,11 +29,12 @@ const renderApp = () => {
 // store.subscribe(renderApp);
 renderApp();
 
+export const Store = store;
 
 // temp initializer functions
 const initialize = () => {
   // setup controls:
-  const controlsMap = new Map([[0, "1"], [1, "2"], [2, "3"], [3, "4"], [4, "5"], [5, "6"], [6, "7"], [7, "8"], [8, "shift"], [9, "space"]]);
+  const controlsMap = new Map([[0, "1"], [1, "2"], [2, "3"], [3, "4"], [4, "5"], [5, "6"], [6, "7"], [7, "8"], [8, "9"], [9, "shift"]]);
   store.dispatch(setPlayerControls(controlsMap));
 
   // setup abilities:

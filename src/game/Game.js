@@ -14,7 +14,10 @@ const DataObj = {
 
   fps: 60,
   framesThisSecond: 0,
-  lastFpsUpdate: 0
+  lastFpsUpdate: 0,
+
+  simulationUpdates: 0,
+  regularUpdates: 0
 }
 
 function init(ctx) {
@@ -58,6 +61,7 @@ function loop() {
   DataObj.dt += getTimestamp() - DataObj.lastFrameTimeMs;
   DataObj.lastFrameTimeMs = getTimestamp();
 
+
   let numUpdateSteps = 0;
   while (DataObj.dt >= DataObj.timestep) {
     update(DataObj.timestep);
@@ -75,8 +79,8 @@ function loop() {
   DataObj.frameID = requestAnimationFrame(loop);
 }
 
-function update() {
-  Controller.update();
+function update(dt) {
+  Controller.update(dt);
 }
 
 function render() {
