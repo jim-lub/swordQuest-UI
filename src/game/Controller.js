@@ -8,40 +8,38 @@ import {
   ECSGlobals
 } from './EntityComponentSystem';
 
-import { block, isPlayerControlledBlock } from './assemblage/block';
+import { player } from './assemblage/player';
+import { block } from './assemblage/level';
 
 import './Entity';
 import './components/bundler';
 
 const init = () => {
   const { EntitiesPool } = ECSGlobals;
+  console.log(player());
 
-  EntitiesPool.push(block(0, 150, 20, 370, 'grey', 'static')); // left wall
-  EntitiesPool.push(block(920, 150, 20, 370, 'grey', 'static')); // right wall
-  EntitiesPool.push(block(0, 500, 940, 50, 'grey', 'static')); // floor
-
-  EntitiesPool.push(isPlayerControlledBlock(350, 50, 40, 40, 'purple', 'dynamic')); // player
+  EntitiesPool.push(player());
+  EntitiesPool.push(block({x: 0, y: 150, width: 20, height: 370})); // left wall
+  EntitiesPool.push(block({x: 920, y: 150, width: 20, height: 370})); // right wall
+  EntitiesPool.push(block({x: 0, y: 500, width: 940, height: 50})); // floor
 }
 
 const update = (dt) => {
   const { EntitiesPool } = ECSGlobals;
-  // console.clear();
-  // log('all');
-  // log('queue');
+  console.clear();
+  log('all');
 
-  Systems.DeleteFromEntitiesPool(EntitiesPool);
-  Systems.AbilityQueueManager();
-  Systems.AbilityManager();
-
-  Systems.Movement.calculate(Ctrls, EntitiesPool, dt);
-  Systems.CollisionDetection(EntitiesPool, dt);
-  Systems.Movement.apply(EntitiesPool, dt);
+  // Systems.DeleteFromEntitiesPool(EntitiesPool);
+  // Systems.AbilityQueueManager();
+  // Systems.AbilityManager();
+  //
+  // Systems.Movement.calculate(Ctrls, EntitiesPool, dt);
+  // Systems.CollisionDetection(EntitiesPool, dt);
+  // Systems.Movement.apply(EntitiesPool, dt);
 }
 
 const render = (ctx) => {
-  const { EntitiesPool } = ECSGlobals;
-
-  Render(ctx, EntitiesPool);
+  Systems.RenderAppearance(ctx);
 }
 
 export const Controller = {

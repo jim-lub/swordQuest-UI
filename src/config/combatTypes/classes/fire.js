@@ -14,13 +14,17 @@ export const fireball = {
 
   ticks: {
     anticipation: 30,
-    action: 80
+    action: 50
   },
 
   speed: {
     value: [50, 1],
     velocityMultiplier: 2
   },
+
+  rate: null,
+  initialVelocity: null,
+  decay: null,
 
   color: 'orange',
   size: [20, 20]

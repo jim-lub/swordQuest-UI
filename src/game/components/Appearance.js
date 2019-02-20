@@ -1,6 +1,6 @@
 import { Components } from 'game/EntityComponentSystem';
 
-Components.Appearance = function ComponentRender (width, height, color) {
+Components.Appearance = function ComponentRender ({width, height, color}) {
   this.size = {
     width,
     height

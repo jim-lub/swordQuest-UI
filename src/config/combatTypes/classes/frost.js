@@ -13,8 +13,8 @@ export const frostbolt = {
   cooldown: 1,
 
   ticks: {
-    anticipation: 60,
-    action: 200
+    anticipation: 40,
+    action: 100
   },
 
   speed: {
