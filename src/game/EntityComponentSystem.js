@@ -1,6 +1,7 @@
 import { Movement } from './systems/Movement';
 import { CollisionDetection } from './systems/CollisionDetection';
 import { AbilityQueueManager } from './systems/AbilityQueueManager';
+import { AbilityManager } from './systems/AbilityManager';
 import { DeleteFromEntitiesPool } from './systems/DeleteFromEntitiesPool';
 
 export const Entity = {}; // Default entity data is added to the prototype @ game/Entity.js
@@ -9,6 +10,7 @@ export const Systems = {
   Movement,
   CollisionDetection,
   AbilityQueueManager,
+  AbilityManager,
   DeleteFromEntitiesPool
 };
 

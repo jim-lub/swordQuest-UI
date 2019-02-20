@@ -31,6 +31,7 @@ const update = (dt) => {
 
   Systems.DeleteFromEntitiesPool(EntitiesPool);
   Systems.AbilityQueueManager();
+  Systems.AbilityManager();
 
   Systems.Movement.calculate(Ctrls, EntitiesPool, dt);
   Systems.CollisionDetection(EntitiesPool, dt);

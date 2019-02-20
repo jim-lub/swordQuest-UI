@@ -10,7 +10,20 @@ export const fireball = {
   heal: null,
   absorb: null,
 
-  cooldown: 1
+  cooldown: 1,
+
+  ticks: {
+    anticipation: 30,
+    action: 80
+  },
+
+  speed: {
+    value: [50, 1],
+    velocityMultiplier: 2
+  },
+
+  color: 'orange',
+  size: [20, 20]
 }
 
 export const scorch = {

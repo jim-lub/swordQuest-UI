@@ -10,7 +10,20 @@ export const frostbolt = {
   heal: null,
   absorb: null,
 
-  cooldown: 1
+  cooldown: 1,
+
+  ticks: {
+    anticipation: 60,
+    action: 200
+  },
+
+  speed: {
+    value: [25, 5],
+    velocityMultiplier: 2
+  },
+
+  color: 'blue',
+  size: [20, 20]
 }
 
 export const iceBarrier = {

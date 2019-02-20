@@ -10,7 +10,20 @@ export const swordstrike = {
   heal: null,
   absorb: null,
 
-  cooldown: 0
+  cooldown: 0,
+
+  ticks: {
+    anticipation: 10,
+    action: 30
+  },
+
+  speed: {
+    value: [15, 15],
+    velocityMultiplier: 2
+  },
+
+  color: 'brown',
+  size: [10, 10]
 }
 
 export const mortalStrike = {
