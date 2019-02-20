@@ -1,8 +1,5 @@
 // import { Store } from '../index';
 
-import { Render } from './Render';
-import { Ctrls } from './Controls';
-
 import {
   Systems,
   ECSGlobals
@@ -16,7 +13,6 @@ import './components/bundler';
 
 const init = () => {
   const { EntitiesPool } = ECSGlobals;
-  console.log(player());
 
   EntitiesPool.push(player());
   EntitiesPool.push(block({x: 0, y: 150, width: 20, height: 370})); // left wall
@@ -25,15 +21,19 @@ const init = () => {
 }
 
 const update = (dt) => {
-  const { EntitiesPool } = ECSGlobals;
-  console.clear();
-  log('all');
+  const fixedTimeStep = dt * 0.01;
+  // console.clear();
+  // log('all');
+
+  Systems.UserInput(fixedTimeStep); // Get Input -> acceleration -> velocity ..
+  Systems.CollisionDetection(fixedTimeStep) // .. -> check for collisions ..
+  Systems.Motion(fixedTimeStep); // .. -> update position
 
   // Systems.DeleteFromEntitiesPool(EntitiesPool);
   // Systems.AbilityQueueManager();
   // Systems.AbilityManager();
   //
-  // Systems.Movement.calculate(Ctrls, EntitiesPool, dt);
+  // Systems.Movement.calculate(dt);
   // Systems.CollisionDetection(EntitiesPool, dt);
   // Systems.Movement.apply(EntitiesPool, dt);
 }

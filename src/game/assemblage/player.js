@@ -4,9 +4,15 @@ export const player = () => {
   let player = new Entity.Instance();
 
   player.addComponent(
+    new Components.userInput({
+      activeKeys: ['w', 'a', 's', 'd', 'space']
+    })
+  );
+
+  player.addComponent(
     new Components.isDynamic({
       x: 200,
-      y: 100,
+      y: 300,
       direction: 1
     })
   );

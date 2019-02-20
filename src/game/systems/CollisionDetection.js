@@ -1,59 +1,52 @@
-export const CollisionDetection = (EntitiesPool, dt) => {
-  const entitiesWithCollisionDetection = EntitiesPool
-    .filter(entity => entity.components.hasOwnProperty("collisionDetection"));
+import { ECSGlobals } from 'game/EntityComponentSystem';
 
-  const dynamicEntities = entitiesWithCollisionDetection
-    .filter(entity => entity.components.collisionDetection.type === 'dynamic');
+export const CollisionDetection = (dt) => {
+  const { EntitiesPool } = ECSGlobals;
 
-  const staticEntities = entitiesWithCollisionDetection
-    .filter(entity => entity.components.collisionDetection.type === 'static');
+  const collidersArray = EntitiesPool.filter(entity => entity.components.hasOwnProperty('collider'));
+  const colliderObstaclesArray = EntitiesPool.filter(entity => entity.components.hasOwnProperty('colliderObstacle'));
 
-  const obstacles = [...dynamicEntities, ...staticEntities];
-
-  dynamicEntities.forEach(entity => {
-    const { hasCollisionOnAxis } = entity.components.collisionDetection;
-    const { velocity } = entity.components.positionVectors;
-
-    hasCollisionOnAxis.x = false;
-    hasCollisionOnAxis.y = false;
+  collidersArray.forEach(collider => {
+    collider.components.collider.collisionOnAxis.x = false;
+    collider.components.collider.collisionOnAxis.y = false;
 
     const collisionPointsX =
-      getCollisionPoints(entity.components, dt, {x: velocity.x, y: 0});
+      getCollisionPoints(collider, dt, 'x');
     const collisionPointsY =
-      getCollisionPoints(entity.components, dt, {x: 0, y: velocity.y});
+      getCollisionPoints(collider, dt, 'y');
 
-    obstacles
-      .forEach(obstacle => {
-        if (entity.id === obstacle.id) return;
+    colliderObstaclesArray.forEach(obstacle => {
+      if (collider.id === obstacle.id) return;
 
-        const { position } = obstacle.components.positionVectors;
-        const { hitbox } = obstacle.components.collisionDetection;
+      const { position } = obstacle.components.defaults;
+      const { collisionBox } = obstacle.components.colliderObstacle;
 
-        if (boxCollision(
-          collisionPointsX,
-          {
-            x: position.x,
-            y: position.y,
-            width: hitbox.width,
-            height: hitbox.height
-          }
-        )) {
-          hasCollisionOnAxis.x = true;
+      if (boxCollision(
+        collisionPointsX,
+        {
+          x: position.x,
+          y: position.y,
+          width: collisionBox.width,
+          height: collisionBox.height
         }
+      )) {
+        collider.components.collider.collisionOnAxis.x = true;
+      }
 
-        if (boxCollision(
-          collisionPointsY,
-          {
-            x: position.x,
-            y: position.y,
-            width: hitbox.width,
-            height: hitbox.height
-          }
-        )) {
-          hasCollisionOnAxis.y = true;
+      if (boxCollision(
+        collisionPointsY,
+        {
+          x: position.x,
+          y: position.y,
+          width: collisionBox.width,
+          height: collisionBox.height
         }
+      )) {
+        collider.components.collider.collisionOnAxis.y = true;
+      }
     });
   });
+
 }
 
 function boxCollision(collisionPoints, obstacle) {
@@ -76,27 +69,38 @@ function pointCollision(point, obstacle) {
   return collisionX && collisionY;
 }
 
-function getCollisionPoints(components, dt, vel) {
-  const CONSTANT = dt * 0.01;
-  const hitbox = components.collisionDetection.hitbox;
-  const pos = components.positionVectors.position;
+function getCollisionPoints(collider, dt, axis) {
+  const { position, velocity } = collider.components.defaults;
+  const { collisionBox } = collider.components.collider;
+
+  let offsetX, offsetY;
+
+  if (axis === 'x') {
+    offsetX = velocity.x;
+    offsetY = 0;
+  }
+
+  if (axis === 'y') {
+    offsetX = 0;
+    offsetY = velocity.y;
+  }
 
   return [
     {
-      x: pos.x + vel.x * CONSTANT,
-      y: pos.y + vel.y * CONSTANT
+      x: position.x + (offsetX) * dt,
+      y: position.y + (offsetY) * dt
     },
     {
-      x: pos.x + vel.x * CONSTANT + hitbox.width,
-      y: pos.y + vel.y * CONSTANT
+      x: position.x + (offsetX) * dt + collisionBox.width,
+      y: position.y + (offsetY) * dt
     },
     {
-      x: pos.x + vel.x * CONSTANT,
-      y: pos.y + vel.y * CONSTANT + hitbox.height
+      x: position.x + (offsetX) * dt,
+      y: position.y + (offsetY) * dt + collisionBox.height
     },
     {
-      x: pos.x + vel.x * CONSTANT + hitbox.width,
-      y: pos.y + vel.y * CONSTANT + hitbox.height
+      x: position.x + (offsetX) * dt + collisionBox.width,
+      y: position.y + (offsetY) * dt + collisionBox.height
     }
   ]
 }
