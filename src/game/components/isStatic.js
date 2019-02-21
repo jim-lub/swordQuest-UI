@@ -6,10 +6,9 @@ import { Vector } from 'game/lib/Vector';
 * -------------------------------------------------------------------------------
 * @
 ********************************************************************************/
-Components.isStatic = function({x = 0, y = 0}) {
-  this.type = 'static';
-  this.position = new Vector(x, y);
-
-  return this;
-}
-Components.isStatic.prototype.name = 'defaults';
+Components.isStatic = ({x = 0, y = 0}) => ({
+  defaults: Object.assign({}, {
+    type: 'static',
+    position: new Vector(x, y)
+  })
+});

@@ -1,24 +1,24 @@
 import { Entity, Components } from 'game/EntityComponentSystem';
 
 export const block = ({x, y, width, height}) => {
-  let player = new Entity.Instance();
+  let player = new Entity.create();
 
   player.addComponent(
-    new Components.isStatic({
+    Components.isStatic({
       x,
       y
     })
   );
 
   player.addComponent(
-    new Components.isColliderObstacle({
+    Components.isColliderObstacle({
       width,
       height
     })
   );
 
   player.addComponent(
-    new Components.Appearance({
+    Components.appearance({
       width,
       height,
       color: 'black'

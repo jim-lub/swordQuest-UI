@@ -1,5 +1,5 @@
-import './Ability';
-
+// import './Ability';
+//
 import './isStatic';
 import './isDynamic';
 import './isCollider';

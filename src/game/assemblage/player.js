@@ -1,16 +1,16 @@
 import { Entity, Components } from 'game/EntityComponentSystem';
 
 export const player = () => {
-  let player = new Entity.Instance();
+  let player = new Entity.create();
 
   player.addComponent(
-    new Components.userInput({
+    Components.userInput({
       activeKeys: ['w', 'a', 's', 'd', 'space']
     })
   );
 
   player.addComponent(
-    new Components.isDynamic({
+    Components.isDynamic({
       x: 200,
       y: 300,
       direction: 1
@@ -18,21 +18,21 @@ export const player = () => {
   );
 
   player.addComponent(
-    new Components.isCollider({
+    Components.isCollider({
       width: 50,
       height: 50
     })
   );
 
   player.addComponent(
-    new Components.isColliderObstacle({
+    Components.isColliderObstacle({
       width: 50,
       height: 50
     })
   );
 
   player.addComponent(
-    new Components.Appearance({
+    Components.appearance({
       width: 50,
       height: 50,
       color: 'teal'

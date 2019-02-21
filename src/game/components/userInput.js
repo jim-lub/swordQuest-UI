@@ -5,9 +5,8 @@ import { Components } from 'game/EntityComponentSystem';
 * -------------------------------------------------------------------------------
 * @
 ********************************************************************************/
-Components.userInput = function({activeKeys}) {
-  this.activeKeys = activeKeys;
-
-  return this;
-}
-Components.userInput.prototype.name = 'userInput';
+Components.userInput = ({activeKeys}) => ({
+  userInput: Object.assign({}, {
+    activeKeys: activeKeys
+  })
+});

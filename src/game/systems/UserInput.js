@@ -9,21 +9,21 @@ export const UserInput = (dt) => {
 
   const { velocity, acceleration, direction } = user.components.defaults;
 
-  if (Ctrls.isPressed('a')) {
+  if (Ctrls.isPressed('a') && Ctrls.lastKeyPressed('a', 'd')) {
     acceleration.add(
-      new Vector(-40, 0)
+      new Vector(-140, 0)
     );
   }
 
-  if (Ctrls.isPressed('d')) {
+  if (Ctrls.isPressed('d') && Ctrls.lastKeyPressed('d', 'a')) {
     acceleration.add(
-      new Vector(40, 0)
+      new Vector(140, 0)
     );
   }
 
   if (Ctrls.isPressed('space') && user.components.collider.collisionOnAxis.y) {
     acceleration.add(
-      new Vector(0, -2000)
+      new Vector(0, -3000)
     );
   }
 

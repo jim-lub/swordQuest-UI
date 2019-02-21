@@ -1,12 +1,12 @@
 import { Components } from 'game/EntityComponentSystem';
 
-Components.Appearance = function ComponentRender ({width, height, color}) {
-  this.size = {
-    width,
-    height
-  }
-  this.color = color;
 
-  return this;
-}
-Components.Appearance.prototype.name = 'appearance';
+Components.appearance = ({width, height, color}) => ({
+  appearance: Object.assign({}, {
+    size: {
+      width,
+      height
+    },
+    color: color
+  })
+});

@@ -5,17 +5,16 @@ import { Components } from 'game/EntityComponentSystem';
 * -------------------------------------------------------------------------------
 * @
 ********************************************************************************/
-Components.isCollider = function({height, width}) {
-  this.collisionBox = {
-    width,
-    height
-  }
+Components.isCollider = ({height, width}) => ({
+  collider: Object.assign({}, {
+    collisionBox: {
+      width,
+      height
+    },
 
-  this.collisionOnAxis = {
-    x: false,
-    y: false
-  }
-
-  return this;
-}
-Components.isCollider.prototype.name = 'collider';
+    collisionOnAxis: {
+      x: false,
+      y: false
+    }
+  })
+});

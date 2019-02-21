@@ -6,13 +6,12 @@ import { Vector } from 'game/lib/Vector';
 * -------------------------------------------------------------------------------
 * @
 ********************************************************************************/
-Components.isDynamic = function({x = 0, y = 0, direction = 0}) {
-  this.type = 'dynamic';
-  this.position = new Vector(x, y);
-  this.velocity = new Vector(0, 0);
-  this.acceleration = new Vector(0, 0);
-  this.direction = direction;
-
-  return this;
-}
-Components.isDynamic.prototype.name = 'defaults';
+Components.isDynamic = ({x = 0, y = 0, direction = 0}) => ({
+  defaults: Object.assign({}, {
+    type: 'dynamic',
+    position: new Vector(x, y),
+    velocity: new Vector(0, 0),
+    acceleration: new Vector(0, 0),
+    direction: direction,
+  })
+});

@@ -1,39 +1,28 @@
 import { Entity } from './EntityComponentSystem';
+import { Components } from './EntityComponentSystem';
 
-Entity.Instance = function Entity() {
-  this.id = (+new Date()).toString(16) +
-            (Math.random() * 100000000 | 0).toString(16) +
-            Entity.Instance.prototype._count;
-
-  Entity.Instance.prototype._count++;
-
-  this.removeAfterNextUpdate = false;
-  
-  this.components = {};
-
-  return this;
-}
-
-Entity.Instance.prototype._count = 0;
-
-Entity.Instance.prototype.addComponent = function addComponent (component) {
-  this.components[component.name] = component;
-
-  return this;
-}
-
-Entity.Instance.prototype.removeComponent = function removeComponent (componentName) {
-  let name = componentName;
-
-  if (typeof componentName === 'function') {
-    name = componentName.prototype.name;
+Entity.create = () => {
+  const state = {
+    id: randomId(),
+    addComponent: (component) => addComponent(state, component),
+    removeComponent: (componentName) => removeComponent(state, componentName),
+    components: {}
   }
 
-  delete this.components[name];
-  return this;
+  return Object.assign(state, {});
 }
 
-Entity.Instance.prototype.print = function print () {
-  console.log(JSON.stringify(this, null, 4));
-  return this;
+const addComponent = (state, component) => {
+  Object.assign(state.components, component);
+};
+
+const removeComponent = (state, componentName) => {
+  if (!state.components[componentName]) return;
+
+  delete state.components[componentName];
+};
+
+const randomId = () => {
+  return (+new Date()).toString(16) +
+            (Math.random() * 100000000 | 0).toString(16);
 }

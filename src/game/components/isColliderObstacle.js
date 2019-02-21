@@ -5,12 +5,11 @@ import { Components } from 'game/EntityComponentSystem';
 * -------------------------------------------------------------------------------
 * @
 ********************************************************************************/
-Components.isColliderObstacle = function({height, width}) {
-  this.collisionBox = {
-    width,
-    height
-  }
-
-  return this;
-}
-Components.isColliderObstacle.prototype.name = 'colliderObstacle';
+Components.isColliderObstacle = ({height, width}) => ({
+  colliderObstacle: Object.assign({}, {
+    collisionBox: {
+      width,
+      height
+    }
+  })
+});

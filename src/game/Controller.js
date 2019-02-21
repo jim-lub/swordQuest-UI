@@ -1,6 +1,8 @@
 // import { Store } from '../index';
 
 import {
+  Entity,
+  Components,
   Systems,
   ECSGlobals
 } from './EntityComponentSystem';
@@ -22,8 +24,9 @@ const init = () => {
 
 const update = (dt) => {
   const fixedTimeStep = dt * 0.01;
-  // console.clear();
-  // log('all');
+  console.clear();
+  console.log(Components);
+  log('all');
 
   Systems.UserInput(fixedTimeStep); // Get Input -> acceleration -> velocity ..
   Systems.CollisionDetection(fixedTimeStep) // .. -> check for collisions ..
