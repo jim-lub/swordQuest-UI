@@ -1,4 +1,5 @@
 import { ECSGlobals } from 'game/EntityComponentSystem';
+import { Viewport } from 'game/systems/Camera';
 
 export const RenderAppearance = (ctx) => {
   const { EntitiesPool } = ECSGlobals;
@@ -12,8 +13,10 @@ export const RenderAppearance = (ctx) => {
         ctx.fillStyle = appearance.color;
     }
 
+    ctx.globalAlpha = appearance.opacity;
+
     ctx.fillRect(
-      defaults.position.x,
+      defaults.position.x - Viewport.x,
       defaults.position.y,
       appearance.size.width,
       appearance.size.height
@@ -33,7 +36,7 @@ export const RenderAppearance = (ctx) => {
 
       ctx.fillStyle = 'white';
       ctx.fillRect(
-        defaults.position.x + offsetX,
+        defaults.position.x + offsetX - Viewport.x,
         defaults.position.y + 5,
         10,
         10
@@ -42,12 +45,13 @@ export const RenderAppearance = (ctx) => {
       ctx.fillStyle = 'yellow';
       ctx.globalAlpha = 0.1;
       ctx.fillRect(
-        defaults.position.x + offsetX2,
+        defaults.position.x + offsetX2 - Viewport.x,
         defaults.position.y + 10,
         50,
         40
       );
-      ctx.globalAlpha = 1
     }
+    
+    ctx.globalAlpha = 1;
   });
 }

@@ -11,23 +11,23 @@ export const UserInput = (dt) => {
 
   if (Ctrls.isPressed('a') && Ctrls.lastKeyPressed('a', 'd')) {
     acceleration.add(
-      new Vector(-140, 0)
+      new Vector(-30, 0)
     );
   }
 
   if (Ctrls.isPressed('d') && Ctrls.lastKeyPressed('d', 'a')) {
     acceleration.add(
-      new Vector(140, 0)
+      new Vector(30, 0)
     );
   }
 
   if (Ctrls.isPressed('space') && user.components.collider.collisionOnAxis.y) {
     acceleration.add(
-      new Vector(0, -3000)
+      new Vector(0, -2000)
     );
   }
 
-  acceleration.add(new Vector(0, 98.1)); // NOTE: Quick gravity. Modify..
+  acceleration.add(new Vector(0, 98)); // NOTE: Quick gravity. Modify..
 
   user.components.defaults.direction = (Math.sign(acceleration.x) !== 0) ? Math.sign(acceleration.x) : direction; // NOTE: quick and dirty direction fix. Modify..
 
@@ -35,7 +35,7 @@ export const UserInput = (dt) => {
     acceleration.multiply(dt).multiply(dt).multiply(0.5)
   );
 
-  velocity.multiply(0.97); // NOTE: quick and dirty fix for friction. Modify..
+  velocity.multiply(0.96); // NOTE: quick and dirty fix for friction. Modify..
 
   acceleration.multiply(0);
 }

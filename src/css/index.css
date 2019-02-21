@@ -58,7 +58,7 @@ span {
     width: 940px;
     height: 540px;
 
-    background-image: url(../assets/bg/game.png);
+    /* background-image: url(../assets/bg/game.png); */
   }
 
   .grid__bottombar-wrapper {

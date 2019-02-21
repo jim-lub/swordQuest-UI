@@ -8,3 +8,5 @@ import './isColliderObstacle';
 import './userInput';
 
 import './appearance';
+
+import './cameraFollow';

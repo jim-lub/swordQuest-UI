@@ -10,6 +10,10 @@ export const player = () => {
   );
 
   player.addComponent(
+    Components.cameraFollow()
+  );
+
+  player.addComponent(
     Components.isDynamic({
       x: 200,
       y: 300,
@@ -19,22 +23,22 @@ export const player = () => {
 
   player.addComponent(
     Components.isCollider({
-      width: 50,
-      height: 50
+      width: 30,
+      height: 30
     })
   );
 
   player.addComponent(
     Components.isColliderObstacle({
-      width: 50,
-      height: 50
+      width: 30,
+      height: 30
     })
   );
 
   player.addComponent(
     Components.appearance({
-      width: 50,
-      height: 50,
+      width: 30,
+      height: 30,
       color: 'teal'
     })
   );

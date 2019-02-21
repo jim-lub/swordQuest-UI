@@ -14,7 +14,7 @@ const GameStateController = (props) => {
         const intervalID = setInterval(() => {
           props.actions.updateStoreGameState({
             Entities: EntitiesPool,
-            AbilityQueue: [...ECSGlobals.AbilityQueue.values()].map(ability => ability)
+            AbilityQueue: [...AbilityQueue.values()].map(ability => ability)
           });
         }, 1000);
         return () => {

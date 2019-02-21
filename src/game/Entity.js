@@ -1,5 +1,4 @@
 import { Entity } from './EntityComponentSystem';
-import { Components } from './EntityComponentSystem';
 
 Entity.create = () => {
   const state = {

@@ -1,6 +1,7 @@
 import { UserInput } from './systems/UserInput';
 import { CollisionDetection } from './systems/CollisionDetection';
 import { Motion } from './systems/Motion';
+import { Camera } from './systems/Camera';
 
 import { RenderAppearance } from './systems/RenderAppearance';
 
@@ -15,6 +16,7 @@ export const Systems = {
   UserInput,
   CollisionDetection,
   Motion,
+  Camera,
 
   RenderAppearance,
 

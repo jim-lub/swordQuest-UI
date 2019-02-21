@@ -9,6 +9,7 @@ export const AbilityQueueManager = () => {
 
   const activeAbilities = EntitiesPool
     .filter(entity => entity.components.defaults.type === 'ability')
+    .filter(ability => ability.components.defaults.currentLifeCyclePhase === 'start' && ability.components.defaults.currentLifeCyclePhase === 'impact')
 
   if (activeAbilities.length === 0) {
     const id = AbilityQueue.keys().next().value;

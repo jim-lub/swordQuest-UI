@@ -1,15 +1,16 @@
 // import { Store } from '../index';
 
 import {
-  Entity,
-  Components,
+  // Entity,
+  // Components,
   Systems,
   ECSGlobals
 } from './EntityComponentSystem';
 
+import { BackgroundRender } from 'game/lib/BackgroundRender';
+
 import { player } from './assemblage/player';
 import { block } from './assemblage/level';
-import { fireball } from './assemblage/abilities';
 
 import './Entity';
 import './components/bundler';
@@ -18,17 +19,16 @@ const init = () => {
   const { EntitiesPool } = ECSGlobals;
 
   EntitiesPool.push(player());
-  EntitiesPool.push(block({x: 0, y: 150, width: 20, height: 370})); // left wall
-  EntitiesPool.push(block({x: 920, y: 150, width: 20, height: 370})); // right wall
-  EntitiesPool.push(block({x: 0, y: 500, width: 940, height: 50})); // floor
+  EntitiesPool.push(block({x: 0, y: 150, width: 20, height: 370, opacity: 0.6})); // left wall
+  EntitiesPool.push(block({x: 1920, y: 150, width: 20, height: 370, opacity: 0.6})); // right wall
+  EntitiesPool.push(block({x: 0, y: 480, width: 2040, height: 50, opacity: 0.1})); // floor
 }
 
 const update = (dt) => {
   const fixedTimeStep = dt * 0.01;
-  // console.clear();
-  // console.log(Components);
+  console.clear();
   // log('queue');
-  // log('all');
+  log('all');
 
   Systems.DeleteFromEntitiesPool();
 
@@ -38,13 +38,12 @@ const update = (dt) => {
 
   Systems.AbilityQueueManager();
   Systems.AbilityManager();
-  //
-  // Systems.Movement.calculate(dt);
-  // Systems.CollisionDetection(EntitiesPool, dt);
-  // Systems.Movement.apply(EntitiesPool, dt);
+  Systems.Camera(fixedTimeStep);
+
 }
 
 const render = (ctx) => {
+  BackgroundRender(ctx);
   Systems.RenderAppearance(ctx);
 }
 
