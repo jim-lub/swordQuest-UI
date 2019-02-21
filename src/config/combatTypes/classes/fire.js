@@ -12,22 +12,37 @@ export const fireball = {
 
   cooldown: 1,
 
-  ticks: {
+  ticksPerPhase: {
+    start: 0,
     anticipation: 30,
-    action: 50
+    action: 50,
+    impact: 10
   },
 
   speed: {
-    value: [50, 1],
-    velocityMultiplier: 2
+    value: [50, 0],
+    velocityMultiplier: true
   },
 
   rate: null,
   initialVelocity: null,
   decay: null,
 
-  color: 'orange',
-  size: [20, 20]
+  devVisuals: {
+    colors: {
+      anticipation: '#efc407',
+      action: '#ff9d00',
+      impact: '#ff6600'
+    },
+    size: {
+      anticipation: [10, 10],
+      action: [25, 25],
+      impact: [50, 50]
+    },
+    offset: {
+      anticipation: [35, 20]
+    }
+  }
 }
 
 export const scorch = {

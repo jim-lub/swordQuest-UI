@@ -1,5 +1,5 @@
-// import './Ability';
-//
+import './isAbility';
+
 import './isStatic';
 import './isDynamic';
 import './isCollider';
@@ -7,4 +7,4 @@ import './isColliderObstacle';
 
 import './userInput';
 
-import './Appearance';
+import './appearance';

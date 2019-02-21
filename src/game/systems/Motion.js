@@ -4,20 +4,30 @@ import { Vector } from 'game/lib/Vector';
 export const Motion = (dt) => {
   const { EntitiesPool } = ECSGlobals;
 
-  const user = EntitiesPool.filter(entity => entity.components.hasOwnProperty('userInput'))[0];
+  const user = EntitiesPool.filter(entity => entity.components.hasOwnProperty('userInput'));
+  const abilities = EntitiesPool.filter(entity => entity.components.defaults.type === 'ability' && entity.components.defaults.currentLifeCyclePhase === 'action');
 
-  const { position, velocity } = user.components.defaults;
-  const { collisionOnAxis } = user.components.collider;
+  [...user, ...abilities].forEach(entity => {
+    const { position, velocity } = entity.components.defaults;
 
-  if (collisionOnAxis.x) {
-    velocity.set(0, velocity.y);
-  }
+    if (entity.components.hasOwnProperty('collider')) {
+      const { collisionOnAxis } = entity.components.collider;
 
-  if (collisionOnAxis.y) {
-    velocity.set(velocity.x, 0);
-  }
+      if (entity.components.defaults.type === 'ability') {
+        
+      }
 
-  position.add(
+      if (collisionOnAxis.x) {
+        velocity.set(0, velocity.y);
+      }
+
+      if (collisionOnAxis.y) {
+        velocity.set(velocity.x, 0);
+      }
+    }
+
+    position.add(
       Vector.multiply(velocity, dt)
-  );
-}
+    );
+  });
+};

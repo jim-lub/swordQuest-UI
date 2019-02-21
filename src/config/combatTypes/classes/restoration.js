@@ -10,7 +10,39 @@ export const heal = {
   heal: null,
   absorb: null,
 
-  cooldown: 10
+  cooldown: 1,
+
+  ticksPerPhase: {
+    start: 0,
+    anticipation: 100,
+    action: 10,
+    impact: 10
+  },
+
+  speed: {
+    value: [0, -5],
+    velocityMultiplier: true
+  },
+
+  rate: null,
+  initialVelocity: null,
+  decay: null,
+
+  devVisuals: {
+    colors: {
+      anticipation: 'green',
+      action: 'green',
+      impact: 'green'
+    },
+    size: {
+      anticipation: [20, 10],
+      action: [60, 25],
+      impact: [40, 25]
+    },
+    offset: {
+      anticipation: [0, -30]
+    }
+  }
 }
 
 export const shield = {

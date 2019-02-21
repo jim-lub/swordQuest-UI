@@ -12,18 +12,37 @@ export const frostbolt = {
 
   cooldown: 1,
 
-  ticks: {
-    anticipation: 40,
-    action: 100
+  ticksPerPhase: {
+    start: 0,
+    anticipation: 30,
+    action: 70,
+    impact: 10
   },
 
   speed: {
-    value: [25, 5],
-    velocityMultiplier: 2
+    value: [20, 20],
+    velocityMultiplier: true
   },
 
-  color: 'blue',
-  size: [20, 20]
+  rate: null,
+  initialVelocity: null,
+  decay: null,
+
+  devVisuals: {
+    colors: {
+      anticipation: '#075fef',
+      action: '#a5c7ff',
+      impact: '#639eff'
+    },
+    size: {
+      anticipation: [30, 30],
+      action: [30, 30],
+      impact: [80, 5]
+    },
+    offset: {
+      anticipation: [0, -150]
+    }
+  }
 }
 
 export const iceBarrier = {

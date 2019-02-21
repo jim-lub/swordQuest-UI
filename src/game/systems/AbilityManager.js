@@ -5,59 +5,133 @@ import { Abilities } from 'config/abilities';
 import { getPlayerData } from 'game/utils/player';
 
 export const AbilityManager = () => {
-  const { EntitiesPool, AbilityQueue } = ECSGlobals;
-  const { position, direction } = getPlayerData().components.positionVectors;
+  const { EntitiesPool } = ECSGlobals;
 
-  const firstAbilityInQueue = AbilityQueue.values().next().value || null;
-
-  const ability = EntitiesPool.filter(entity => entity.components.hasOwnProperty('ability') && entity.id === firstAbilityInQueue.id)[0]
-  if (!ability) return;
-
-  const [combatType, className, abilityName] = ability.components.ability.ref_name.split("_");
-  let lifeCyclePhase = ability.components.ability.currentLifeCyclePhase;
-  let ticks = ability.components.ability.ticks++;
-  let config = Abilities[combatType][className][abilityName];
-
-  if (lifeCyclePhase === 'queue') {
-    if (!ability.components.hasOwnProperty('positionVectors')) ability.addComponent(new Components.Position(0, 0));
-    if (!ability.components.hasOwnProperty('appearance')) ability.addComponent(new Components.Appearance(config.size[0], config.size[1], config.color));
-
-    ability.components.ability.currentLifeCyclePhase = 'anticipation';
+  const userData = getPlayerData().components;
+  const user = {
+    position: userData.defaults.position,
+    direction: userData.defaults.direction,
+    size: userData.appearance.size
   }
 
-  if (lifeCyclePhase === 'anticipation') {
-    ability.components.positionVectors.position.set(position.x + (config.size[0] / 24), position.y - 30)
-
-    if (ticks > config.ticks.anticipation) {
-      ability.components.ability.direction = direction;
-      ability.components.ability.ticks = 0;
-      ability.components.ability.currentLifeCyclePhase = 'action';
-    }
-  }
-
-  if (lifeCyclePhase === 'action') {
-    ability.components.positionVectors.velocity.set(config.speed.value[0] * ability.components.ability.direction, config.speed.value[1])
-    if (ticks > config.ticks.action) {
-      ability.components.ability.ticks = 0;
-      ability.components.ability.currentLifeCyclePhase = 'delete';
-    }
-  }
-
-  if (lifeCyclePhase === 'delete'){
-    ability.removeAfterNextUpdate = true;
-    AbilityQueue.delete(ability.id);
-  }
+  EntitiesPool
+    .filter(entity => entity.components.defaults.type === 'ability')
+    .forEach(ability => {
+      const { ref_name, currentLifeCyclePhase } = ability.components.defaults;
+      const refTo = Abilities.refNameToComponents(ref_name);
+      const abilityData = Abilities[refTo.combatType][refTo.className][refTo.abilityName];
 
 
-  // console.clear();
-  // console.log(config);
-  // console.log(ticks, lifeCyclePhase);
-  // logTables();
+      if (currentLifeCyclePhase === 'start') {
+        handleStartLifeCycle(ability, user);
+
+        if (handleTicks(ability, abilityData.ticksPerPhase.start))
+          setCurrentLifeCyclePhaseTo(ability, 'anticipation');
+      }
+
+      if (currentLifeCyclePhase === 'anticipation') {
+        handleAnticipationtLifeCycle(ability, abilityData, user);
+
+        if (handleTicks(ability, abilityData.ticksPerPhase.anticipation)) {
+          ability.removeComponent('appearance');
+          setCurrentLifeCyclePhaseTo(ability, 'action');
+        }
+      }
+
+      if (currentLifeCyclePhase === 'action') {
+        handleActionLifeCycle(ability, abilityData, user);
+
+        if (handleTicks(ability, abilityData.ticksPerPhase.action)) {
+          ability.removeComponent('appearance');
+          setCurrentLifeCyclePhaseTo(ability, 'impact');
+        }
+      }
+
+      if (currentLifeCyclePhase === 'impact') {
+        handleImpactLifeCycle(ability, abilityData, user);
+
+        if (handleTicks(ability, abilityData.ticksPerPhase.impact))
+          setCurrentLifeCyclePhaseTo(ability, 'delete');
+      }
+
+      if (currentLifeCyclePhase === 'delete') {
+        handleDeleteLifeCycle(ability);
+      }
+    });
 
 }
 
-const logTables = () => {
-  const { EntitiesPool, AbilityQueue } = ECSGlobals;
-  console.table(AbilityQueue);
-  console.table(EntitiesPool);
+const handleStartLifeCycle = ({ components }) => {
+
+}
+
+const handleAnticipationtLifeCycle = ({ addComponent, components }, abilityData, user) => {
+  if (!components.hasOwnProperty('appearance')) {
+    addComponent(
+      Components.appearance({
+        width: abilityData.devVisuals.size.anticipation[0],
+        height: abilityData.devVisuals.size.anticipation[1],
+        color: abilityData.devVisuals.colors.anticipation
+      })
+    );
+  }
+
+  components.defaults.position.set(
+    user.position.x + (user.size.width / 2) - (abilityData.devVisuals.size.anticipation[0] / 2) + (abilityData.devVisuals.offset.anticipation[0] * user.direction),
+    user.position.y + abilityData.devVisuals.offset.anticipation[1]
+  );
+}
+
+const handleActionLifeCycle = ({ addComponent, components }, abilityData, user) => {
+  if (!components.hasOwnProperty('appearance')) {
+    addComponent(
+      Components.appearance({
+        width: abilityData.devVisuals.size.action[0],
+        height: abilityData.devVisuals.size.action[1],
+        color: abilityData.devVisuals.colors.action
+      })
+    );
+  }
+
+  if (components.defaults.direction === 0) {
+    components.defaults.direction = user.direction;
+  }
+
+  components.defaults.velocity.set(
+    abilityData.speed.value[0] * components.defaults.direction,
+    abilityData.speed.value[1]
+  )
+}
+
+const handleImpactLifeCycle = ({ addComponent, components }, abilityData, user) => {
+  if (!components.hasOwnProperty('appearance')) {
+    addComponent(
+      Components.appearance({
+        width: abilityData.devVisuals.size.impact[0],
+        height: abilityData.devVisuals.size.impact[1],
+        color: abilityData.devVisuals.colors.impact
+      })
+    );
+  }
+
+  components.defaults.velocity.set(1 * components.defaults.direction, 0);
+}
+
+const handleDeleteLifeCycle = (ability) => {
+  ability.delete = true;
+}
+
+
+const handleTicks = ({ components }, limit) => {
+  if (components.defaults.ticks >= limit) {
+    components.defaults.ticks = 0;
+    return true;
+  };
+
+  components.defaults.ticks++;
+  return false;
+}
+
+const setCurrentLifeCyclePhaseTo = ({ components }, phase) => {
+  components.defaults.currentLifeCyclePhase = phase;
 }

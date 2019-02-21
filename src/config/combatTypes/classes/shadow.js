@@ -10,7 +10,39 @@ export const shadowbolt = {
   heal: null,
   absorb: null,
 
-  cooldown: 10
+  cooldown: 1,
+
+  ticksPerPhase: {
+    start: 0,
+    anticipation: 30,
+    action: 100,
+    impact: 10
+  },
+
+  speed: {
+    value: [20, -1],
+    velocityMultiplier: true
+  },
+
+  rate: null,
+  initialVelocity: null,
+  decay: null,
+
+  devVisuals: {
+    colors: {
+      anticipation: 'purple',
+      action: 'purple',
+      impact: 'purple'
+    },
+    size: {
+      anticipation: [15, 15],
+      action: [10, 10],
+      impact: [30, 30]
+    },
+    offset: {
+      anticipation: [40, 30]
+    }
+  }
 }
 
 export const shadowstrike = {

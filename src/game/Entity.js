@@ -4,6 +4,7 @@ import { Components } from './EntityComponentSystem';
 Entity.create = () => {
   const state = {
     id: randomId(),
+    delete: false,
     addComponent: (component) => addComponent(state, component),
     removeComponent: (componentName) => removeComponent(state, componentName),
     components: {}

@@ -12,18 +12,37 @@ export const swordstrike = {
 
   cooldown: 0,
 
-  ticks: {
-    anticipation: 10,
-    action: 30
+  ticksPerPhase: {
+    start: 0,
+    anticipation: 20,
+    action: 30,
+    impact: 5
   },
 
   speed: {
     value: [15, 15],
-    velocityMultiplier: 2
+    velocityMultiplier: true
   },
 
-  color: 'brown',
-  size: [10, 10]
+  rate: null,
+  initialVelocity: null,
+  decay: null,
+
+  devVisuals: {
+    colors: {
+      anticipation: 'brown',
+      action: 'brown',
+      impact: 'brown'
+    },
+    size: {
+      anticipation: [5, 30],
+      action: [10, 10],
+      impact: [30, 5]
+    },
+    offset: {
+      anticipation: [10, -20]
+    }
+  }
 }
 
 export const mortalStrike = {

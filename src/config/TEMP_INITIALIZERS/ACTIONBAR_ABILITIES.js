@@ -10,9 +10,9 @@ export const ACTIONBAR_ABILITIES = () => {
 
   abilities.set(1, {
     status: 'active',
-    combatType: 'melee',
-    class: 'warrior',
-    ability: 'mortalStrike'
+    combatType: 'magic',
+    class: 'shadow',
+    ability: 'shadowbolt'
   });
 
   abilities.set(2, {
@@ -50,17 +50,11 @@ export const ACTIONBAR_ABILITIES = () => {
   });
 
   abilities.set(8, {
-    status: 'active',
-    combatType: 'magic',
-    class: 'restoration',
-    ability: 'shield'
+    status: 'locked'
   });
 
   abilities.set(9, {
-    status: 'active',
-    combatType: 'magic',
-    class: 'shadow',
-    ability: 'shroudOfTheShadows'
+    status: 'locked'
   });
 
   return abilities;

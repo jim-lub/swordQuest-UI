@@ -1,21 +1,20 @@
 import { ECSGlobals } from 'game/EntityComponentSystem';
 
+import { ability } from 'game/assemblage/abilities';
+
 export const AbilityQueueManager = () => {
   const { EntitiesPool, AbilityQueue } = ECSGlobals;
 
-  const abilitiesToSet = EntitiesPool
-    .filter(entity => entity.components.hasOwnProperty("ability"))
-    .filter(entity => entity.components.ability.currentLifeCyclePhase === 'queue');
+  if (AbilityQueue.size === 0) return;
 
-    abilitiesToSet.forEach(ability => AbilityQueue.set(ability.id, ability));
+  const activeAbilities = EntitiesPool
+    .filter(entity => entity.components.defaults.type === 'ability')
 
+  if (activeAbilities.length === 0) {
+    const id = AbilityQueue.keys().next().value;
+    const ref_name = AbilityQueue.values().next().value;
 
-    // console.clear();
-    // console.table(AbilityQueue);
-    // console.table(EntitiesPool);
-    // console.log(AbilityQueue.size, EntitiesPool.length);
-    // console.clear();
-    // console.table(AbilityQueue);
-    // console.log(AbilityQueue.size, Object.keys(abilities).length, EntitiesPool.length);
-
+    EntitiesPool.push(ability(ref_name));
+    AbilityQueue.delete(id);
+  }
 }

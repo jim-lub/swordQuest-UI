@@ -9,6 +9,7 @@ import {
 
 import { player } from './assemblage/player';
 import { block } from './assemblage/level';
+import { fireball } from './assemblage/abilities';
 
 import './Entity';
 import './components/bundler';
@@ -24,17 +25,19 @@ const init = () => {
 
 const update = (dt) => {
   const fixedTimeStep = dt * 0.01;
-  console.clear();
-  console.log(Components);
-  log('all');
+  // console.clear();
+  // console.log(Components);
+  // log('queue');
+  // log('all');
+
+  Systems.DeleteFromEntitiesPool();
 
   Systems.UserInput(fixedTimeStep); // Get Input -> acceleration -> velocity ..
   Systems.CollisionDetection(fixedTimeStep) // .. -> check for collisions ..
   Systems.Motion(fixedTimeStep); // .. -> update position
 
-  // Systems.DeleteFromEntitiesPool(EntitiesPool);
-  // Systems.AbilityQueueManager();
-  // Systems.AbilityManager();
+  Systems.AbilityQueueManager();
+  Systems.AbilityManager();
   //
   // Systems.Movement.calculate(dt);
   // Systems.CollisionDetection(EntitiesPool, dt);
