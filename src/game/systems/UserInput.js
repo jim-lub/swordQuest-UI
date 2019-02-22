@@ -1,11 +1,12 @@
-import { ECSGlobals } from 'game/EntityComponentSystem';
+import { Clusters } from 'game/EntityComponentSystem';
 import { Ctrls } from 'game/lib/Controls';
 import { Vector } from 'game/lib/Vector';
 
-export const UserInput = (dt) => {
-  const { EntitiesPool } = ECSGlobals;
+import { ENGINE_CONFIG } from 'config/game/engine';
 
-  const user = EntitiesPool.filter(entity => entity.components.hasOwnProperty('userInput'))[0];
+export const UserInput = (cluster) => {
+
+  const user = Clusters[cluster][0];
 
   const { velocity, acceleration, direction } = user.components.defaults;
 
@@ -32,7 +33,7 @@ export const UserInput = (dt) => {
   user.components.defaults.direction = (Math.sign(acceleration.x) !== 0) ? Math.sign(acceleration.x) : direction; // NOTE: quick and dirty direction fix. Modify..
 
   velocity.add(
-    acceleration.multiply(dt).multiply(dt).multiply(0.5)
+    acceleration.multiply(ENGINE_CONFIG.TIMESTEP).multiply(ENGINE_CONFIG.TIMESTEP).multiply(0.5)
   );
 
   velocity.multiply(0.96); // NOTE: quick and dirty fix for friction. Modify..

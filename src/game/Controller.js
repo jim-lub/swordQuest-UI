@@ -4,6 +4,7 @@ import {
   // Entity,
   // Components,
   Systems,
+  Clusters,
   ECSGlobals
 } from './EntityComponentSystem';
 
@@ -32,22 +33,26 @@ const init = () => {
   EntitiesPool.push(block({x: 105, y: 450, width: 30, height: 30, opacity: 0.5})); // floor
 }
 
-const update = (dt) => {
-  const fixedTimeStep = dt * 0.01;
-  // console.clear();
-  // // log('queue');
-  // log('all');
+const update = () => {
+  console.clear();
+  log('clusters');
+  log('all');
 
   Systems.DeleteFromEntitiesPool();
+  Systems.UpdateClusters();
 
-  Systems.UserInput(fixedTimeStep); // Get Input -> acceleration -> velocity ..
-  Systems.CollisionDetection(fixedTimeStep) // .. -> check for collisions ..
-  Systems.Motion(fixedTimeStep); // .. -> update position
-  Systems.EnemyInput(fixedTimeStep); // Get Input -> acceleration -> velocity ..
-  Systems.Camera(fixedTimeStep);
+  Systems.UserInput(0);
+  Systems.CollisionDetection(0);
+  Systems.Motion(0);
+  Systems.Camera();
+
+  Systems.EnemyInput(1);
+  Systems.CollisionDetection(1);
+  Systems.Motion(1);
 
   Systems.AbilityQueueManager();
   Systems.AbilityManager();
+  Systems.Motion(2);
 
 }
 
@@ -67,6 +72,10 @@ function log(type, index, component) {
 
   if (type === 'all') {
     console.table(EntitiesPool);
+  }
+
+  if (type === 'clusters') {
+    console.table(Clusters);
   }
 
   if (type === 'queue') {

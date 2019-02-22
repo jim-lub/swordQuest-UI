@@ -1,14 +1,14 @@
-import { ECSGlobals } from 'game/EntityComponentSystem';
+import { Clusters } from 'game/EntityComponentSystem';
 import { Vector } from 'game/lib/Vector';
 
-export const Motion = (dt) => {
-  const { EntitiesPool } = ECSGlobals;
+import { ENGINE_CONFIG } from 'config/game/engine';
 
-  const user = EntitiesPool.filter(entity => entity.components.hasOwnProperty('userInput'));
-  const enemies = EntitiesPool.filter(entity => entity.components.hasOwnProperty('behaviourTree'));
-  const abilities = EntitiesPool.filter(entity => entity.components.defaults.type === 'ability' && entity.components.defaults.currentLifeCyclePhase === 'action');
+export const Motion = (cluster) => {
+  const entities = Clusters[cluster];
 
-  [...user, ...enemies, ...abilities].forEach(entity => {
+  // entity.components.defaults.currentLifeCyclePhase === 'action'
+
+  entities.forEach(entity => {
     const { position, velocity } = entity.components.defaults;
 
     if (entity.components.hasOwnProperty('collider')) {
@@ -28,7 +28,7 @@ export const Motion = (dt) => {
     }
 
     position.add(
-      Vector.multiply(velocity, dt)
+      Vector.multiply(velocity, ENGINE_CONFIG.TIMESTEP)
     );
   });
 };

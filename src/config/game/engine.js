@@ -1,0 +1,3 @@
+export const ENGINE_CONFIG = {
+  TIMESTEP: 0.16666666666666669
+};

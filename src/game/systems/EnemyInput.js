@@ -1,11 +1,11 @@
-import { ECSGlobals } from 'game/EntityComponentSystem';
+import { Clusters } from 'game/EntityComponentSystem';
 import { Vector } from 'game/lib/Vector';
+
+import { ENGINE_CONFIG } from 'config/game/engine';
 
 import { getPlayerData } from 'game/utils/player';
 
-export const EnemyInput = (dt) => {
-  const { EntitiesPool } = ECSGlobals;
-
+export const EnemyInput = (cluster) => {
   const userData = getPlayerData().components;
   const user = {
     position: userData.defaults.position,
@@ -14,7 +14,7 @@ export const EnemyInput = (dt) => {
     size: userData.appearance.size
   }
 
-  const enemies = EntitiesPool.filter(entity => entity.components.hasOwnProperty('behaviourTree'));
+  const enemies = Clusters[cluster];
   enemies.forEach(enemy => {
     const { position, velocity, acceleration, direction } = enemy.components.defaults;
     const { collisionBox } = enemy.components.collider;
@@ -30,7 +30,7 @@ export const EnemyInput = (dt) => {
     enemy.components.defaults.direction = (Math.sign(acceleration.x) !== 0) ? Math.sign(acceleration.x) : direction; // NOTE: quick and dirty direction fix. Modify..
 
     velocity.add(
-      acceleration.multiply(dt).multiply(dt).multiply(0.5)
+      acceleration.multiply(ENGINE_CONFIG.TIMESTEP).multiply(ENGINE_CONFIG.TIMESTEP).multiply(0.5)
     );
 
     velocity.multiply(0.96); // NOTE: quick and dirty fix for friction. Modify..

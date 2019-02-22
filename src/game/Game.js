@@ -80,7 +80,7 @@ function loop() {
 }
 
 function update(dt) {
-  Controller.update(dt);
+  Controller.update();
 }
 
 function render() {

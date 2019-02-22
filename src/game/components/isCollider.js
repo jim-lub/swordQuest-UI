@@ -17,6 +17,8 @@ Components.isCollider = ({height, width}) => ({
       y: height / 2
     },
 
+    collisionPoints: [],
+
     collisionOnAxis: {
       x: false,
       y: false

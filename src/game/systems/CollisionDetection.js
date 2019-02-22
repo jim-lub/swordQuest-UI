@@ -1,9 +1,11 @@
-import { ECSGlobals } from 'game/EntityComponentSystem';
+import { ECSGlobals, Clusters } from 'game/EntityComponentSystem';
 
-export const CollisionDetection = (dt) => {
+import { ENGINE_CONFIG } from 'config/game/engine';
+
+export const CollisionDetection = (cluster) => {
   const { EntitiesPool } = ECSGlobals;
 
-  const collidersArray = EntitiesPool.filter(entity => entity.components.hasOwnProperty('collider'));
+  const collidersArray = Clusters[cluster].filter(entity => entity.components.hasOwnProperty('collider'));
   const colliderObstaclesArray = EntitiesPool.filter(entity => entity.components.hasOwnProperty('colliderObstacle'));
 
   collidersArray.forEach(collider => {
@@ -11,9 +13,9 @@ export const CollisionDetection = (dt) => {
     collider.components.collider.collisionOnAxis.y = false;
 
     const collisionPointsX =
-      getCollisionPoints(collider, dt, 'x');
+      getCollisionPoints(collider, 'x');
     const collisionPointsY =
-      getCollisionPoints(collider, dt, 'y');
+      getCollisionPoints(collider, 'y');
 
     [...colliderObstaclesArray].forEach(obstacle => {
       if (collider.id === obstacle.id) return;
@@ -69,7 +71,7 @@ function pointCollision(point, obstacle) {
   return collisionX && collisionY;
 }
 
-function getCollisionPoints(collider, dt, axis) {
+function getCollisionPoints(collider, axis) {
   const { position, velocity } = collider.components.defaults;
   const { collisionBox } = collider.components.collider;
 
@@ -88,36 +90,36 @@ function getCollisionPoints(collider, dt, axis) {
 
   const collisionPoints = [
     { // top left
-      x: (position.x - (box.width / 2)) + velX * dt,
-      y: (position.y - (box.height / 2)) + velY * dt
+      x: (position.x - (box.width / 2)) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y - (box.height / 2)) + velY * ENGINE_CONFIG.TIMESTEP
     },
     { // top
-      x: (position.x) + velX * dt,
-      y: (position.y - box.height / 2) + velY * dt
+      x: (position.x) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y - box.height / 2) + velY * ENGINE_CONFIG.TIMESTEP
     },
     { // top right
-      x: (position.x + box.width / 2) + velX * dt,
-      y: (position.y - box.height / 2) + velY * dt
+      x: (position.x + box.width / 2) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y - box.height / 2) + velY * ENGINE_CONFIG.TIMESTEP
     },
     { // right
-      x: (position.x + box.width / 2) + velX * dt,
-      y: (position.y) + velY * dt
+      x: (position.x + box.width / 2) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y) + velY
     },
     { // bottom right
-      x: (position.x + box.width / 2) + velX * dt,
-      y: (position.y + box.height / 2) + velY * dt
+      x: (position.x + box.width / 2) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y + box.height / 2) + velY * ENGINE_CONFIG.TIMESTEP
     },
     { // bottom
-      x: (position.x) + velX * dt,
-      y: (position.y + box.height / 2) + velY * dt
+      x: (position.x) + velX,
+      y: (position.y + box.height / 2) + velY * ENGINE_CONFIG.TIMESTEP
     },
     { // bottom left
-      x: (position.x - box.width / 2) + velX * dt,
-      y: (position.y + box.height / 2) + velY * dt
+      x: (position.x - box.width / 2) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y + box.height / 2) + velY * ENGINE_CONFIG.TIMESTEP
     },
     { // left
-      x: (position.x - box.width / 2) + velX * dt,
-      y: (position.y) + velY * dt
+      x: (position.x - box.width / 2) + velX * ENGINE_CONFIG.TIMESTEP,
+      y: (position.y) + velY
     }
   ]
 

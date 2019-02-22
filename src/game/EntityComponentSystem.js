@@ -3,6 +3,7 @@ import { EnemyInput } from './systems/EnemyInput';
 import { CollisionDetection } from './systems/CollisionDetection';
 import { Motion } from './systems/Motion';
 import { Camera } from './systems/Camera';
+import { UpdateClusters } from './systems/UpdateClusters';
 
 import { RenderAppearance } from './systems/RenderAppearance';
 
@@ -19,6 +20,7 @@ export const Systems = {
   CollisionDetection,
   Motion,
   Camera,
+  UpdateClusters,
 
   RenderAppearance,
 
@@ -26,6 +28,7 @@ export const Systems = {
   AbilityManager,
   DeleteFromEntitiesPool,
 };
+export const Clusters = {};
 
 export const ECSGlobals = {
   EntitiesPool: [],
