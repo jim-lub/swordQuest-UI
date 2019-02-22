@@ -1,11 +1,4 @@
-import { Components } from 'game/EntityComponentSystem';
-
-/********************************************************************************
-* @ isCollider
-* -------------------------------------------------------------------------------
-* @
-********************************************************************************/
-Components.isCollider = ({height, width}) => ({
+export const isCollider = ({height, width}) => ({
   collider: Object.assign({}, {
     collisionBox: {
       width,

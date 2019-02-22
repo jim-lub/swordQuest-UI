@@ -1,6 +1,9 @@
 import { Clusters } from 'game/EntityComponentSystem';
-import { Ctrls } from 'game/lib/Controls';
-import { Vector } from 'game/lib/Vector';
+
+import {
+  Ctrls,
+  Vector
+} from 'game/lib/';
 
 import { ENGINE_CONFIG } from 'config/game/engine';
 

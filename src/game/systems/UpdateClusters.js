@@ -1,4 +1,7 @@
-import { ECSGlobals, Clusters } from 'game/EntityComponentSystem';
+import {
+  ECSGlobals,
+  Clusters
+} from 'game/EntityComponentSystem';
 
 export const UpdateClusters = () => {
   const { EntitiesPool } = ECSGlobals;

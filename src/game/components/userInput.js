@@ -1,11 +1,4 @@
-import { Components } from 'game/EntityComponentSystem';
-
-/********************************************************************************
-* @ userInput
-* -------------------------------------------------------------------------------
-* @
-********************************************************************************/
-Components.userInput = ({activeKeys}) => ({
+export const userInput = ({activeKeys}) => ({
   userInput: Object.assign({}, {
     activeKeys: activeKeys
   })

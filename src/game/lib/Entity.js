@@ -1,6 +1,4 @@
-import { Entity } from './EntityComponentSystem';
-
-Entity.create = () => {
+export const create = () => {
   const state = {
     id: randomId(),
     delete: false,

@@ -1,6 +1,7 @@
-import { ECSGlobals } from 'game/EntityComponentSystem';
-
-import { ability } from 'game/assemblage/abilities';
+import {
+  ECSGlobals,
+  Assemblages
+} from 'game/EntityComponentSystem';
 
 export const AbilityQueueManager = () => {
   const { EntitiesPool, AbilityQueue } = ECSGlobals;
@@ -15,7 +16,7 @@ export const AbilityQueueManager = () => {
     const id = AbilityQueue.keys().next().value;
     const ref_name = AbilityQueue.values().next().value;
 
-    EntitiesPool.push(ability(ref_name));
+    EntitiesPool.push(Assemblages.ability(ref_name));
     AbilityQueue.delete(id);
   }
 }

@@ -1,4 +1,3 @@
-import { Components } from 'game/EntityComponentSystem';
 import { Vector } from 'game/lib/Vector';
 
 /********************************************************************************
@@ -13,7 +12,7 @@ import { Vector } from 'game/lib/Vector';
 * --- impact: entity hit an object; not required for all abilities
 * --- delete: entity will get deleted before next update cycle
 ********************************************************************************/
-Components.isAbility = ({name}) => ({
+export const isAbility = ({name}) => ({
   defaults: Object.assign({}, {
     type: 'ability',
     ref_name: name,

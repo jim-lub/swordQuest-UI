@@ -1,5 +1,5 @@
 import { Clusters } from 'game/EntityComponentSystem';
-import { Vector } from 'game/lib/Vector';
+import { Vector } from 'game/lib/';
 
 import { ENGINE_CONFIG } from 'config/game/engine';
 

@@ -1,17 +1,10 @@
-import { Components } from 'game/EntityComponentSystem';
-
-/********************************************************************************
-* @ behaviourTree
-* -------------------------------------------------------------------------------
-* @
-********************************************************************************/
-Components.behaviourTree = () => ({
+export const behaviourTree = () => ({
   behaviourTree: Object.assign({}, {
     tree: []
   })
 });
 
-// 
+//
 // Sequence
 // Selector
 // Leaf

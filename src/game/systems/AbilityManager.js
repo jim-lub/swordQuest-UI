@@ -1,4 +1,7 @@
-import { ECSGlobals, Components } from 'game/EntityComponentSystem';
+import {
+  ECSGlobals,
+  Components
+} from 'game/EntityComponentSystem';
 
 import { Abilities } from 'config/abilities';
 

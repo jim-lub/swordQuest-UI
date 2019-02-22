@@ -1,4 +1,7 @@
-import { ECSGlobals, Clusters } from 'game/EntityComponentSystem';
+import {
+  ECSGlobals,
+  Clusters
+} from 'game/EntityComponentSystem';
 
 import { ENGINE_CONFIG } from 'config/game/engine';
 
