@@ -15,7 +15,7 @@ export const CollisionDetection = (dt) => {
     const collisionPointsY =
       getCollisionPoints(collider, dt, 'y');
 
-    colliderObstaclesArray.forEach(obstacle => {
+    [...colliderObstaclesArray].forEach(obstacle => {
       if (collider.id === obstacle.id) return;
 
       const { position } = obstacle.components.defaults;
@@ -63,8 +63,8 @@ function boxCollision(collisionPoints, obstacle) {
 }
 
 function pointCollision(point, obstacle) {
-  let collisionX = point.x >= obstacle.x && point.x <= obstacle.x + obstacle.width;
-  let collisionY = point.y >= obstacle.y && point.y <= obstacle.y + obstacle.height;
+  let collisionX = point.x >= obstacle.x - (obstacle.width / 2) && point.x <= obstacle.x + (obstacle.width / 2);
+  let collisionY = point.y >= obstacle.y - (obstacle.height / 2) && point.y <= obstacle.y + (obstacle.height / 2);
 
   return collisionX && collisionY;
 }
@@ -73,34 +73,55 @@ function getCollisionPoints(collider, dt, axis) {
   const { position, velocity } = collider.components.defaults;
   const { collisionBox } = collider.components.collider;
 
-  let offsetX, offsetY;
+  let velX, velY;
+  let box = collisionBox;
 
   if (axis === 'x') {
-    offsetX = velocity.x;
-    offsetY = 0;
+    velX = velocity.x;
+    velY = 0;
   }
 
   if (axis === 'y') {
-    offsetX = 0;
-    offsetY = velocity.y;
+    velX = 0;
+    velY = velocity.y;
   }
 
-  return [
-    {
-      x: position.x + (offsetX) * dt,
-      y: position.y + (offsetY) * dt
+  const collisionPoints = [
+    { // top left
+      x: (position.x - (box.width / 2)) + velX * dt,
+      y: (position.y - (box.height / 2)) + velY * dt
     },
-    {
-      x: position.x + (offsetX) * dt + collisionBox.width,
-      y: position.y + (offsetY) * dt
+    { // top
+      x: (position.x) + velX * dt,
+      y: (position.y - box.height / 2) + velY * dt
     },
-    {
-      x: position.x + (offsetX) * dt,
-      y: position.y + (offsetY) * dt + collisionBox.height
+    { // top right
+      x: (position.x + box.width / 2) + velX * dt,
+      y: (position.y - box.height / 2) + velY * dt
     },
-    {
-      x: position.x + (offsetX) * dt + collisionBox.width,
-      y: position.y + (offsetY) * dt + collisionBox.height
+    { // right
+      x: (position.x + box.width / 2) + velX * dt,
+      y: (position.y) + velY * dt
+    },
+    { // bottom right
+      x: (position.x + box.width / 2) + velX * dt,
+      y: (position.y + box.height / 2) + velY * dt
+    },
+    { // bottom
+      x: (position.x) + velX * dt,
+      y: (position.y + box.height / 2) + velY * dt
+    },
+    { // bottom left
+      x: (position.x - box.width / 2) + velX * dt,
+      y: (position.y + box.height / 2) + velY * dt
+    },
+    { // left
+      x: (position.x - box.width / 2) + velX * dt,
+      y: (position.y) + velY * dt
     }
   ]
+
+  collider.components.collider.collisionPoints = collisionPoints;
+
+  return collisionPoints;
 }

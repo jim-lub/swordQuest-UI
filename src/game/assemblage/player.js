@@ -1,6 +1,6 @@
 import { Entity, Components } from 'game/EntityComponentSystem';
 
-export const player = () => {
+export const player = ({x = 0, y = 0}) => {
   let player = new Entity.create();
 
   player.addComponent(
@@ -15,8 +15,8 @@ export const player = () => {
 
   player.addComponent(
     Components.isDynamic({
-      x: 200,
-      y: 300,
+      x,
+      y,
       direction: 1
     })
   );

@@ -5,7 +5,7 @@ image.src = require('../../assets/bg/forest-sheet.png');
 
 export const BackgroundRender = (ctx) => {
 
-  let offsetX = Viewport.x || 0;
+  let offsetX = Math.round(Viewport.x) || 0;
   let offsetY = 0;
   let speed = 0;
   let section = Math.abs(Math.floor(offsetX / 928)) + 1;
@@ -19,7 +19,7 @@ export const BackgroundRender = (ctx) => {
     ctx.drawImage(image, offset, offsetY, 928, 540, 0, 0, 928, 540);
     ctx.drawImage(image, offset + 927, offsetY, 928, 540, 0, 0, 928, 540);
 
-    speed += 0.15;
+    speed += 0.12;
     offsetY += 540;
   }
 

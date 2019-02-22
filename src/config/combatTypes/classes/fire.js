@@ -40,7 +40,7 @@ export const fireball = {
       impact: [50, 50]
     },
     offset: {
-      anticipation: [35, 20]
+      anticipation: [35, 0]
     }
   }
 }

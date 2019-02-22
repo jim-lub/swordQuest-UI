@@ -40,7 +40,7 @@ export const shadowbolt = {
       impact: [30, 30]
     },
     offset: {
-      anticipation: [40, 30]
+      anticipation: [40, 0]
     }
   }
 }

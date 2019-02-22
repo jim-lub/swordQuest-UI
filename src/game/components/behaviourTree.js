@@ -1,25 +1,19 @@
 import { Components } from 'game/EntityComponentSystem';
 
 /********************************************************************************
-* @ isCollider
+* @ behaviourTree
 * -------------------------------------------------------------------------------
 * @
 ********************************************************************************/
-Components.isCollider = ({height, width}) => ({
-  collider: Object.assign({}, {
-    collisionBox: {
-      width,
-      height
-    },
-
-    center: {
-      x: width / 2,
-      y: height / 2
-    },
-
-    collisionOnAxis: {
-      x: false,
-      y: false
-    }
+Components.behaviourTree = () => ({
+  behaviourTree: Object.assign({}, {
+    tree: []
   })
 });
+
+// 
+// Sequence
+// Selector
+// Leaf
+// Inverter
+// Succes/Failure/Running

@@ -8,6 +8,13 @@ export const ability = (type) => {
       name: type
     })
   );
-  
+
+  ability.addComponent(
+    Components.isCollider({
+      width: 5,
+      height: 5
+    })
+  );
+
   return ability;
 }

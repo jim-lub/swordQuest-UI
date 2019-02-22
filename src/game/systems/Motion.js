@@ -5,16 +5,17 @@ export const Motion = (dt) => {
   const { EntitiesPool } = ECSGlobals;
 
   const user = EntitiesPool.filter(entity => entity.components.hasOwnProperty('userInput'));
+  const enemies = EntitiesPool.filter(entity => entity.components.hasOwnProperty('behaviourTree'));
   const abilities = EntitiesPool.filter(entity => entity.components.defaults.type === 'ability' && entity.components.defaults.currentLifeCyclePhase === 'action');
 
-  [...user, ...abilities].forEach(entity => {
+  [...user, ...enemies, ...abilities].forEach(entity => {
     const { position, velocity } = entity.components.defaults;
 
     if (entity.components.hasOwnProperty('collider')) {
       const { collisionOnAxis } = entity.components.collider;
 
       if (entity.components.defaults.type === 'ability') {
-        
+
       }
 
       if (collisionOnAxis.x) {

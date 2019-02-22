@@ -5,8 +5,8 @@ export const Viewport = {
 }
 
 const Limits = {
-  x1: 200,
-  x2: 740
+  x1: 350,
+  x2: 590
 }
 
 export const Camera = (dt) => {
@@ -14,17 +14,14 @@ export const Camera = (dt) => {
 
   const entityToFollow = EntitiesPool.filter(entity => entity.components.hasOwnProperty('cameraFollow') && entity.components.cameraFollow)[0];
 
-  const { position, velocity } = entityToFollow.components.defaults;
+  const { position, velocity, direction } = entityToFollow.components.defaults;
 
-  if (position.x < Limits.x1 + Viewport.x) {
+  if (position.x < Limits.x1 + Viewport.x && direction === -1) {
     Viewport.x += velocity.x * dt;
   }
 
-  if (position.x > Limits.x2 + Viewport.x) {
+  if (position.x > Limits.x2 + Viewport.x && direction === 1) {
     Viewport.x += velocity.x * dt;
   }
 
-  console.clear();
-  console.log(position);
-  console.log(Viewport);
 }

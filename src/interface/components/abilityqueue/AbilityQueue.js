@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { Abilities } from 'config/abilities';
 
 const AbilityQueue = (props) => {
-  console.clear();
-  console.log(props.abilityQueue);
   const queue = props.abilityQueue
     .map((ability, index) => {
       const [combatType, className, abilityName] = ability.split("_");

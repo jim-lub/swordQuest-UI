@@ -24,7 +24,6 @@ export const App = () => {
 
         <div className="grid__viewport-wrapper">
           {<Canvas />}
-          <div className="temp"></div> (// wizard sprite)
           {<Menubar />}
           {<PlayerPanel />}
           {<AbilityQueue />}
@@ -49,3 +48,5 @@ export const App = () => {
     </div>
   )
 };
+
+// <div className="temp"></div> (// wizard sprite)

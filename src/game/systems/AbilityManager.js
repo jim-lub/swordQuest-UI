@@ -10,6 +10,7 @@ export const AbilityManager = () => {
   const userData = getPlayerData().components;
   const user = {
     position: userData.defaults.position,
+    center: userData.appearance.center,
     direction: userData.defaults.direction,
     size: userData.appearance.size
   }
@@ -41,6 +42,11 @@ export const AbilityManager = () => {
       if (currentLifeCyclePhase === 'action') {
         handleActionLifeCycle(ability, abilityData, user);
 
+        if (ability.components.collider.collisionOnAxis.x || ability.components.collider.collisionOnAxis.y) {
+          ability.removeComponent('appearance');
+          ability.components.defaults.ticks = 0;
+          setCurrentLifeCyclePhaseTo(ability, 'impact');
+        }
         if (handleTicks(ability, abilityData.ticksPerPhase.action)) {
           ability.removeComponent('appearance');
           setCurrentLifeCyclePhaseTo(ability, 'impact');
@@ -77,7 +83,7 @@ const handleAnticipationtLifeCycle = ({ addComponent, components }, abilityData,
   }
 
   components.defaults.position.set(
-    user.position.x + (user.size.width / 2) - (abilityData.devVisuals.size.anticipation[0] / 2) + (abilityData.devVisuals.offset.anticipation[0] * user.direction),
+    user.position.x + user.center.x - (abilityData.devVisuals.size.anticipation[0] / 2) + (abilityData.devVisuals.offset.anticipation[0] * user.direction),
     user.position.y + abilityData.devVisuals.offset.anticipation[1]
   );
 }

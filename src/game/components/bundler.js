@@ -6,6 +6,7 @@ import './isCollider';
 import './isColliderObstacle';
 
 import './userInput';
+import './behaviourTree';
 
 import './appearance';
 
