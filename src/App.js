@@ -8,7 +8,8 @@ import {
   ExperienceBar,
   PlayerPanel,
   Canvas,
-  AbilityQueue
+  AbilityQueue,
+  AbilitiesPanel
 } from 'interface/components';
 
 import ViewportController from 'interface/ViewportController';
@@ -27,6 +28,7 @@ export const App = () => {
           {<Menubar />}
           {<PlayerPanel />}
           {<AbilityQueue />}
+          {<AbilitiesPanel />}
           {<Tooltip />}
         </div>
 

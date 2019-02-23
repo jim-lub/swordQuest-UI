@@ -14,7 +14,7 @@ export const RenderAppearance = (ctx) => {
         ctx.fillStyle = color;
     }
 
-    ctx.globalAlpha = 0.5;
+    ctx.globalAlpha = opacity;
 
     ctx.fillRect(
       (position.x - (size.width / 2)) - Viewport.x,

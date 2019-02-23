@@ -2,15 +2,18 @@ import { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { startCanvasGameLoop, enableActionbar } from 'interface/actions';
+import { startCanvasGameLoop, enableActionbar, setActiveComponents } from 'interface/actions';
 
 const Play = (props) => {
-  const {startCanvasGameLoop, enableActionbar } = props.actions;
+  const {startCanvasGameLoop, enableActionbar, setActiveComponents } = props.actions;
 
   useEffect(() => {
     console.log('Playing');
+    setActiveComponents({
+      actionbar: true,
+      abilitiesPanel: false
+    });
     startCanvasGameLoop();
-    enableActionbar();
   }, [])
 
   return null;
@@ -24,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({startCanvasGameLoop, enableActionbar}, dispatch)
+    actions: bindActionCreators({startCanvasGameLoop, enableActionbar, setActiveComponents}, dispatch)
   }
 }
 

@@ -70,3 +70,12 @@
   margin-top: 5px;
   transform: scale(1.2);
 }
+
+.UI-menubar-button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}

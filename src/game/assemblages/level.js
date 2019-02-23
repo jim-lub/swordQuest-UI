@@ -1,6 +1,6 @@
 import { Entity, Components } from 'game/EntityComponentSystem';
 
-export const block = ({x, y, width, height, opacity}) => {
+export const block = ({x, y, width, height, opacity, color = 'black'}) => {
   let player = new Entity.create();
 
   player.addComponent(
@@ -21,7 +21,7 @@ export const block = ({x, y, width, height, opacity}) => {
     Components.appearance({
       width,
       height,
-      color: 'black',
+      color,
       opacity
     })
   );

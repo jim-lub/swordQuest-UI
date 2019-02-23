@@ -9,22 +9,26 @@ import {
   ECSGlobals
 } from './EntityComponentSystem';
 
+import { BUILD_LEVEL } from './LEVEL';
+
 import { BackgroundRender } from 'game/lib/BackgroundRender';
 
 const init = () => {
   const { EntitiesPool } = ECSGlobals;
 
+  BUILD_LEVEL();
+
   EntitiesPool.push(Assemblages.player({x: 400, y: 300}));
 
-  EntitiesPool.push(Assemblages.enemy({x: 50, y: 300}));
+  // EntitiesPool.push(Assemblages.enemy({x: 50, y: 300}));
   EntitiesPool.push(Assemblages.enemy({x: 650, y: 300}));
 
-  EntitiesPool.push(Assemblages.block({x: -500, y: 150, width: 20, height: 370, opacity: 0.6})); // left wall
-  EntitiesPool.push(Assemblages.block({x: 1920, y: 150, width: 20, height: 370, opacity: 0.6})); // right wall
-  EntitiesPool.push(Assemblages.block({x: -500, y: 510, width: 2540, height: 50, opacity: 0.1})); // floor
-
-  EntitiesPool.push(Assemblages.block({x: 5, y: 450, width: 30, height: 30, opacity: 0.5})); // floor
-  EntitiesPool.push(Assemblages.block({x: 105, y: 450, width: 30, height: 30, opacity: 0.5})); // floor
+  // EntitiesPool.push(Assemblages.block({x: -500, y: 150, width: 20, height: 370, opacity: 0.6})); // left wall
+  // EntitiesPool.push(Assemblages.block({x: 1920, y: 150, width: 20, height: 370, opacity: 0.6})); // right wall
+  // EntitiesPool.push(Assemblages.block({x: -500, y: 510, width: 2540, height: 50, opacity: 0.1})); // floor
+  //
+  // EntitiesPool.push(Assemblages.block({x: 5, y: 450, width: 30, height: 30, opacity: 0.5})); // floor
+  // EntitiesPool.push(Assemblages.block({x: 105, y: 450, width: 30, height: 30, opacity: 0.5})); // floor
 }
 
 const update = () => {

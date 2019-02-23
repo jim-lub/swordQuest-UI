@@ -3,7 +3,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { startCanvasGameLoop, pauseCanvasGameLoop } from 'interface/actions/'
 import { requestViewportChange } from 'interface/actions';
 
 const DataBar = (props) => {
@@ -16,16 +15,17 @@ const DataBar = (props) => {
   )
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators({startCanvasGameLoop, pauseCanvasGameLoop, requestViewportChange}, dispatch)
-  }
-}
-
 const mapStateToProps = state => {
   return {
     isPlaying: state.canvas.isPlaying
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators({requestViewportChange}, dispatch)
+  }
+}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataBar);

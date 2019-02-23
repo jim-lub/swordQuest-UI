@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import rootReducer from "interface/reducers";
 
@@ -20,7 +22,9 @@ const store = createStore(rootReducer)
 const renderApp = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <DragDropContextProvider backend={HTML5Backend}>
+        <App />
+      </DragDropContextProvider>
     </Provider>,
     document.getElementById('root')
   )

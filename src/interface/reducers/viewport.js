@@ -1,4 +1,9 @@
-export default (state = {current: 'play', request: null}, action) => {
+const init = {
+  actionbar: true,
+  abilitiesPanel: false
+}
+
+export default (state = {current: 'play', request: null, components: init}, action) => {
   switch (action.type) {
     case 'SET_CURRENT_VIEWPORT':
       return {
@@ -9,6 +14,11 @@ export default (state = {current: 'play', request: null}, action) => {
       return {
         ...state,
         request: action.payload
+      }
+    case 'SET_ACTIVE_COMPONENTS':
+      return {
+        ...state,
+        components: action.payload
       }
     default:
       return state

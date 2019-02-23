@@ -11,3 +11,10 @@ export const requestViewportChange = (request) => {
     payload: request
   }
 }
+
+export const setActiveComponents = (payload) => {
+  return {
+    type: 'SET_ACTIVE_COMPONENTS',
+    payload: payload
+  }
+}

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Play, Pause } from 'interface/viewports'
+import { Play, Pause, AbilitiesPanel } from 'interface/viewports'
 
 import { setCurrentViewport, requestViewportChange } from 'interface/actions';
 
@@ -23,11 +23,17 @@ const ViewportController = (props) => {
   const transitions = {
     'play': {
       component: <Play />,
-      pause() { setCurrentViewport('pause') }
+      pause() { setCurrentViewport('pause') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') }
     },
     'pause': {
       component: <Pause />,
-      play() { setCurrentViewport('play') }
+      play() { setCurrentViewport('play') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') }
+    },
+    'abilitiesPanel': {
+      component: <AbilitiesPanel />,
+      play() { setCurrentViewport('play') },
     }
   }
 

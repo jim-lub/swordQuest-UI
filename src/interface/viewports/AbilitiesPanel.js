@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 
 import { pauseCanvasGameLoop, disableActionbar, setActiveComponents } from 'interface/actions';
 
-const Pause = (props) => {
+const AbilitiesPanel = (props) => {
   const { pauseCanvasGameLoop, disableActionbar, setActiveComponents } = props.actions;
 
   useEffect(() => {
     console.log('Paused');
     setActiveComponents({
       actionbar: false,
-      abilitiesPanel: false
+      abilitiesPanel: true
     });
     pauseCanvasGameLoop();
   }, [])
@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pause);
+export default connect(mapStateToProps, mapDispatchToProps)(AbilitiesPanel);

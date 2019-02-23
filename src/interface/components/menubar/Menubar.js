@@ -1,15 +1,18 @@
 import React from 'react';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { MenuItem } from './';
 
-const Menubar = () => {
+import { requestViewportChange } from 'interface/actions';
+
+const Menubar = (props) => {
   const menuItems = ['abilities', 'inventory', 'map', 'quests', 'settings', 'achievements'];
   return (
     <div className="UI-menubar-container">
       {menuItems.map((cur, index) => {
-        return <MenuItem key={index} icon={cur} />
+        return <MenuItem key={index} index={index} icon={cur} requestViewportChange={props.actions.requestViewportChange} />
       })}
     </div>
   )
@@ -23,6 +26,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    actions: bindActionCreators({requestViewportChange}, dispatch)
   }
 }
 

@@ -14,7 +14,8 @@ export {
 
 export {
   setCurrentViewport,
-  requestViewportChange
+  requestViewportChange,
+  setActiveComponents
 } from './viewport';
 
 export {
