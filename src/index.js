@@ -11,11 +11,8 @@ import { App } from './App';
 
 import 'css/bundler.js';
 
-
 // temp initializer imports
 import { setPlayerControls, setActionbarAbilities } from 'interface/actions';
-import { ACTIONBAR_ABILITIES } from 'config/TEMP_INITIALIZERS/ACTIONBAR_ABILITIES';
-
 
 const store = createStore(rootReducer)
 

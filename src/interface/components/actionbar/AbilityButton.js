@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react';
 
 import { useCooldown } from 'interface/hooks';
 
+import TooltipEmitter from 'interface/hooks/useTooltip';
+
 import { Abilities } from 'config/abilities';
 import { Utils } from 'interface/utils';
 import { InterfaceConnector } from 'game/InterfaceConnector';
@@ -14,7 +16,6 @@ const AbilityButton = (props) => {
   const { connectDropTarget } = props;
   const { combatType, className, abilityName } = Abilities.refNameToComponents(props.ref_name);
   const abilityInformation = Abilities[combatType][className][abilityName];
-
 
   useEffect(() => {
     Utils.Dom.newListener().keydown(handleKeyPress);
@@ -66,6 +67,7 @@ const AbilityButton = (props) => {
 
   return connectDropTarget(
     <button
+      id={props.ref_name}
       className="actionbar__abilityslot-container"
       onClick={handleClick}
       disabled={isDisabled()}
@@ -75,6 +77,7 @@ const AbilityButton = (props) => {
       <div ref={cooldownAnimationRef}></div>
       <div className="actionbar__abilityslot-textnode--cooldown">{(cooldown !== 0) ? cooldown : ""}</div>
       <img src={abilityInformation.icon} alt={abilityInformation.ref_name} />
+      <TooltipEmitter id={props.ref_name} ref_name={props.ref_name} />
     </button>
   )
 }

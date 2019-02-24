@@ -3,9 +3,7 @@ export const setTooltipInformation = ({ informationType, data }) => {
     type: 'SET_TOOLTIP_INFORMATION',
     payload: {
       informationType,
-      data: {
-        ...data
-      }
+      data: data
     }
   }
 };

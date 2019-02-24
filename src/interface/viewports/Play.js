@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { startCanvasGameLoop, enableActionbar, setActiveComponents } from 'interface/actions';
 
 const Play = (props) => {
-  const {startCanvasGameLoop, enableActionbar, setActiveComponents } = props.actions;
+  const {startCanvasGameLoop, setActiveComponents } = props.actions;
 
   useEffect(() => {
     console.log('Playing');

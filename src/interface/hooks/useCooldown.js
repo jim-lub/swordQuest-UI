@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useCooldown = (initialValue) => {
   const [cooldown, setCooldown] = useState(initialValue);

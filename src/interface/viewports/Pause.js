@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { pauseCanvasGameLoop, disableActionbar, setActiveComponents } from 'interface/actions';
 
 const Pause = (props) => {
-  const { pauseCanvasGameLoop, disableActionbar, setActiveComponents } = props.actions;
+  const { pauseCanvasGameLoop, setActiveComponents } = props.actions;
 
   useEffect(() => {
     console.log('Paused');

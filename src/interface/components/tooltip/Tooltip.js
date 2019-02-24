@@ -12,8 +12,8 @@ const Tooltip = (props) => {
   return (
       <div className={`tooltip__wrapper`}>
         <div className="tooltip__container">
-           {(props.tooltipInformation.informationType === 'ability-information') ? <AbilityInformation {...data} /> : ""}
-           {(props.tooltipInformation.informationType === 'oneline-information') ? <OneLineInformation {...data} /> : ""}
+           {(props.tooltipInformation.informationType === 'ability-information') ? <AbilityInformation data={data} /> : ""}
+           {(props.tooltipInformation.informationType === 'oneline-information') ? <OneLineInformation data={data} /> : ""}
         </div>
       </div>
   )

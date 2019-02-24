@@ -8,7 +8,7 @@ import {
   ExperienceBar,
   PlayerPanel,
   Canvas,
-  AbilityQueue,
+  // AbilityQueue,
   AbilitiesPanel
 } from 'interface/components';
 
@@ -27,7 +27,6 @@ export const App = () => {
           {<Canvas />}
           {<Menubar />}
           {<PlayerPanel />}
-          {<AbilityQueue />}
           {<AbilitiesPanel />}
           {<Tooltip />}
         </div>

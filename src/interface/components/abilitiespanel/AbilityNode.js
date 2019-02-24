@@ -1,6 +1,8 @@
 import React from 'react';
 import { DragSource } from 'react-dnd';
 
+import TooltipEmitter from 'interface/hooks/useTooltip';
+
 import { Abilities } from 'config/abilities';
 
 const AbilityNode = ({connectDragSource, isDragging, ref_name}) => {
@@ -14,7 +16,7 @@ const AbilityNode = ({connectDragSource, isDragging, ref_name}) => {
       fontWeight: 'bold',
       cursor: 'move'
     }}>
-      <div className="abilitiespanel__ability-node--icon">
+      <div className="abilitiespanel__ability-node--icon" id={ref_name}>
         <img src={currentAbility.icon} alt={currentAbility.ref_name} />
       </div>
       <div className="abilitiespanel__ability-node--subcontainer">
@@ -25,6 +27,7 @@ const AbilityNode = ({connectDragSource, isDragging, ref_name}) => {
           {refTo.className}
         </div>
       </div>
+      <TooltipEmitter id={ref_name} ref_name={ref_name} />
     </div>
   )
 }
