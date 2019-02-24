@@ -10,7 +10,7 @@ export const fireball = {
   heal: null,
   absorb: null,
 
-  cooldown: 1,
+  cooldown: 5,
 
   ticksPerPhase: {
     start: 0,

@@ -47,7 +47,7 @@ export const swordstrike = {
 
 export const mortalStrike = {
   display_name: 'Mortal Strike',
-  ref_name: 'melee_warrior_mortal_strike',
+  ref_name: 'melee_warrior_mortalStrike',
   description: 'A vicious strike that deals $(x) Physical damage.',
   icon: require('assets/abilities/icons/warrior/mortal-strike.png'),
 

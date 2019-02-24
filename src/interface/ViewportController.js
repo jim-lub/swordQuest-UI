@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { Play, Pause, AbilitiesPanel } from 'interface/viewports'
 
 import { setCurrentViewport, requestViewportChange } from 'interface/actions';
+import { startCanvasGameLoop, enableActionbar, setActiveComponents } from 'interface/actions';
 
 const ViewportController = (props) => {
   const { current, request } = props.viewport;

@@ -10,7 +10,7 @@ export const frostbolt = {
   heal: null,
   absorb: null,
 
-  cooldown: 1,
+  cooldown: 10,
 
   ticksPerPhase: {
     start: 0,
@@ -47,7 +47,7 @@ export const frostbolt = {
 
 export const iceBarrier = {
   display_name: 'Ice Barrier',
-  ref_name: 'magic_frost_ice_barrier',
+  ref_name: 'magic_frost_iceBarrier',
   description: 'Shields you with ice, absorbing $(x) damage. The shield will expire after $(x) seconds.',
   icon: require('assets/abilities/icons/frost/ice-barrier.png'),
 

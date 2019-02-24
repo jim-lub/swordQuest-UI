@@ -62,7 +62,7 @@ export const shadowstrike = {
 
 export const shroudOfTheShadows = {
   display_name: 'Shroud of the Shadows',
-  ref_name: 'magic_shadow_shroud_of_the_shadows',
+  ref_name: 'magic_shadow_shroudOfTheShadows',
   description: 'Hides the player in the shadows, greatly reducing the range in which you are spotted by the enemy.',
   icon: require('assets/abilities/icons/shadow/shroud-of-the-shadows.png'),
 

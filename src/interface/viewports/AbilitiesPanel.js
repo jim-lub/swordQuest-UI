@@ -10,7 +10,7 @@ const AbilitiesPanel = (props) => {
   useEffect(() => {
     console.log('Paused');
     setActiveComponents({
-      actionbar: false,
+      actionbar: true,
       abilitiesPanel: true
     });
     pauseCanvasGameLoop();

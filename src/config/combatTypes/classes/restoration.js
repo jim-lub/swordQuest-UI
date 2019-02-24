@@ -10,7 +10,7 @@ export const heal = {
   heal: null,
   absorb: null,
 
-  cooldown: 1,
+  cooldown: 15,
 
   ticksPerPhase: {
     start: 0,
@@ -66,7 +66,7 @@ export const shield = {
 
 export const orbsOfHealth = {
   display_name: 'Orbs of Health',
-  ref_name: 'magic_restoration_orbs_of_health',
+  ref_name: 'magic_restoration_orbsOfHealth',
   description: 'Emits $(x) healing orbs around the player. When a player or friendly walks over an orb they get healed for $(x).',
   icon: require('assets/abilities/icons/restoration/orbs-of-health.png'),
 

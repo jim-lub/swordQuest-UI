@@ -38,11 +38,15 @@ export const Store = store;
 // temp initializer functions
 const initialize = () => {
   // setup controls:
-  const controlsMap = new Map([[0, "1"], [1, "2"], [2, "3"], [3, "4"], [4, "5"], [5, "6"], [6, "7"], [7, "8"], [8, "9"], [9, "shift"]]);
+  const controlsMap = new Map([[1, "1"], [2, "2"], [3, "3"], [4, "4"], [5, "5"], [6, "6"], [7, "7"], [8, "8"], [9, "9"], [10, "shift"]]);
   store.dispatch(setPlayerControls(controlsMap));
 
   // setup abilities:
-  const abilitiesMap = ACTIONBAR_ABILITIES();
+  const abilitiesMap = new Map([[1, "melee_warrior_swordstrike"], [2, "melee_warrior_mortalStrike"],
+                                [3, "magic_fire_scorch"], [4, "magic_fire_fireball"],
+                                [5, "magic_frost_frostbolt"], [6, "magic_frost_frostbolt"],
+                                [7, "magic_restoration_heal"], [8, "empty"],
+                                [9, "locked"], [10, "locked"]]);
   store.dispatch(setActionbarAbilities(abilitiesMap));
 }
 

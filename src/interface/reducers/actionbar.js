@@ -1,5 +1,5 @@
 export default (state = {
-  abilities: undefined,
+  abilities: new Map(),
   enabled: true
 }, action) => {
   switch (action.type) {

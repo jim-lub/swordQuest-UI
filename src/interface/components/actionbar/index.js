@@ -1,3 +1,9 @@
-export { AbilitySlot } from './AbilitySlot';
-export { AbilitySlotEmpty } from './AbilitySlotEmpty';
-export { AbilitySlotLocked } from './AbilitySlotLocked';
+import AbilityButton from './AbilityButton';
+import AbilityButtonEmpty from './AbilityButtonEmpty';
+import AbilityButtonLocked from './AbilityButtonLocked';
+
+export {
+  AbilityButton,
+  AbilityButtonEmpty,
+  AbilityButtonLocked
+}
