@@ -15,42 +15,46 @@ import { Vector } from 'game/lib';
 ********************************************************************************/
 export const AttackPointsController = () => {
   const abilityEntities = Clusters[2];
+  console.clear();
 
   abilityEntities.forEach(entity => {
-    const { position } = entity.components.defaults;
+    const { position, direction } = entity.components.defaults;
     const { attackPointsPool, patterns } = entity.components.attackPoints;
 
-    patterns.forEach(pattern => {
-      if (pattern.type !== 'circular') {
+    patterns.forEach((pattern, index) => {
+      if (pattern.type !== 'circular' || entity.components.defaults.currentLifeCyclePhase !== 'action') {
         return;
       }
 
-      const radius = pattern.radius;
-      const totalPointsToEmit = pattern.pointsToEmit;
-      const rotatingRadianValue = pattern.rotatingRadian;
+      if (!attackPointsPool[index]) {
+        entity.components.attackPoints.attackPointsPool[index] = [];
+      }
 
-      if (attackPointsPool.length < totalPointsToEmit) {
-        attackPointsPool.push({
+      const radius = pattern.radius;
+      const pointsToEmit = pattern.pointsToEmit;
+      const rotatingArcSize = pattern.rotatingArcSize;
+      const offsetX = pattern.offset.x * direction;
+      const offsetY = pattern.offset.y;
+
+      if (attackPointsPool[index].length < pointsToEmit) {
+        attackPointsPool[index].push({
           position: new Vector(position.x, position.y),
-          origin: new Vector(position.x, position.y),
           angle: (0 / 180) * Math.PI,
-          step: ((rotatingRadianValue / 180) - (0 / 180)) * Math.PI / totalPointsToEmit,
+          step: ((rotatingArcSize / 180) - (0 / 180)) * Math.PI / pointsToEmit,
           radius: radius
         });
       }
+      console.log(attackPointsPool[index]);
 
-      entity.components.attackPoints.attackPointsPool = attackPointsPool.map(point => {
+      entity.components.attackPoints.attackPointsPool[index] = attackPointsPool[index].map(point => {
         return {
           angle: point.angle + point.step,
           step: point.step,
-          maxAngle: point.maxAngle,
           radius: point.radius,
-          cos: Math.cos(point.angle),
-          sin: Math.sin(point.angle),
 
           position: {
-            x: position.x + (point.radius * Math.cos(point.angle)),
-            y: position.y + (point.radius * Math.sin(point.angle))
+            x: position.x + offsetX + (point.radius * Math.cos(point.angle)),
+            y: position.y + offsetY + (point.radius * Math.sin(point.angle) * direction)
           },
         }
       });

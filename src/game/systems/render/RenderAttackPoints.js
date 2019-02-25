@@ -11,25 +11,27 @@ export const RenderAttackPoints = (ctx) => {
   abilityEntities.forEach(entity => {
     const { attackPointsPool } = entity.components.attackPoints;
 
-    attackPointsPool.forEach(point => {
-      const { position } = point;
+    attackPointsPool.forEach(subPool => {
+      subPool.forEach(point => {
+        const { position } = point;
 
-      ctx.fillRect(
-        position.x - Viewport.x,
-        position.y,
-        1,
-        1
-      );
+        ctx.fillRect(
+          position.x - Viewport.x,
+          position.y,
+          1,
+          1
+        );
 
-      ctx.globalAlpha = 1;
-      // render center point
-      ctx.fillStyle = 'red';
-      ctx.fillRect(
-        position.x - Viewport.x,
-        position.y,
-        1,
-        1
-      );
+        ctx.globalAlpha = 1;
+        // render center point
+        ctx.fillStyle = 'orangered';
+        ctx.fillRect(
+          position.x - Viewport.x,
+          position.y,
+          1,
+          1
+        );
+      });
     });
   });
 

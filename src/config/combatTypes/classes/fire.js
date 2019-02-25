@@ -7,18 +7,37 @@ export const fireball = {
   cooldown: 1,
 
   actionType: 'attack',
+  collisionType: 'impact', // passthrough, none
   patterns: [
-    {
-      type: 'circular',
-      radius: 10,
-      pointsToEmit: 20,
-      rotatingRadian: 180
-    },
     {
       type: 'circular',
       radius: 15,
       pointsToEmit: 20,
-      rotatingRadian: 180
+      rotatingArcSize: 270,
+      offset: {
+        x: 0,
+        y: 0
+      }
+    },
+    {
+      type: 'circular',
+      radius: 5,
+      pointsToEmit: 5,
+      rotatingArcSize: 270,
+      offset: {
+        x: -60,
+        y: 0
+      }
+    },
+    {
+      type: 'circular',
+      radius: 10,
+      pointsToEmit: 15,
+      rotatingArcSize: 270,
+      offset: {
+        x: -35,
+        y: 0
+      }
     }
   ],
 
