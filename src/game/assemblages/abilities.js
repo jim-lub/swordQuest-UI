@@ -1,5 +1,7 @@
 import { Entity, Components } from 'game/EntityComponentSystem';
 
+import { Abilities } from 'config/abilities';
+
 export const ability = (type) => {
   let ability = new Entity.create();
 
@@ -10,9 +12,8 @@ export const ability = (type) => {
   );
 
   ability.addComponent(
-    Components.isCollider({
-      width: 5,
-      height: 5
+    Components.hasAttackPoints({
+      patterns: Abilities.magic.fire.fireball.patterns
     })
   );
 

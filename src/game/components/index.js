@@ -7,3 +7,4 @@ export { isColliderObstacle } from './isColliderObstacle';
 export { isDynamic } from './isDynamic';
 export { isStatic } from './isStatic';
 export { userInput } from './userInput';
+export { hasAttackPoints } from './hasAttackPoints';

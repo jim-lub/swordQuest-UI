@@ -4,23 +4,49 @@ export const fireball = {
   description: 'Hurls a fiery ball that causes $(x) Fire damage.',
   icon: require('assets/abilities/icons/fire/fireball.png'),
 
+  cooldown: 1,
+
   actionType: 'attack',
+  patterns: [
+    {
+      type: 'circular',
+      radius: 10,
+      pointsToEmit: 20,
+      rotatingRadian: 180
+    },
+    {
+      type: 'circular',
+      radius: 15,
+      pointsToEmit: 20,
+      rotatingRadian: 180
+    }
+  ],
+
+  lifeCycleDurationInTicks: {
+    start: 0,
+    anticipation: 30,
+    action: 100,
+    impact: 10
+  },
+
+  actionPhaseSpeed: {
+    acceleration: [0, 0],
+    velocity: [25, 0.5]
+  },
 
   damage: null,
   heal: null,
   absorb: null,
 
-  cooldown: 5,
-
   ticksPerPhase: {
     start: 0,
     anticipation: 30,
-    action: 50,
+    action: 100,
     impact: 10
   },
 
   speed: {
-    value: [50, 0],
+    value: [25, 0.5],
     velocityMultiplier: true
   },
 
@@ -36,7 +62,7 @@ export const fireball = {
     },
     size: {
       anticipation: [10, 10],
-      action: [25, 25],
+      action: [5, 5],
       impact: [50, 50]
     },
     offset: {

@@ -12,5 +12,7 @@ export const Clusters = {};
 
 export const ECSGlobals = {
   EntitiesPool: [],
-  AbilityQueue: new Map()
+  AbilityQueue: new Map(),
+  AttackPointsPool: [],
+  HealPointsPool: []
 };

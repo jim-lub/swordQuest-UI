@@ -5,6 +5,8 @@ import {
 
 import { Abilities } from 'config/abilities';
 
+import { Vector } from 'game/lib';
+
 import { getPlayerData } from 'game/utils/player';
 
 export const AbilityManager = () => {
@@ -45,10 +47,12 @@ export const AbilityManager = () => {
       if (currentLifeCyclePhase === 'action') {
         handleActionLifeCycle(ability, abilityData, user);
 
-        if (ability.components.collider.collisionOnAxis.x || ability.components.collider.collisionOnAxis.y) {
-          ability.removeComponent('appearance');
-          ability.components.defaults.ticks = 0;
-          setCurrentLifeCyclePhaseTo(ability, 'impact');
+        if (ability.components.hasOwnProperty('collider')) {
+          if (ability.components.collider.collisionOnAxis.x || ability.components.collider.collisionOnAxis.y) {
+            ability.removeComponent('appearance');
+            ability.components.defaults.ticks = 0;
+            setCurrentLifeCyclePhaseTo(ability, 'impact');
+          }
         }
         if (handleTicks(ability, abilityData.ticksPerPhase.action)) {
           ability.removeComponent('appearance');
@@ -92,6 +96,8 @@ const handleAnticipationtLifeCycle = ({ addComponent, components }, abilityData,
 }
 
 const handleActionLifeCycle = ({ addComponent, components }, abilityData, user) => {
+  const { AttackPointsPool } = ECSGlobals;
+  const { position } = components.defaults;
   if (!components.hasOwnProperty('appearance')) {
     addComponent(
       Components.appearance({
