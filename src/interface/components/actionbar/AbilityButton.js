@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 import { useCooldown } from 'interface/hooks';
 
-import TooltipEmitter from 'interface/hooks/useTooltip';
+import { TooltipSender } from 'interface/components';
 
 import { Abilities } from 'config/abilities';
 import { Utils } from 'interface/utils';
@@ -58,7 +58,6 @@ const AbilityButton = (props) => {
     if (!props.getDropResult) return;
 
     if (props.getDropResult.abilitySlotIndex === props.index) {
-      console.log(props.index, props.getItem.ref_name);
       props.onAbilitySwitch(props.index, props.getItem.ref_name);
     }
   }, [props.getDropResult]);
@@ -67,7 +66,7 @@ const AbilityButton = (props) => {
 
   return connectDropTarget(
     <button
-      id={props.ref_name}
+      id={`ab-${props.index}-${props.ref_name}`}
       className="actionbar__abilityslot-container"
       onClick={handleClick}
       disabled={isDisabled()}
@@ -77,7 +76,7 @@ const AbilityButton = (props) => {
       <div ref={cooldownAnimationRef}></div>
       <div className="actionbar__abilityslot-textnode--cooldown">{(cooldown !== 0) ? cooldown : ""}</div>
       <img src={abilityInformation.icon} alt={abilityInformation.ref_name} />
-      <TooltipEmitter id={props.ref_name} ref_name={props.ref_name} />
+      <TooltipSender id={`ab-${props.index}-${props.ref_name}`} type="ability-information" ref_name={props.ref_name} />
     </button>
   )
 }

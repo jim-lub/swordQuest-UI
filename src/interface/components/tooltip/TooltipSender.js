@@ -6,10 +6,10 @@ import { setTooltipInformation } from 'interface/actions';
 
 import { Utils } from 'interface/utils';
 
-const TooltipEmitter = (props) => {
+const TooltipSender = (props) => {
   const handleMouseOver = () => {
     props.actions.setTooltipInformation({
-      informationType: "ability-information",
+      informationType: props.type,
       data: props.ref_name
     });
   }
@@ -31,7 +31,6 @@ const TooltipEmitter = (props) => {
     return () => Utils.Dom.removeListener().mouseout(props.id, handleMouseOut)
   });
 
-
   return null;
 }
 
@@ -47,4 +46,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TooltipEmitter);
+export default connect(mapStateToProps, mapDispatchToProps)(TooltipSender);

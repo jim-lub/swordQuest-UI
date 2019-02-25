@@ -1,2 +1,7 @@
-export { AbilityInformation } from './AbilityInformation';
-export { OneLineInformation } from './OneLineInformation';
+import TooltipReceiver from './TooltipReceiver';
+import TooltipSender from './TooltipSender';
+
+export {
+  TooltipReceiver,
+  TooltipSender
+}

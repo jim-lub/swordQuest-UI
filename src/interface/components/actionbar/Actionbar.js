@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { useCooldown } from 'interface/hooks';
 
-import { setTooltipInformation, setActionbarAbilities } from 'interface/actions';
+import { setActionbarAbilities } from 'interface/actions';
 
 import {
   AbilityButton,
@@ -91,7 +91,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({setTooltipInformation, setActionbarAbilities}, dispatch)
+    actions: bindActionCreators({setActionbarAbilities}, dispatch)
   }
 }
 

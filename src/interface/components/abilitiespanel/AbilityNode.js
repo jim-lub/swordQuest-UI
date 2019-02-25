@@ -1,11 +1,11 @@
 import React from 'react';
 import { DragSource } from 'react-dnd';
 
-import TooltipEmitter from 'interface/hooks/useTooltip';
+import { TooltipSender } from 'interface/components';
 
 import { Abilities } from 'config/abilities';
 
-const AbilityNode = ({connectDragSource, isDragging, ref_name}) => {
+const AbilityNode = ({connectDragSource, isDragging, ref_name, index}) => {
   const refTo = Abilities.refNameToComponents(ref_name);
   const currentAbility = Abilities[refTo.combatType][refTo.className][refTo.abilityName];
 
@@ -16,7 +16,10 @@ const AbilityNode = ({connectDragSource, isDragging, ref_name}) => {
       fontWeight: 'bold',
       cursor: 'move'
     }}>
-      <div className="abilitiespanel__ability-node--icon" id={ref_name}>
+      <div
+        className="abilitiespanel__ability-node--icon"
+        id={`ap-${index}-${ref_name}`}
+      >
         <img src={currentAbility.icon} alt={currentAbility.ref_name} />
       </div>
       <div className="abilitiespanel__ability-node--subcontainer">
@@ -27,7 +30,7 @@ const AbilityNode = ({connectDragSource, isDragging, ref_name}) => {
           {refTo.className}
         </div>
       </div>
-      <TooltipEmitter id={ref_name} ref_name={ref_name} />
+        <TooltipSender id={`ap-${index}-${ref_name}`} type="ability-information" ref_name={ref_name} />
     </div>
   )
 }

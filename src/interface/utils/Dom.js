@@ -18,10 +18,12 @@ export const removeListener = () => ({
   },
 
   mouseover(id, fn) {
+    if (!document.getElementById(id)) return;
     return document.getElementById(id).removeEventListener('mouseover', fn);
   },
 
   mouseout(id, fn) {
+    if (!document.getElementById(id)) return;
     return document.getElementById(id).removeEventListener('mouseout', fn);
   }
 });

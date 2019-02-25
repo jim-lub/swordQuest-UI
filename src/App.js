@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Tooltip,
+  TooltipReceiver,
   Actionbar,
   DataBar,
   Menubar,
@@ -28,7 +28,7 @@ export const App = () => {
           {<Menubar />}
           {<PlayerPanel />}
           {<AbilitiesPanel />}
-          {<Tooltip />}
+          {<TooltipReceiver />}
         </div>
 
         <div className="grid__bottombar-wrapper clearfix">

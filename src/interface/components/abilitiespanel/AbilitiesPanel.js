@@ -20,7 +20,7 @@ const AbilitiesPanel = (props) => {
 
         <div className="abilitiespanel__ability-wrapper">
           {enabledAbilitiesArr.map((ref_name, index) => {
-            return <AbilityNode key={index} ref_name={ref_name} />
+            return <AbilityNode key={index} index={index} ref_name={ref_name} />
           })}
         </div>
 
