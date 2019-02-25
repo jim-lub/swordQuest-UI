@@ -2,6 +2,11 @@
 
 # dependencies
 /node_modules
+/.firebase
+/.firebaserc
+/database.rules.json
+/firestore.indexes.json
+/firestore.rules
 /.pnp
 .pnp.js
 
