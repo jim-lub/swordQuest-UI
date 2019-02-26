@@ -27,18 +27,19 @@ export const AbilityManager = () => {
       const refTo = Abilities.refNameToComponents(ref_name);
       const abilityData = Abilities[refTo.combatType][refTo.className][refTo.abilityName];
 
+      if (!abilityData.active) return;
 
       if (currentLifeCyclePhase === 'start') {
         handleStartLifeCycle(ability, user);
 
-        if (handleTicks(ability, abilityData.ticksPerPhase.start))
+        if (handleTicks(ability, abilityData.lifeCycleDurationInTicks.start))
           setCurrentLifeCyclePhaseTo(ability, 'anticipation');
       }
 
       if (currentLifeCyclePhase === 'anticipation') {
         handleAnticipationtLifeCycle(ability, abilityData, user);
 
-        if (handleTicks(ability, abilityData.ticksPerPhase.anticipation)) {
+        if (handleTicks(ability, abilityData.lifeCycleDurationInTicks.anticipation)) {
           ability.removeComponent('appearance');
           setCurrentLifeCyclePhaseTo(ability, 'action');
         }
@@ -54,7 +55,7 @@ export const AbilityManager = () => {
             setCurrentLifeCyclePhaseTo(ability, 'impact');
           }
         }
-        if (handleTicks(ability, abilityData.ticksPerPhase.action)) {
+        if (handleTicks(ability, abilityData.lifeCycleDurationInTicks.action)) {
           ability.removeComponent('appearance');
           setCurrentLifeCyclePhaseTo(ability, 'impact');
         }
@@ -63,7 +64,7 @@ export const AbilityManager = () => {
       if (currentLifeCyclePhase === 'impact') {
         handleImpactLifeCycle(ability, abilityData, user);
 
-        if (handleTicks(ability, abilityData.ticksPerPhase.impact))
+        if (handleTicks(ability, abilityData.lifeCycleDurationInTicks.impact))
           setCurrentLifeCyclePhaseTo(ability, 'delete');
       }
 
@@ -90,14 +91,12 @@ const handleAnticipationtLifeCycle = ({ addComponent, components }, abilityData,
   }
 
   components.defaults.position.set(
-    user.position.x + user.center.x - (abilityData.devVisuals.size.anticipation[0] / 2) + (abilityData.devVisuals.offset.anticipation[0] * user.direction),
+    user.position.x + (abilityData.devVisuals.offset.anticipation[0] * user.direction),
     user.position.y + abilityData.devVisuals.offset.anticipation[1]
   );
 }
 
 const handleActionLifeCycle = ({ addComponent, components }, abilityData, user) => {
-  const { AttackPointsPool } = ECSGlobals;
-  const { position } = components.defaults;
   if (!components.hasOwnProperty('appearance')) {
     addComponent(
       Components.appearance({
@@ -107,15 +106,36 @@ const handleActionLifeCycle = ({ addComponent, components }, abilityData, user) 
       })
     );
   }
-
   if (components.defaults.direction === 0) {
     components.defaults.direction = user.direction;
   }
 
-  components.defaults.velocity.set(
-    abilityData.speed.value[0] * components.defaults.direction,
-    abilityData.speed.value[1]
-  )
+  if (abilityData.actionPhase.customAccelerationCurve) {
+    const { accelerationCurveNodes } = abilityData.actionPhase;
+
+    accelerationCurveNodes.forEach(entry => {
+      const [startTick, endTick, accelerationX, accelerationY] = entry;
+
+      if (components.defaults.ticks >= startTick && components.defaults.ticks <= endTick) {
+        components.defaults.acceleration.add(
+          new Vector(
+            accelerationX * components.defaults.direction,
+            accelerationY
+          )
+        );
+      }
+    });
+  } else {
+    const [accelerationX, accelerationY] = abilityData.actionPhase.accelerationStatic;
+
+    components.defaults.acceleration.add(
+      new Vector(
+        accelerationX * components.defaults.direction,
+        accelerationY
+      )
+    );
+  }
+
 }
 
 const handleImpactLifeCycle = ({ addComponent, components }, abilityData, user) => {

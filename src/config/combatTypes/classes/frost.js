@@ -1,32 +1,50 @@
 export const frostbolt = {
+  active: true,
   display_name: 'Frostbolt',
   ref_name: 'magic_frost_frostbolt',
   description: 'Quickly flings a shard of ice at the target, dealing $(x) Frost damage.',
   icon: require('assets/abilities/icons/frost/frostbolt.png'),
 
+  cooldown: 1,
   actionType: 'attack',
+  collisionType: 'passthrough',
+  patterns: [
+    {
+      type: 'circular',
+      radius: 25,
+      pointsToEmit: 40,
+      rotatingArcSize: 310,
+      offset: {
+        x: 0,
+        y: 0
+      }
+    }
+  ],
+
+  actionPhase: {
+    duration: 100,
+    initialVelocity: null,
+    customAccelerationCurve: true,
+    accelerationStatic: [100, -100],
+    accelerationCurveNodes: [
+      [0, 5, 10, -400],
+      [6, 15, 30, -300],
+      [16, 25, 50, -200],
+      [26, 35, 70, -100],
+      [36, 100, 90, -0],
+    ]
+  },
+
+  lifeCycleDurationInTicks: {
+    start: 0,
+    anticipation: 30,
+    action: 100,
+    impact: 10
+  },
 
   damage: null,
   heal: null,
   absorb: null,
-
-  cooldown: 10,
-
-  ticksPerPhase: {
-    start: 0,
-    anticipation: 30,
-    action: 70,
-    impact: 10
-  },
-
-  speed: {
-    value: [20, 20],
-    velocityMultiplier: true
-  },
-
-  rate: null,
-  initialVelocity: null,
-  decay: null,
 
   devVisuals: {
     colors: {
@@ -35,12 +53,12 @@ export const frostbolt = {
       impact: '#639eff'
     },
     size: {
-      anticipation: [30, 30],
-      action: [30, 30],
-      impact: [80, 5]
+      anticipation: [10, 10],
+      action: [20, 20],
+      impact: [0, 0]
     },
     offset: {
-      anticipation: [0, -150]
+      anticipation: [10, -30]
     }
   }
 }

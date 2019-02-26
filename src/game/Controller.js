@@ -45,6 +45,7 @@ const update = () => {
   Systems.AbilityQueueManager();
   Systems.AbilityManager();
   Systems.AttackPointsController();
+  Systems.Physics(2);
   Systems.Motion(2);
 
 }

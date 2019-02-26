@@ -1,32 +1,51 @@
 export const shadowbolt = {
+  active: true,
   display_name: 'Shadowbolt',
   ref_name: 'magic_shadow_shadowbolt',
   description: 'Launches a bolt of shadow energy at the enemy target. Causing $(x) Shadow damage.',
   icon: require('assets/abilities/icons/shadow/shadowbolt.png'),
 
+  cooldown: 1,
+
   actionType: 'attack',
+  collisionType: 'passthrough',
+  patterns: [
+    {
+      type: 'circular',
+      radius: 10,
+      pointsToEmit: 40,
+      rotatingArcSize: 310,
+      offset: {
+        x: 0,
+        y: 0
+      }
+    }
+  ],
+
+  actionPhase: {
+    duration: 200,
+    initialVelocity: null,
+    customAccelerationCurve: true,
+    accelerationStatic: [100, -100],
+    accelerationCurveNodes: [
+      [0, 4, 10, -400],
+      [5, 49, 30, -110],
+      [50, 99, 30, -90],
+      [100, 149, 30, -110],
+      [150, 200, 30, -90],
+    ]
+  },
+
+  lifeCycleDurationInTicks: {
+    start: 0,
+    anticipation: 30,
+    action: 200,
+    impact: 10
+  },
 
   damage: null,
   heal: null,
   absorb: null,
-
-  cooldown: 1,
-
-  ticksPerPhase: {
-    start: 0,
-    anticipation: 30,
-    action: 100,
-    impact: 10
-  },
-
-  speed: {
-    value: [20, -1],
-    velocityMultiplier: true
-  },
-
-  rate: null,
-  initialVelocity: null,
-  decay: null,
 
   devVisuals: {
     colors: {
@@ -35,12 +54,12 @@ export const shadowbolt = {
       impact: 'purple'
     },
     size: {
-      anticipation: [15, 15],
+      anticipation: [5, 5],
       action: [10, 10],
-      impact: [30, 30]
+      impact: [0, 0]
     },
     offset: {
-      anticipation: [40, 0]
+      anticipation: [20, 0]
     }
   }
 }

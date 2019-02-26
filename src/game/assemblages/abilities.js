@@ -11,11 +11,16 @@ export const ability = (type) => {
     })
   );
 
-  ability.addComponent(
-    Components.hasAttackPoints({
-      patterns: Abilities.magic.fire.fireball.patterns
-    })
-  );
+  const { combatType, className, abilityName } = Abilities.refNameToComponents(type);
+
+  if (Abilities[combatType][className][abilityName].active) {
+    ability.addComponent(
+      Components.hasAttackPoints({
+        patterns: Abilities[combatType][className][abilityName].patterns
+      })
+    );
+  }
+
 
   return ability;
 }

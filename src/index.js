@@ -39,10 +39,10 @@ const initialize = () => {
   store.dispatch(setPlayerControls(controlsMap));
 
   // setup abilities:
-  const abilitiesMap = new Map([[1, "melee_warrior_swordstrike"], [2, "melee_warrior_mortalStrike"],
-                                [3, "magic_fire_scorch"], [4, "magic_fire_fireball"],
-                                [5, "magic_frost_frostbolt"], [6, "magic_frost_frostbolt"],
-                                [7, "magic_restoration_heal"], [8, "empty"],
+  const abilitiesMap = new Map([[1, "magic_fire_fireball"], [2, "magic_frost_frostbolt"],
+                                [3, "magic_shadow_shadowbolt"], [4, "magic_fire_scorch"],
+                                [5, "empty"], [6, "locked"],
+                                [7, "locked"], [8, "locked"],
                                 [9, "locked"], [10, "locked"]]);
   store.dispatch(setActionbarAbilities(abilitiesMap));
 }

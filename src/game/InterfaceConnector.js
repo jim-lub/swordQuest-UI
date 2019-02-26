@@ -3,7 +3,7 @@ import { ECSGlobals } from 'game/EntityComponentSystem';
 const sendAbilityToQueue = (type) => {
   const { AbilityQueue } = ECSGlobals;
 
-  AbilityQueue.set(randomId(), 'magic_fire_fireball');
+  AbilityQueue.set(randomId(), type);
 }
 
 export const InterfaceConnector = {
