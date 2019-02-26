@@ -43,9 +43,9 @@ export const shadowbolt = {
     impact: 10
   },
 
-  damage: null,
-  heal: null,
-  absorb: null,
+  damage: 0.2,
+  heal: 0,
+  absorb: 0,
 
   devVisuals: {
     colors: {

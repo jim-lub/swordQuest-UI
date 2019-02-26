@@ -43,5 +43,11 @@ export const player = ({x = 0, y = 0}) => {
     })
   );
 
+  player.addComponent(
+    Components.hasHealth({
+      value: 500
+    })
+  );
+
   return player;
 }

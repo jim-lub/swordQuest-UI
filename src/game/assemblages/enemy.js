@@ -37,5 +37,11 @@ export const enemy = ({x = 0, y = 0}) => {
     Components.behaviourTree()
   );
 
+  enemy.addComponent(
+    Components.hasHealth({
+      value: 1500
+    })
+  );
+
   return enemy;
 }

@@ -12,6 +12,8 @@ export { AbilityManager } from './AbilityManager';
 export { DeleteFromEntitiesPool } from './DeleteFromEntitiesPool';
 
 export { AttackPointsController } from './combat/AttackPointsController';
+export { AttackPointCollisionDetection } from './combat/AttackPointCollisionDetection';
 
 export { RenderAppearance } from './RenderAppearance';
 export { RenderAttackPoints } from './render/RenderAttackPoints';
+export { RenderHealth } from './render/RenderHealth';

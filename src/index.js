@@ -27,7 +27,6 @@ const renderApp = () => {
   )
 }
 
-// store.subscribe(renderApp);
 renderApp();
 
 export const Store = store;

@@ -58,9 +58,9 @@ export const fireball = {
     impact: 10
   },
 
-  damage: null,
-  heal: null,
-  absorb: null,
+  damage: 1,
+  heal: 0,
+  absorb: 0,
 
   rate: null,
   decay: null,
@@ -151,9 +151,9 @@ export const scorch = {
     impact: 0
   },
 
-  damage: null,
-  heal: null,
-  absorb: null,
+  damage: 0.1,
+  heal: 0,
+  absorb: 0,
 
   rate: null,
   decay: null,

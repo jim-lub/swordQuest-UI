@@ -1,6 +1,5 @@
 import {
-  Clusters,
-  ECSGlobals
+  Clusters
 } from 'game/EntityComponentSystem';
 
 import { Viewport } from 'game/systems/Camera';

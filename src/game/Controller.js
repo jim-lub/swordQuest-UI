@@ -45,6 +45,7 @@ const update = () => {
   Systems.AbilityQueueManager();
   Systems.AbilityManager();
   Systems.AttackPointsController();
+  Systems.AttackPointCollisionDetection();
   Systems.Physics(2);
   Systems.Motion(2);
 
@@ -54,6 +55,7 @@ const render = (ctx) => {
   BackgroundRender(ctx);
   Systems.RenderAppearance(ctx);
   Systems.RenderAttackPoints(ctx);
+  Systems.RenderHealth(ctx);
 }
 
 export const Controller = {

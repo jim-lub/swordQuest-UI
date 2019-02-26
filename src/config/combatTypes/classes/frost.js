@@ -42,7 +42,7 @@ export const frostbolt = {
     impact: 10
   },
 
-  damage: null,
+  damage: 1,
   heal: null,
   absorb: null,
 
@@ -71,9 +71,9 @@ export const iceBarrier = {
 
   actionType: 'absorb',
 
-  damage: null,
-  heal: null,
-  absorb: null,
+  damage: 0,
+  heal: 0,
+  absorb: 0,
 
   cooldown: 30
 }
