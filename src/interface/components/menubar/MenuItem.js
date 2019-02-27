@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const MenuItem = (props) => {
-  const viewportRequest = ['abilitiesPanel', 'inventoryPanel', 'mapPanel', 'questsPanel', 'settingsPanel', 'achievementsPanel'];
+  const viewportRequest = ['abilitiesPanel', 'inventoryPanel', 'mapPanel', 'questPanel', 'settingsPanel', 'achievementsPanel'];
   return (
     <div className="UI-menubar-item-container">
       <div className="UI-menubar-item-hover">{props.icon}</div>

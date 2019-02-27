@@ -6,12 +6,24 @@ import { connect } from 'react-redux';
 
 import { Play, Pause, AbilitiesPanel } from 'interface/viewports'
 
-import { setCurrentViewport, requestViewportChange } from 'interface/actions';
+import {
+  setCurrentViewport,
+  requestViewportChange,
+  setActiveComponents,
+  startCanvasGameLoop,
+  pauseCanvasGameLoop
+} from 'interface/actions';
 // import { startCanvasGameLoop, enableActionbar, setActiveComponents } from 'interface/actions';
 
 const ViewportController = (props) => {
   const { current, request } = props.viewport;
-  const { setCurrentViewport } = props.actions;
+  const {
+    setCurrentViewport,
+    setActiveComponents,
+    startCanvasGameLoop,
+    pauseCanvasGameLoop
+  } = props.actions;
+
 
   const checkIfValidRequestAndApply = (actionName) => {
     const action = transitions[current][actionName];
@@ -23,19 +35,167 @@ const ViewportController = (props) => {
 
   const transitions = {
     'play': {
-      component: <Play />,
+      component: () => {
+        setActiveComponents({
+          actionbar: true,
+          abilitiesPanel: false,
+          inventoryPanel: false,
+          mapPanel: false,
+          questPanel: false,
+          settingsPanel: false,
+          achievementsPanel: false
+        });
+        startCanvasGameLoop();
+      },
       pause() { setCurrentViewport('pause') },
-      abilitiesPanel() { setCurrentViewport('abilitiesPanel') }
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
     },
     'pause': {
-      component: <Pause />,
+      component: () => {
+        setActiveComponents({
+          actionbar: false,
+          abilitiesPanel: false,
+          inventoryPanel: false,
+          mapPanel: false,
+          questPanel: false,
+          settingsPanel: false,
+          achievementsPanel: false
+        });
+        pauseCanvasGameLoop();
+      },
       play() { setCurrentViewport('play') },
-      abilitiesPanel() { setCurrentViewport('abilitiesPanel') }
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
     },
     'abilitiesPanel': {
-      component: <AbilitiesPanel />,
+      component: () => {
+        setActiveComponents({
+          actionbar: true,
+          abilitiesPanel: true,
+          inventoryPanel: false,
+          mapPanel: false,
+          questPanel: false,
+          settingsPanel: false,
+          achievementsPanel: false
+        });
+        pauseCanvasGameLoop();
+      },
       play() { setCurrentViewport('play') },
-    }
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
+    },
+    'inventoryPanel': {
+      component: () => {
+        setActiveComponents({
+          actionbar: false,
+          abilitiesPanel: false,
+          inventoryPanel: true,
+          mapPanel: false,
+          questPanel: false,
+          settingsPanel: false,
+          achievementsPanel: false
+        });
+        pauseCanvasGameLoop();
+      },
+      play() { setCurrentViewport('play') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
+    },
+    'mapPanel': {
+      component: () => {
+        setActiveComponents({
+          actionbar: false,
+          abilitiesPanel: false,
+          inventoryPanel: false,
+          mapPanel: true,
+          questPanel: false,
+          settingsPanel: false,
+          achievementsPanel: false
+        });
+        pauseCanvasGameLoop();
+      },
+      play() { setCurrentViewport('play') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
+    },
+    'questPanel': {
+      component: () => {
+        setActiveComponents({
+          actionbar: false,
+          abilitiesPanel: false,
+          inventoryPanel: false,
+          mapPanel: false,
+          questPanel: true,
+          settingsPanel: false,
+          achievementsPanel: false
+        });
+        pauseCanvasGameLoop();
+      },
+      play() { setCurrentViewport('play') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
+    },
+    'settingsPanel': {
+      component: () => {
+        setActiveComponents({
+          actionbar: false,
+          abilitiesPanel: false,
+          inventoryPanel: false,
+          mapPanel: false,
+          questPanel: false,
+          settingsPanel: true,
+          achievementsPanel: false
+        });
+        pauseCanvasGameLoop();
+      },
+      play() { setCurrentViewport('play') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      // achievementsPanel() { setCurrentViewport('achievementsPanel') }
+    },
+    'achievementsPanel': {
+      component: () => {
+        setActiveComponents({
+          actionbar: false,
+          abilitiesPanel: false,
+          inventoryPanel: false,
+          mapPanel: false,
+          questPanel: false,
+          settingsPanel: false,
+          achievementsPanel: true
+        });
+        pauseCanvasGameLoop();
+      },
+      play() { setCurrentViewport('play') },
+      abilitiesPanel() { setCurrentViewport('abilitiesPanel') },
+      inventoryPanel() { setCurrentViewport('inventoryPanel') },
+      // mapPanel() { setCurrentViewport('mapPanel') },
+      questPanel() { setCurrentViewport('questPanel') },
+      settingsPanel() { setCurrentViewport('settingsPanel') }
+    },
   }
 
   useEffect(
@@ -44,7 +204,12 @@ const ViewportController = (props) => {
     },
   [request]);
 
-  return transitions[current].component;
+  useEffect(
+    () => {
+      transitions[current].component();
+    }, [current, request]);
+
+  return null;
 };
 
 const mapStateToProps = state => {
@@ -55,7 +220,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({setCurrentViewport, requestViewportChange}, dispatch)
+    actions: bindActionCreators({
+      setCurrentViewport,
+      requestViewportChange,
+      setActiveComponents,
+      startCanvasGameLoop,
+      pauseCanvasGameLoop
+    }, dispatch)
   };
 };
 

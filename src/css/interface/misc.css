@@ -1,0 +1,16 @@
+.closepanelbutton__wrapper {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+.closepanelbutton__button {
+  padding: 0px 10px;
+  border: none;
+  border: solid 1px black;
+  background-color: black;
+  opacity: 0.7;
+  font-size: 14px;
+  font-weight: bold;
+  color: crimson;
+}

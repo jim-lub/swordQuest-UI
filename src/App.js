@@ -9,7 +9,10 @@ import {
   PlayerPanel,
   Canvas,
   // AbilityQueue,
-  AbilitiesPanel
+  AbilitiesPanel,
+  InventoryPanel,
+  QuestPanel,
+  SettingsPanel
 } from 'interface/components';
 
 import ViewportController from 'interface/ViewportController';
@@ -28,6 +31,9 @@ export const App = () => {
           {<Menubar />}
           {<PlayerPanel />}
           {<AbilitiesPanel />}
+          {<InventoryPanel />}
+          {<QuestPanel />}
+          {<SettingsPanel />}
           {<TooltipReceiver />}
         </div>
 

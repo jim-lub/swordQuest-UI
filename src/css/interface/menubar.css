@@ -1,7 +1,7 @@
 .UI-menubar-container {
   position: absolute;
   top: -35px;
-  left: 50%;
+  right: -180px;
   transform: translateX(-50%);
   box-sizing: border-box;
   -moz-box-sizing: border-box;

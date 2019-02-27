@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { requestViewportChange } from 'interface/actions';
 
+import { ClosePanelButton } from 'interface/components';
+
 import AbilityNode from './AbilityNode';
 
 import { Abilities } from 'config/abilities';
@@ -16,6 +18,7 @@ const AbilitiesPanel = (props) => {
   return (
     <div className="abilitiespanel__wrapper">
       <div className="abilitiespanel__container">
+        <ClosePanelButton />
         <div className="abilitiespanel__container--bg" />
 
         <div className="abilitiespanel__ability-wrapper">

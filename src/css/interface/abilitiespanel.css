@@ -12,29 +12,17 @@
   top: 50%;
   transform: translateY(-50%);
 
-  margin: 0 auto;
+  margin: 0 20px;
 
-  width: 500px;
-  height: 380px;
+  width: 348px;
+  height: 508px;
 
-  padding: 15px;
-
-  border-radius: 1px;
+  background-image: url(../../assets/panels/abilitiesPanel-background.png);
 }
 
-  .abilitiespanel__container--bg {
-    position: absolute;
-    left: 0px;
-    top: 0px;
+.abilitiespanel__abilities-container {
 
-    z-index: -1;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: black;
-    opacity: 0.8;
-  }
+}
 
   .abilitiespanel__title-container {
     position: relative;
@@ -55,11 +43,12 @@
 .abilitiespanel__ability-wrapper {
   position: relative;
   width: 100%;
-
+  top: 110px;
+  padding: 40px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .abilitiespanel__ability-node--container {
@@ -73,7 +62,7 @@
 .abilitiespanel__ability-node--subcontainer {
   float: left;
   padding: 5px;
-  max-width: 80px;
+  max-width: 70px;
 }
 
 .abilitiespanel__ability-node--name {

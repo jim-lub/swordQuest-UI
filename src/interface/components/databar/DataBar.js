@@ -9,7 +9,6 @@ const DataBar = (props) => {
   return (
       <div className="databar__wrapper">
         <div className="databar__container">
-          {(props.isPlaying) ? <button onClick={() => props.actions.requestViewportChange('pause')}>Pause</button> : <button onClick={() => props.actions.requestViewportChange('play')}>Play</button>}
         </div>
       </div>
   )
