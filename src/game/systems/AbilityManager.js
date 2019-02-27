@@ -1,5 +1,5 @@
 import {
-  ECSGlobals,
+  Clusters,
   Components
 } from 'game/EntityComponentSystem';
 
@@ -10,7 +10,6 @@ import { Vector } from 'game/lib';
 import { getPlayerData } from 'game/utils/player';
 
 export const AbilityManager = () => {
-  const { EntitiesPool } = ECSGlobals;
 
   const userData = getPlayerData().components;
   const user = {
@@ -20,12 +19,11 @@ export const AbilityManager = () => {
     size: userData.appearance.size
   }
 
-  EntitiesPool
-    .filter(entity => entity.components.defaults.type === 'ability')
+  Clusters['abilities']
     .forEach(ability => {
       const { ref_name, currentLifeCyclePhase } = ability.components.defaults;
-      const refTo = Abilities.refNameToComponents(ref_name);
-      const abilityData = Abilities[refTo.combatType][refTo.className][refTo.abilityName];
+      const { combatType, className, abilityName } = Abilities.refNameToComponents(ref_name);
+      const abilityData = Abilities[combatType][className][abilityName];
 
       if (!abilityData.active) return;
 

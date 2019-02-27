@@ -13,7 +13,7 @@ import { Vector } from 'game/lib';
 * @radius: sets the size of the radius
 ********************************************************************************/
 export const AttackPointsController = () => {
-  const abilityEntities = Clusters[2].filter(entity => entity.components.hasOwnProperty('attackPoints'));
+  const abilityEntities = Clusters['abilities'].filter(entity => entity.components.hasOwnProperty('attackPoints'));
 
   abilityEntities.forEach(entity => {
     const { position, direction } = entity.components.defaults;

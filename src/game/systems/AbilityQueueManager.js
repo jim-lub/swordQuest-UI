@@ -1,5 +1,6 @@
 import {
   ECSGlobals,
+  Clusters,
   Assemblages
 } from 'game/EntityComponentSystem';
 
@@ -8,8 +9,7 @@ export const AbilityQueueManager = () => {
 
   if (AbilityQueue.size === 0) return;
 
-  const activeAbilities = EntitiesPool
-    .filter(entity => entity.components.defaults.type === 'ability')
+  const activeAbilities = Clusters['abilities']
     .filter(ability => ability.components.defaults.currentLifeCyclePhase === 'start' && ability.components.defaults.currentLifeCyclePhase === 'impact')
 
   if (activeAbilities.length === 0) {

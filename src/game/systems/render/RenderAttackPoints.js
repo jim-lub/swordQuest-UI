@@ -5,7 +5,7 @@ import {
 import { Viewport } from 'game/systems/Camera';
 
 export const RenderAttackPoints = (ctx) => {
-  const abilityEntities = Clusters[2].filter(entity => entity.components.hasOwnProperty('attackPoints'));
+  const abilityEntities = Clusters['abilities'].filter(entity => entity.components.hasOwnProperty('attackPoints'));
 
   abilityEntities.forEach(entity => {
     const { attackPointsPool } = entity.components.attackPoints;

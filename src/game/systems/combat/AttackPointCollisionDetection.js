@@ -5,8 +5,8 @@ import {
 import { Abilities } from 'config/abilities';
 
 export const AttackPointCollisionDetection = () => {
-  const enemies = Clusters[1];
-  const abilities = Clusters[2]
+  const enemies = Clusters['enemies'];
+  const abilities = Clusters['abilities']
     .filter(entity => entity.components.hasOwnProperty('attackPoints'));
 
   /* Filter abilities that are in range of enemies */
@@ -28,9 +28,9 @@ export const AttackPointCollisionDetection = () => {
       const abilityData = Abilities[refTo.combatType][refTo.className][refTo.abilityName];
 
       attackPointsPool
-        .forEach(pool => pool
-          .forEach(point=> enemies
-            .forEach(enemy => {
+      	.forEach(pool =>
+          pool.forEach(point =>
+            enemies.forEach(enemy => {
               const pointPosition = point.position;
               const enemyPosition = enemy.components.defaults.position;
               const enemyCollisionBox = enemy.components.colliderObstacle.collisionBox;

@@ -6,8 +6,8 @@ import { Viewport } from 'game/systems/Camera';
 
 export const RenderHealth = (ctx) => {
   const entities = [
-    ...Clusters[0].filter(entity => entity.components.hasOwnProperty('health')),
-    ...Clusters[1].filter(entity => entity.components.hasOwnProperty('health'))
+    ...Clusters['user'].filter(entity => entity.components.hasOwnProperty('health')),
+    ...Clusters['enemies'].filter(entity => entity.components.hasOwnProperty('health'))
   ]
 
   entities.forEach(entity => {

@@ -6,8 +6,6 @@ import { ENGINE_CONFIG } from 'config/game/engine';
 export const Motion = (cluster) => {
   const entities = Clusters[cluster];
 
-  // entity.components.defaults.currentLifeCyclePhase === 'action'
-
   entities.forEach(entity => {
     const { position, velocity } = entity.components.defaults;
 

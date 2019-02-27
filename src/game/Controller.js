@@ -20,8 +20,13 @@ const init = () => {
 
   EntitiesPool.push(Assemblages.player({x: 400, y: 300}));
 
+  EntitiesPool.push(Assemblages.enemy({x: -445, y: 300}));
   EntitiesPool.push(Assemblages.enemy({x: 0, y: 300}));
   EntitiesPool.push(Assemblages.enemy({x: 650, y: 300}));
+  EntitiesPool.push(Assemblages.enemy({x: 1050, y: 300}));
+  EntitiesPool.push(Assemblages.enemy({x: 1150, y: 300}));
+  EntitiesPool.push(Assemblages.enemy({x: 1250, y: 300}));
+  EntitiesPool.push(Assemblages.enemy({x: 1350, y: 300}));
 }
 
 const update = () => {
@@ -33,22 +38,24 @@ const update = () => {
   Systems.UpdateClusters();
 
 
-  Systems.UserInput(0);
-  Systems.CollisionDetection(0);
-  Systems.Motion(0);
-  Systems.Camera();
+  Systems.UserInput('user');
+  Systems.Physics('user');
+  Systems.CollisionDetection('user');
+  Systems.Motion('user');
 
-  Systems.EnemyInput(1);
-  Systems.CollisionDetection(1);
-  Systems.Motion(1);
+  Systems.EnemyInput('enemies');
+  Systems.Physics('enemies');
+  Systems.CollisionDetection('enemies');
+  Systems.Motion('enemies');
 
   Systems.AbilityQueueManager();
   Systems.AbilityManager();
   Systems.AttackPointsController();
   Systems.AttackPointCollisionDetection();
-  Systems.Physics(2);
-  Systems.Motion(2);
+  Systems.Physics('abilities');
+  Systems.Motion('abilities');
 
+  Systems.Camera();
 }
 
 const render = (ctx) => {
