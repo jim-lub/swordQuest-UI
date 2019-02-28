@@ -6,8 +6,8 @@
 class Controls {
   constructor() {
     this.KEY = {
-      _name: ['w', 'a', 's', 'd', 'space'],
-      _code: [87, 65, 83, 68, 32],
+      _name: ['w', 'a', 's', 'd', 'space', 'shift'],
+      _code: [87, 65, 83, 68, 32, 16],
       w: {
         active: false,
         enabled: true,
@@ -29,6 +29,11 @@ class Controls {
         timestamp: {keyDown: null, keyUp: null}
       },
       space: {
+        active: false,
+        enabled: true,
+        timestamp: {keyDown: null, keyUp: null}
+      },
+      shift: {
         active: false,
         enabled: true,
         timestamp: {keyDown: null, keyUp: null}
@@ -70,6 +75,10 @@ class Controls {
 
   lastKeyPressed(a, b) {
     if (this.KEY[a].timestamp.keyDown > this.KEY[b].timestamp.keyDown) return true;
+  }
+
+  getTimestampKeyDown(key) {
+    return this.KEY[key].timestamp.keyDown;
   }
 }
 

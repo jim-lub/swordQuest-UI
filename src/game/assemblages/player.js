@@ -24,21 +24,21 @@ export const player = ({x = 0, y = 0}) => {
   player.addComponent(
     Components.isCollider({
       width: 30,
-      height: 30
+      height: 40
     })
   );
 
   player.addComponent(
     Components.isColliderObstacle({
       width: 30,
-      height: 30
+      height: 40
     })
   );
 
   player.addComponent(
     Components.appearance({
       width: 30,
-      height: 30,
+      height: 45,
       color: 'teal'
     })
   );

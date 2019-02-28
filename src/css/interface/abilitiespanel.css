@@ -20,31 +20,14 @@
   background-image: url(../../assets/panels/abilitiesPanel-background.png);
 }
 
-.abilitiespanel__abilities-container {
-
-}
-
-  .abilitiespanel__title-container {
-    position: relative;
-
-    width: 100%;
-    height: auto;
-    margin: 5px;
-    padding: 5px;
-  }
-
-  .abilitiespanel__title-textnode {
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    opacity: 0.5;
-  }
-
 .abilitiespanel__ability-wrapper {
   position: relative;
-  width: 100%;
-  top: 110px;
-  padding: 40px;
+  width: 280px;
+  left: 35px;
+  top: 140px;
+  padding: 10px 0px;
+  border-top: solid 1px grey;
+  border-bottom: solid 1px grey;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -52,7 +35,7 @@
 }
 
 .abilitiespanel__ability-node--container {
-  width: 150px;
+  width: 140px;
 }
 
 .abilitiespanel__ability-node--icon {
