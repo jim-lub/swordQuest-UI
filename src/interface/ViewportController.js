@@ -1,10 +1,6 @@
-import React from 'react';
-
 import { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import { Play, Pause, AbilitiesPanel } from 'interface/viewports'
 
 import {
   setCurrentViewport,
@@ -13,7 +9,6 @@ import {
   startCanvasGameLoop,
   pauseCanvasGameLoop
 } from 'interface/actions';
-// import { startCanvasGameLoop, enableActionbar, setActiveComponents } from 'interface/actions';
 
 const ViewportController = (props) => {
   const { current, request } = props.viewport;

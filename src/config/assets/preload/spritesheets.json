@@ -1,0 +1,51 @@
+{
+  "hero": {
+    "folder": "assets/img/spritesheets/hero/",
+    "images": {
+      "idle_left": "idle-l.png",
+      "idle_right": "idle-r.png",
+      "run_left": "run-l.png",
+      "run_right": "run-r.png",
+      "jump_left": "jump-l.png",
+      "jump_right": "jump-r.png",
+      "fall_left": "fall-l.png",
+      "fall_right": "fall-r.png",
+      "slide_left": "slide-l.png",
+      "slide_right": "slide-r.png",
+      "attack_left": "attack-l.png",
+      "attack_right": "attack-r.png",
+      "attack_run_left": "attack-run-l.png",
+      "attack_run_right": "attack-run-r.png",
+      "attack_jump_left": "attack-jump-l.png",
+      "attack_jump_right": "attack-jump-r.png"
+    }
+  },
+  "knight": {
+    "folder": "assets/img/spritesheets/knight/",
+    "images": {
+      "idle_left": "idle-l.png",
+      "idle_right": "idle-r.png",
+      "run_left": "run-l.png",
+      "run_right": "run-r.png",
+      "attack_left": "attack-l.png",
+      "attack_right": "attack-r.png"
+    }
+  },
+  "smith": {
+    "folder": "assets/img/spritesheets/smith/",
+    "images": {
+      "idle_left": "idle-l.png",
+      "idle_right": "idle-r.png",
+      "run_left": "run-l.png",
+      "run_right": "run-r.png",
+      "attack_left": "attack-l.png",
+      "attack_right": "attack-r.png"
+    }
+  },
+  "crossbowman": {
+    "folder": "assets/img/spritesheets/crossbowman/",
+    "images": {
+      "idle": "idle.png"
+    }
+  }
+}

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "jquery": "^3.3.1",
     "react": "^16.8.1",
     "react-dnd": "^7.0.2",
     "react-dnd-html5-backend": "^7.0.2",

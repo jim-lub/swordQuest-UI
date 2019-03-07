@@ -64,6 +64,18 @@ export const shadowbolt = {
   }
 }
 
+export const shadowDash = {
+  active: false,
+  display_name: 'Dash',
+  ref_name: 'magic_shadow_shadowDash',
+  description: 'Dash at high velocity in the direction currently facing.',
+  icon: require('assets/abilities/icons/shadow/shadow-dash.png'),
+
+  actionType: 'movement',
+
+  cooldown: 2
+}
+
 export const shadowstrike = {
   display_name: 'Shadowstrike',
   ref_name: 'magic_shadow_shadowstrike',

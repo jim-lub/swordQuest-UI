@@ -1,20 +1,23 @@
-// import { Store } from '../index';
-
 import {
   // Entity,
   // Components,
   Systems,
   Assemblages,
-  Clusters,
+  // Clusters,
   ECSGlobals
 } from './EntityComponentSystem';
 
 import { BUILD_LEVEL } from './LEVEL';
 
+import {
+  InitializeAssets
+} from './AssetsManager';
+
 import { BackgroundRender } from 'game/lib/BackgroundRender';
 
 const init = () => {
   const { EntitiesPool } = ECSGlobals;
+  InitializeAssets();
 
   BUILD_LEVEL();
 
@@ -30,10 +33,6 @@ const init = () => {
 }
 
 const update = () => {
-  // console.clear();
-  // log('clusters');
-  // log('all');
-
   Systems.DeleteFromEntitiesPool();
   Systems.UpdateClusters();
 
@@ -69,24 +68,4 @@ export const Controller = {
   init,
   update,
   render
-}
-
-function log(type, index, component) {
-  const { EntitiesPool, AbilityQueue } = ECSGlobals;
-
-  if (type === 'all') {
-    console.table(EntitiesPool);
-  }
-
-  if (type === 'clusters') {
-    console.table(Clusters);
-  }
-
-  if (type === 'queue') {
-    console.table(AbilityQueue);
-  }
-
-  if (type === 'single') {
-    console.table(EntitiesPool[index].components[component])
-  }
 }

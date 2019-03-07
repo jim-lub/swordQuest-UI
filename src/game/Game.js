@@ -1,6 +1,6 @@
 import { Controller } from './Controller';
 
-const DataObj = {
+const Data = {
   ctx: null,
 
   frameID: null,
@@ -21,52 +21,52 @@ const DataObj = {
 }
 
 function init(ctx) {
-  DataObj.ctx = ctx;
+  Data.ctx = ctx;
   Controller.init();
-  DataObj.frameID = requestAnimationFrame(loop);
+  Data.frameID = requestAnimationFrame(loop);
 }
 
 function start() {
-  if (!DataObj.started) {
-    DataObj.started = true;
+  if (!Data.started) {
+    Data.started = true;
 
-    DataObj.frameID = requestAnimationFrame((timestamp) => {
+    Data.frameID = requestAnimationFrame((timestamp) => {
       render(1);
-      DataObj.running = true;
-      DataObj.lastFrameTimeMs = getTimestamp();
-      DataObj.lastFpsUpdate = getTimestamp();
-      DataObj.framesThisSecond = 0;
+      Data.running = true;
+      Data.lastFrameTimeMs = getTimestamp();
+      Data.lastFpsUpdate = getTimestamp();
+      Data.framesThisSecond = 0;
 
-      DataObj.frameID = requestAnimationFrame(loop);
+      Data.frameID = requestAnimationFrame(loop);
     });
   }
 }
 
 function stop() {
-  DataObj.running = false;
-  DataObj.started = false;
+  Data.running = false;
+  Data.started = false;
 
-  cancelAnimationFrame(DataObj.frameID);
+  cancelAnimationFrame(Data.frameID);
 }
 
 function loop() {
-  if (getTimestamp() > DataObj.lastFpsUpdate + 1000) {
-    DataObj.fps = 0.25 * DataObj.framesThisSecond + (1 - 0.25) * DataObj.fps;
+  if (getTimestamp() > Data.lastFpsUpdate + 1000) {
+    Data.fps = 0.25 * Data.framesThisSecond + (1 - 0.25) * Data.fps;
 
-    DataObj.lastFpsUpdate = getTimestamp();
-    DataObj.framesThisSecond = 0;
+    Data.lastFpsUpdate = getTimestamp();
+    Data.framesThisSecond = 0;
   }
-  DataObj.framesThisSecond++;
+  Data.framesThisSecond++;
 
-  DataObj.dt += getTimestamp() - DataObj.lastFrameTimeMs;
-  DataObj.lastFrameTimeMs = getTimestamp();
+  Data.dt += getTimestamp() - Data.lastFrameTimeMs;
+  Data.lastFrameTimeMs = getTimestamp();
 
 
   let numUpdateSteps = 0;
-  while (DataObj.dt >= DataObj.timestep) {
-    update(DataObj.timestep);
+  while (Data.dt >= Data.timestep) {
+    update(Data.timestep);
 
-    DataObj.dt -= DataObj.timestep;
+    Data.dt -= Data.timestep;
 
     if (++numUpdateSteps >= 240) {
       panic();
@@ -76,7 +76,7 @@ function loop() {
 
   render();
 
-  DataObj.frameID = requestAnimationFrame(loop);
+  Data.frameID = requestAnimationFrame(loop);
 }
 
 function update(dt) {
@@ -84,14 +84,14 @@ function update(dt) {
 }
 
 function render() {
-  let ctx = DataObj.ctx;
+  let ctx = Data.ctx;
   ctx.clearRect(0, 0, 940, 540);
 
   Controller.render(ctx);
 }
 
 function panic() {
-  DataObj.dt = 0;
+  Data.dt = 0;
 }
 
 function getTimestamp() {

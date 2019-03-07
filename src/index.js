@@ -42,7 +42,7 @@ const initialize = () => {
                                 [3, "magic_shadow_shadowbolt"], [4, "magic_fire_scorch"],
                                 [5, "empty"], [6, "locked"],
                                 [7, "locked"], [8, "locked"],
-                                [9, "locked"], [10, "locked"]]);
+                                [9, "locked"], [10, "magic_shadow_shadowDash"]]);
   store.dispatch(setActionbarAbilities(abilitiesMap));
 }
 
