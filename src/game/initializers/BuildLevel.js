@@ -5,9 +5,9 @@ import {
   Assemblages,
   // Clusters,
   ECSGlobals
-} from './EntityComponentSystem';
+} from 'game/EntityComponentSystem';
 
-export const BUILD_LEVEL = () => {
+export const BuildLevel = () => {
   const { EntitiesPool } = ECSGlobals;
 
   const level = [

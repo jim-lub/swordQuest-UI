@@ -5,6 +5,15 @@ export const Assets = {
 
 const configFile = require('config/assets/preload/spritesheets.json');
 
+
+export const Preload = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 5000);
+  });
+}
+
 export const InitializeAssets = () => {
   return new Promise((resolve, reject) => {
     let preloadList = [

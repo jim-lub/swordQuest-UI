@@ -20,10 +20,17 @@ const Data = {
   regularUpdates: 0
 }
 
-function init(ctx) {
+async function init(ctx) {
   Data.ctx = ctx;
-  Controller.init();
-  Data.frameID = requestAnimationFrame(loop);
+
+  ctx.fillStyle = "white";
+  ctx.font = "30px Verdana";
+  ctx.fillText('Loading...', 400, 250);
+
+  Controller.init().then(() => {
+    Data.lastFrameTimeMs = getTimestamp();
+    Data.frameID = requestAnimationFrame(loop);
+  });
 }
 
 function start() {
@@ -31,7 +38,6 @@ function start() {
     Data.started = true;
 
     Data.frameID = requestAnimationFrame((timestamp) => {
-      render(1);
       Data.running = true;
       Data.lastFrameTimeMs = getTimestamp();
       Data.lastFpsUpdate = getTimestamp();
@@ -60,7 +66,6 @@ function loop() {
 
   Data.dt += getTimestamp() - Data.lastFrameTimeMs;
   Data.lastFrameTimeMs = getTimestamp();
-
 
   let numUpdateSteps = 0;
   while (Data.dt >= Data.timestep) {

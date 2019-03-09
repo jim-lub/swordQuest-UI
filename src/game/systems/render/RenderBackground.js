@@ -1,9 +1,9 @@
 import { Viewport } from 'game/systems/Camera';
 
 let image = new Image();
-image.src = require('../../assets/bg/forest-sheet.png');
+image.src = require('assets/bg/forest-sheet.png');
 
-export const BackgroundRender = (ctx) => {
+export const RenderBackground = (ctx) => {
 
   let offsetX = Math.round(Viewport.x) || 0;
   let offsetY = 0;
