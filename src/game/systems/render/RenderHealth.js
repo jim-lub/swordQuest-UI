@@ -15,11 +15,11 @@ export const RenderHealth = (ctx) => {
     const { health } = entity.components;
 
     ctx.fillStyle = 'red';
-    ctx.font = '24px serif';
+    ctx.font = '18px Lucida Sans Unicode';
 
     ctx.fillText(
       Math.round(health.value),
-      position.x - Viewport.x,
+      position.x - Viewport.x - 20,
       position.y - 50
     )
   });

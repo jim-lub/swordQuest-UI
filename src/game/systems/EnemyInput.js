@@ -15,6 +15,9 @@ export const EnemyInput = (cluster) => {
   const enemies = Clusters[cluster];
   enemies.forEach(enemy => {
     const { position, acceleration } = enemy.components.defaults;
+    const { health } = enemy.components;
+
+    if (health.value <= 0) enemy.delete = true;
 
     if (Math.abs(position.x - user.position.x) < 150) {
       acceleration.add(

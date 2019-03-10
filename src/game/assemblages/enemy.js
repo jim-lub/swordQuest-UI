@@ -14,21 +14,21 @@ export const enemy = ({x = 0, y = 0}) => {
   enemy.addComponent(
     Components.isCollider({
       width: 40,
-      height: 70
+      height: 60
     })
   );
 
   enemy.addComponent(
     Components.isColliderObstacle({
       width: 40,
-      height: 70
+      height: 60
     })
   );
 
   enemy.addComponent(
     Components.appearance({
       width: 40,
-      height: 70,
+      height: 60,
       color: 'red'
     })
   );

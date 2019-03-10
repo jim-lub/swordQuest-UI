@@ -23,15 +23,15 @@ export const player = ({x = 0, y = 0}) => {
 
   player.addComponent(
     Components.isCollider({
-      width: 30,
-      height: 40
+      width: 20,
+      height: 30
     })
   );
 
   player.addComponent(
     Components.isColliderObstacle({
-      width: 30,
-      height: 40
+      width: 20,
+      height: 30
     })
   );
 

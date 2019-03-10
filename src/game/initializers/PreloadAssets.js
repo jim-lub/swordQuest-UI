@@ -1,6 +1,6 @@
 import { Assets } from 'game/Assets';
 
-const assetsConfigFile = require('config/assets/preload/index.json');
+const assetsConfigFile = require('config/preload/index.json');
 
 export const PreloadAssets = () => {
   return new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ export const PreloadAssets = () => {
 const preloadAssetsByTypeAndFile = (type, configFile) => {
   return new Promise((resolve, reject) => {
 
-    import(`config/assets/preload/${configFile}`)
+    import(`config/preload/${configFile}`)
       .then((config) => {
         const promises = [];
 

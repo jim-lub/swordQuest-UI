@@ -5,6 +5,8 @@ import {
   Vector
 } from 'game/lib/';
 
+import { PLAYER_CONSTANTS } from 'config/game/PLAYER_CONSTANTS';
+
 let cooldown = 0;
 let jumpCooldown = 0;
 let jumpKeydown = null;
@@ -29,28 +31,23 @@ export const UserInput = (cluster) => {
   const { acceleration, direction } = user.components.defaults;
 
   if (Ctrls.isPressed('shift') && cooldown === 0) {
-    let horizontalDash = 2500, verticalDash = -98;
-
-    // if (Ctrls.isPressed('space')) {
-      //   verticalDash = -2500;
-      // }
 
       acceleration.add(
-        new Vector(horizontalDash * direction, verticalDash)
+        new Vector(PLAYER_CONSTANTS.DASH_HORIZONTAL * direction, PLAYER_CONSTANTS.DASH_VERTICAL)
       );
-      cooldown = 120;
+      cooldown = PLAYER_CONSTANTS.DASH_COOLDOWN_IN_TICKS;
   }
 
 
   if (Ctrls.isPressed('a') && Ctrls.lastKeyPressed('a', 'd')) {
     acceleration.add(
-      new Vector(-40, 0)
+      new Vector(-PLAYER_CONSTANTS.SPEED_RUNNING, 0)
     );
   }
 
   if (Ctrls.isPressed('d') && Ctrls.lastKeyPressed('d', 'a')) {
     acceleration.add(
-      new Vector(40, 0)
+      new Vector(PLAYER_CONSTANTS.SPEED_RUNNING, 0)
     );
   }
 
@@ -58,19 +55,19 @@ export const UserInput = (cluster) => {
     if (user.components.collider.collisionOnAxis.y) {
       if (jumpCooldown !== 0) return;
       acceleration.add(
-        new Vector(0, -2000)
+        new Vector(PLAYER_CONSTANTS.JUMP_HORIZONTAL, PLAYER_CONSTANTS.JUMP_VERTICAL)
       );
-      jumpCooldown = 40;
-      jumpDoubleTapCooldown = 10;
+      jumpCooldown = PLAYER_CONSTANTS.JUMP_COOLDOWN_IN_TICKS;
+      jumpDoubleTapCooldown = PLAYER_CONSTANTS.DELAY_BEFORE_CAN_DOUBLE_JUMP;
       jumpKeydown = Ctrls.getTimestampKeyDown('space');
     } else {
       if (jumpDoubleTapCooldown !== 0) return;
       if (jumpKeydown === Ctrls.getTimestampKeyDown('space')) return;
 
       acceleration.add(
-        new Vector(0, -2500)
+        new Vector(PLAYER_CONSTANTS.DOUBLE_JUMP_HORIZONTAL, PLAYER_CONSTANTS.DOUBLE_JUMP_VERTICAL)
       );
-      jumpDoubleTapCooldown = 50;
+      jumpDoubleTapCooldown = PLAYER_CONSTANTS.DOUBLE_JUMP_COOLDOWN_IN_TICKS;
     }
   }
 

@@ -45,25 +45,6 @@ export const RenderAppearance = (ctx) => {
       );
     }
 
-    if (entity.components.hasOwnProperty('userInput')) {
-      let offsetX;
-
-      if (direction === -1) {
-        offsetX = - 10;
-      } else {
-        offsetX = 5;
-      }
-
-      ctx.fillStyle = 'white';
-      ctx.fillRect(
-        position.x + offsetX - Viewport.x,
-        position.y - 10,
-        5,
-        5
-      );
-    }
-
-
     ctx.globalAlpha = 1;
     // render center point
     ctx.fillStyle = 'coral';

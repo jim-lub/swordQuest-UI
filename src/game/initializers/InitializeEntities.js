@@ -9,8 +9,8 @@ import {
 
 export const InitializeEntities = () => {
   const { EntitiesPool } = ECSGlobals;
-  
-  EntitiesPool.push(Assemblages.player({x: 400, y: 100}));
+
+  EntitiesPool.push(Assemblages.player({x: 400, y: 400}));
 
   EntitiesPool.push(Assemblages.enemy({x: -445, y: 300}));
   EntitiesPool.push(Assemblages.enemy({x: 0, y: 300}));

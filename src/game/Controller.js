@@ -4,16 +4,14 @@ import {
   // Components,
   Systems,
   // Assemblages,
-  Clusters,
+  // Clusters,
   // ECSGlobals
 } from './EntityComponentSystem';
 
 const init = () => {
   return new Promise((resolve, reject) => {
     Initializers.PreloadAssets()
-      .then(() => {
-        return Initializers.BuildAnimationSequences()
-      })
+      .then(() => Initializers.BuildAnimationSequences())
       .then(() => {
         Initializers.BuildLevel();
         Initializers.InitializeEntities();
@@ -31,6 +29,7 @@ const init = () => {
 const update = () => {
   // console.clear();
   // console.table(Clusters['user'][0].components);
+
   Systems.DeleteFromEntitiesPool();
   Systems.UpdateClusters();
 

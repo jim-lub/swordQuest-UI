@@ -16,7 +16,11 @@ export const Physics = (cluster) => {
       acceleration.multiply(ENGINE_CONFIG.TIMESTEP).multiply(ENGINE_CONFIG.TIMESTEP).multiply(0.5)
     );
 
+    if (Math.abs(velocity.x) < 0.2) velocity.set(0, velocity.y);
+    if (Math.abs(velocity.y) < 0.2) velocity.set(velocity.x, 0);
+
     velocity.multiply(0.96); // NOTE: quick and dirty fix for friction. Modify..
+
 
     acceleration.multiply(0);
   });

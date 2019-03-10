@@ -19,12 +19,12 @@
         "sWidth": 60,
         "sHeight": 70,
         "offsetX": {
-          "left": -28,
-          "right": -18
+          "left": -38,
+          "right": -28
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": -56,
+          "right": -56
         }
       },
       "run": {
@@ -45,12 +45,12 @@
         "sWidth": 60,
         "sHeight": 70,
         "offsetX": {
-          "left": -31,
-          "right": -18
+          "left": -40,
+          "right": -28
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": -54,
+          "right": -54
         }
       },
       "jump": {
@@ -71,12 +71,12 @@
         "sWidth": 60,
         "sHeight": 70,
         "offsetX": {
-          "left": -18,
-          "right": -16
+          "left": -40,
+          "right": -24
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": -56,
+          "right": -56
         }
       },
       "fall": {
@@ -97,12 +97,12 @@
         "sWidth": 60,
         "sHeight": 70,
         "offsetX": {
-          "left": -18,
-          "right": -16
+          "left": -28,
+          "right": -24
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": -56,
+          "right": -56
         }
       },
       "attack": {
@@ -123,12 +123,12 @@
         "sWidth": 90,
         "sHeight": 70,
         "offsetX": {
-          "left": -53,
-          "right": -17
+          "left": 0,
+          "right": 0
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": 0,
+          "right": 0
         }
       },
       "attack_run": {
@@ -149,12 +149,12 @@
         "sWidth": 90,
         "sHeight": 70,
         "offsetX": {
-          "left": -53,
-          "right": -17
+          "left": 0,
+          "right": 0
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": 0,
+          "right": 0
         }
       },
       "attack_jump": {
@@ -175,12 +175,12 @@
         "sWidth": 98,
         "sHeight": 70,
         "offsetX": {
-          "left": -58,
-          "right": -20
+          "left": 0,
+          "right": 0
         },
         "offsetY": {
-          "left": -36,
-          "right": -36
+          "left": 0,
+          "right": 0
         }
       }
     }

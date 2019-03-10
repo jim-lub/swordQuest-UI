@@ -11,8 +11,21 @@ export const UpdateAnimations = () => {
   entities.forEach(entity => {
     const tickCount = entity.components.animation.tickCount++;
     const { index } = entity.components.animation;
+    const { velocity, direction } = entity.components.defaults;
 
-    const action = 'run', type = 'hero', dir = 'left';
+    const dir = (direction === -1) ? 'left' : 'right';
+
+    let action = 'idle', type = 'hero';
+
+    if (Math.abs(velocity.y) > 0) {
+      if (Math.sign(velocity.y) > 0) action = 'fall';
+      if (Math.sign(velocity.y) < 0) action = 'jump';
+    } else if (Math.abs(velocity.x) > 0) {
+      action = 'run';
+    } else {
+      action = 'idle';
+    }
+
     const sequence = Animations[type][`${action}_${dir}`];
 
     sequence.forEach(frame => {
