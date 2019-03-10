@@ -9,3 +9,4 @@ export { isStatic } from './isStatic';
 export { userInput } from './userInput';
 export { hasAttackPoints } from './hasAttackPoints';
 export { hasHealth } from './hasHealth';
+export { hasAnimation } from './hasAnimation';

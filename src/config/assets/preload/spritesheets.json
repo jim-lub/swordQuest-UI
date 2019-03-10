@@ -1,6 +1,6 @@
 {
   "hero": {
-    "folder": "assets/img/spritesheets/hero/",
+    "folder": "spritesheets/hero/",
     "images": {
       "idle_left": "idle-l.png",
       "idle_right": "idle-r.png",
@@ -21,7 +21,7 @@
     }
   },
   "knight": {
-    "folder": "assets/img/spritesheets/knight/",
+    "folder": "spritesheets/knight/",
     "images": {
       "idle_left": "idle-l.png",
       "idle_right": "idle-r.png",
@@ -32,7 +32,7 @@
     }
   },
   "smith": {
-    "folder": "assets/img/spritesheets/smith/",
+    "folder": "spritesheets/smith/",
     "images": {
       "idle_left": "idle-l.png",
       "idle_right": "idle-r.png",
@@ -43,7 +43,7 @@
     }
   },
   "crossbowman": {
-    "folder": "assets/img/spritesheets/crossbowman/",
+    "folder": "spritesheets/crossbowman/",
     "images": {
       "idle": "idle.png"
     }

@@ -1,8 +1,6 @@
 import { Clusters } from 'game/EntityComponentSystem';
 import { Vector } from 'game/lib/';
 
-import { ENGINE_CONFIG } from 'config/game/engine';
-
 import { getPlayerData } from 'game/utils/player';
 
 export const EnemyInput = (cluster) => {

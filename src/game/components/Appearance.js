@@ -1,5 +1,6 @@
-export const appearance = ({width, height, color, opacity = 1}) => ({
+export const appearance = ({width, height, color, opacity = 1, type = undefined}) => ({
   appearance: Object.assign({}, {
+    type,
     size: {
       width,
       height

@@ -37,9 +37,16 @@ export const player = ({x = 0, y = 0}) => {
 
   player.addComponent(
     Components.appearance({
+      type: 'hero',
       width: 30,
       height: 45,
       color: 'teal'
+    })
+  );
+
+  player.addComponent(
+    Components.hasAnimation({
+      type: 'hero'
     })
   );
 

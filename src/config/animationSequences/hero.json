@@ -1,0 +1,188 @@
+{
+
+    "actions": {
+      "idle": {
+        "sprite": {
+          "left": "animation_idle_left",
+          "right": "animation_idle_right"
+        },
+        "activeAttackFrames": [],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 59,
+        "ticksPerFrame": 10,
+        "frames": 7,
+        "sX": {
+          "left": [360, 300, 240, 180, 120, 60, 0],
+          "right": [0, 60, 120, 180, 240, 300, 360]
+        },
+        "sY": [0, 0, 0, 0, 0, 0, 0],
+        "sWidth": 60,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -28,
+          "right": -18
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      },
+      "run": {
+        "sprite": {
+          "left": "animation_run_left",
+          "right": "animation_run_right"
+        },
+        "activeAttackFrames": [],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 47,
+        "ticksPerFrame": 6,
+        "frames": 8,
+        "sX": {
+          "left": [420, 360, 300, 240, 180, 120, 60, 0],
+          "right": [0, 60, 120, 180, 240, 300, 360, 420]
+        },
+        "sY": [0, 0, 0, 0, 0, 0, 0, 0],
+        "sWidth": 60,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -31,
+          "right": -18
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      },
+      "jump": {
+        "sprite": {
+          "left": "animation_jump_left",
+          "right": "animation_jump_right"
+        },
+        "activeAttackFrames": [],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 19,
+        "ticksPerFrame": 10,
+        "frames": 2,
+        "sX": {
+          "left": [60, 0],
+          "right": [0, 60]
+        },
+        "sY": [0, 0],
+        "sWidth": 60,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -18,
+          "right": -16
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      },
+      "fall": {
+        "sprite": {
+          "left": "animation_fall_left",
+          "right": "animation_fall_right"
+        },
+        "activeAttackFrames": [],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 19,
+        "ticksPerFrame": 10,
+        "frames": 2,
+        "sX": {
+          "left": [60, 0],
+          "right": [0, 60]
+        },
+        "sY": [0, 0],
+        "sWidth": 60,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -18,
+          "right": -16
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      },
+      "attack": {
+        "sprite": {
+          "left": "animation_attack_left",
+          "right": "animation_attack_right"
+        },
+        "activeAttackFrames": [3, 4, 5],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 35,
+        "ticksPerFrame": 4,
+        "frames": 9,
+        "sX": {
+          "left": [720, 630, 540, 450, 360, 270, 180, 90, 0],
+          "right": [0, 90, 180, 270, 360, 450, 540, 630, 720]
+        },
+        "sY": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        "sWidth": 90,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -53,
+          "right": -17
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      },
+      "attack_run": {
+        "sprite": {
+          "left": "animation_attack_run_left",
+          "right": "animation_attack_run_right"
+        },
+        "activeAttackFrames": [3, 4, 5],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 35,
+        "ticksPerFrame": 4,
+        "frames": 9,
+        "sX": {
+          "left": [720, 630, 540, 450, 360, 270, 180, 90, 0],
+          "right": [0, 90, 180, 270, 360, 450, 540, 630, 720]
+        },
+        "sY": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        "sWidth": 90,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -53,
+          "right": -17
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      },
+      "attack_jump": {
+        "sprite": {
+          "left": "animation_attack_jump_left",
+          "right": "animation_attack_jump_right"
+        },
+        "activeAttackFrames": [3, 4, 5],
+        "direction": ["left", "right"],
+        "ticksPerSequence": 31,
+        "ticksPerFrame": 4,
+        "frames": 8,
+        "sX": {
+          "left": [686, 588, 490, 392, 294, 196, 98, 0],
+          "right": [0, 98, 196, 294, 392, 490, 588, 686]
+        },
+        "sY": [0, 0, 0, 0, 0, 0, 0, 0],
+        "sWidth": 98,
+        "sHeight": 70,
+        "offsetX": {
+          "left": -58,
+          "right": -20
+        },
+        "offsetY": {
+          "left": -36,
+          "right": -36
+        }
+      }
+    }
+
+}

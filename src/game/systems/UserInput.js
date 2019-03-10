@@ -5,7 +5,6 @@ import {
   Vector
 } from 'game/lib/';
 
-import { ENGINE_CONFIG } from 'config/game/engine';
 let cooldown = 0;
 let jumpCooldown = 0;
 let jumpKeydown = null;

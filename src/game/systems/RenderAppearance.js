@@ -1,5 +1,7 @@
 import { ECSGlobals } from 'game/EntityComponentSystem';
 import { Viewport } from 'game/systems/Camera';
+import { Animations } from 'game/Animations';
+import { Assets } from 'game/Assets';
 
 export const RenderAppearance = (ctx) => {
   const { EntitiesPool } = ECSGlobals;
@@ -8,20 +10,40 @@ export const RenderAppearance = (ctx) => {
 
   entitiesToRender.forEach(entity => {
     const { position, direction } = entity.components.defaults;
-    const { color, opacity, size } = entity.components.appearance;
+    const { type, color, opacity, size } = entity.components.appearance;
 
-    if (color !== ctx.fillStyle) {
+    if (!type) {
+      if (color !== ctx.fillStyle) {
         ctx.fillStyle = color;
+      }
+
+      ctx.globalAlpha = opacity;
+
+      ctx.fillRect(
+        (position.x - (size.width / 2)) - Viewport.x,
+        (position.y - (size.height / 2)),
+        size.width,
+        size.height
+      );
     }
 
-    ctx.globalAlpha = opacity;
+    if (entity.components.hasOwnProperty('animation')) {
+      const { sprite, data } = entity.components.animation;
 
-    ctx.fillRect(
-      (position.x - (size.width / 2)) - Viewport.x,
-      (position.y - (size.height / 2)),
-      size.width,
-      size.height
-    );
+      if (!sprite) return;
+
+      ctx.drawImage(
+        sprite,
+        data.sX,
+        data.sY,
+        data.sWidth,
+        data.sHeight,
+        Math.round(position.x + data.offsetX - Viewport.x),
+        Math.round(position.y + data.offsetY),
+        data.sWidth,
+        data.sHeight
+      );
+    }
 
     if (entity.components.hasOwnProperty('userInput')) {
       let offsetX;

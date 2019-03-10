@@ -26,8 +26,10 @@ export const PreloadAssets = () => {
 
 const preloadAssetsByTypeAndFile = (type, configFile) => {
   return new Promise((resolve, reject) => {
+
     import(`config/assets/preload/${configFile}`)
       .then((config) => {
+        const promises = [];
 
         Object.entries(config)
           .forEach((keyValuePairs) => {
@@ -43,10 +45,12 @@ const preloadAssetsByTypeAndFile = (type, configFile) => {
                 })
             }
 
-            loadAllImagesByName(name, type, folder, images);
+            promises.push(loadAllImagesByName(name, type, folder, images));
           });
 
-        resolve();
+          Promise.all(promises)
+            .then(() => resolve())
+            .catch(e => reject(e));
       })
       .catch(e => reject(e));
   });
@@ -54,20 +58,22 @@ const preloadAssetsByTypeAndFile = (type, configFile) => {
 
 const loadAllImagesByName = (parentName, type, folder, images) => {
   return new Promise((resolve, reject) => {
-    const promises = Object.entries(images);
+    const promises = [];
 
-    promises.map(data => {
-      const [name, image] = data;
+    Object.entries(images)
+      .forEach(data => {
+        const [name, image] = data;
 
-      return loadImage(folder + image)
-        .then((loadedImage) => {
-          Assets[type][parentName] = Object.assign(
-            Assets[type][parentName],
-            {
-              [name]: loadedImage
-            }
-          )
-        });
+        promises.push(loadImage(folder + image)
+          .then((loadedImage) => {
+            Assets[type][parentName] = Object.assign(
+              Assets[type][parentName],
+              {
+                [name]: loadedImage
+              }
+            )
+          })
+        );
     });
 
     Promise.all(promises)
@@ -79,7 +85,9 @@ const loadAllImagesByName = (parentName, type, folder, images) => {
 const loadImage = (src) => {
   return new Promise((resolve, reject) => {
     let image = new Image();
-    image.src = src;
-    resolve(image);
+    image.src = require(`assets/img/${src}`);
+    image.onload = function() {
+      resolve(image);
+    }
   })
 }

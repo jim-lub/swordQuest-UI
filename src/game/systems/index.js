@@ -18,3 +18,5 @@ export { RenderAppearance } from './RenderAppearance';
 export { RenderAttackPoints } from './render/RenderAttackPoints';
 export { RenderHealth } from './render/RenderHealth';
 export { RenderBackground } from './render/RenderBackground';
+
+export { UpdateAnimations } from './animations/UpdateAnimations';
