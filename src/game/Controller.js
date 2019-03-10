@@ -8,10 +8,14 @@ import {
   // ECSGlobals
 } from './EntityComponentSystem';
 
+import { Assets } from './Assets';
+
 const init = () => {
   return new Promise((resolve, reject) => {
     Initializers.PreloadAssets()
       .then(() => {
+        console.log(Assets);
+        Initializers.BuildAnimationSequences();
         Initializers.BuildLevel();
         Initializers.InitializeEntities();
       })

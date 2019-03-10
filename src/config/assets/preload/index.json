@@ -1,0 +1,4 @@
+{
+  "ICONS": ["icons.json"],
+  "SPRITESHEETS": ["spritesheets.json", "spritesheets2.json"]
+}

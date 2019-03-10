@@ -7,7 +7,6 @@
 html, body {
   /* background-color: #1f363d; */
   background-color: #151826;
-  /* background-image: url(../assets/bg/game.png); */
   background-repeat: no-repeat;
 }
 
@@ -57,8 +56,6 @@ span {
 
     width: 940px;
     height: 540px;
-
-    /* background-image: url(../assets/bg/game.png); */
   }
 
   .grid__bottombar-wrapper {

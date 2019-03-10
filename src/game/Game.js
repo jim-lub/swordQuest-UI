@@ -27,10 +27,11 @@ async function init(ctx) {
   ctx.font = "30px Verdana";
   ctx.fillText('Loading...', 400, 250);
 
-  Controller.init().then(() => {
-    Data.lastFrameTimeMs = getTimestamp();
-    Data.frameID = requestAnimationFrame(loop);
-  });
+  Controller.init()
+    .then(() => {
+      Data.lastFrameTimeMs = getTimestamp();
+      Data.frameID = requestAnimationFrame(loop);
+    });
 }
 
 function start() {
